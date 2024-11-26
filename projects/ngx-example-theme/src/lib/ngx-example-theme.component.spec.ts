@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NgxExampleThemeComponent } from './ngx-example-theme.component';
 
 describe('NgxExampleThemeComponent', () => {

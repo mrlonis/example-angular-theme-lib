@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { NgxExampleThemeService } from './ngx-example-theme.service';
 
 describe('NgxExampleThemeService', () => {
