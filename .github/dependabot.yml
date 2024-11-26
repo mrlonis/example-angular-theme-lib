@@ -21,16 +21,18 @@ updates:
         applies-to: version-updates
         patterns:
           - '@angular*'
-          - 'ng*'
+          - 'angular-eslint'
+          - 'ng-packagr'
           - 'ngx*'
         update-types:
-          - 'minor'
           - 'patch'
+          - 'minor'
       angular-security-updates:
         applies-to: security-updates
         patterns:
           - '@angular*'
-          - 'ng*'
+          - 'angular-eslint'
+          - 'ng-packagr'
           - 'ngx*'
         update-types:
           - 'patch'
@@ -72,7 +74,7 @@ updates:
         update-types: ['version-update:semver-major']
       - dependency-name: 'iframe-resizer'
         update-types: ['version-update:semver-major']
-      - dependency-name: 'ng*'
+      - dependency-name: 'ng-packagr'
         update-types: ['version-update:semver-major']
       - dependency-name: 'ngx*'
         update-types: ['version-update:semver-major']

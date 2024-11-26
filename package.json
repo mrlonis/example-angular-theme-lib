@@ -45,6 +45,7 @@
     "@types/jasmine": "^5.1.0",
     "@types/node": "^22.9.4",
     "angular-eslint": "^18.4.2",
+    "cypress": "^13.16.0",
     "eslint": "^9.15.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.3",
@@ -67,6 +68,7 @@
     "ng-lint-staged": "^12.0.4",
     "ng-packagr": "^18.2.0",
     "prettier": "^3.3.3",
+    "start-server-and-test": "^2.0.8",
     "typescript": "~5.5.2",
     "typescript-eslint": "^8.15.0"
   },
