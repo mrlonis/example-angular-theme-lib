@@ -62,7 +62,6 @@ module.exports = tseslint.config(
       ],
       '@angular-eslint/prefer-standalone': 'error',
       '@angular-eslint/sort-lifecycle-methods': 'error',
-      '@angular-eslint/sort-ngmodule-metadata-arrays': 'error',
       '@typescript-eslint/no-deprecated': 'error',
       '@typescript-eslint/no-non-null-assertion': 'error',
       '@typescript-eslint/no-unused-vars': [
