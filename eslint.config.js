@@ -64,6 +64,14 @@ module.exports = tseslint.config(
       '@angular-eslint/sort-lifecycle-methods': 'error',
       '@typescript-eslint/no-deprecated': 'error',
       '@typescript-eslint/no-non-null-assertion': 'error',
+      '@typescript-eslint/no-restricted-types': [
+        'error',
+        {
+          types: {
+            Promise: 'Promise is not allowed, use Observable instead',
+          },
+        },
+      ],
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
