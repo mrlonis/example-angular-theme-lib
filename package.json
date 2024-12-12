@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "ng build",
+    "build:dev": "npm run build -- --configuration development",
     "lint": "ng lint",
     "lint:fix": "npm run lint -- --fix",
     "ng": "ng",
@@ -42,6 +43,7 @@
     "@angular-devkit/build-angular": "^19",
     "@angular/cli": "^19",
     "@angular/compiler-cli": "^19",
+    "@angular/language-service": "^19",
     "@types/jasmine": "^5",
     "@types/node": "^22",
     "angular-eslint": "^19",
