@@ -29,10 +29,10 @@
       "prettier --write"
     ],
     "projects/example-theme-app/**/*.{html,js,jsx,ts,tsx}": [
-      "ng-lint-staged lint --fix --"
+      "ng-lint-staged lint:example-theme-app --fix --"
     ],
     "projects/ngx-example-theme/**/*.{html,js,jsx,ts,tsx}": [
-      "ng-lint-staged lint --fix --"
+      "ng-lint-staged lint:ngx-example-theme --fix --"
     ]
   },
   "dependencies": {
