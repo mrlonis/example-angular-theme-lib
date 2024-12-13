@@ -33,6 +33,8 @@ module.exports = tseslint.config(
             'projects/ngx-example-theme/tsconfig.lib.json',
             'projects/ngx-example-theme/tsconfig.lib.prod.json',
             'projects/ngx-example-theme/tsconfig.spec.json',
+            'projects/example-theme-app/tsconfig.app.json',
+            'projects/example-theme-app/tsconfig.spec.json',
           ],
         },
       },
@@ -44,22 +46,6 @@ module.exports = tseslint.config(
       },
     },
     rules: {
-      '@angular-eslint/directive-selector': [
-        'error',
-        {
-          type: 'attribute',
-          prefix: 'lib',
-          style: 'camelCase',
-        },
-      ],
-      '@angular-eslint/component-selector': [
-        'error',
-        {
-          type: 'element',
-          prefix: 'lib',
-          style: 'kebab-case',
-        },
-      ],
       '@angular-eslint/prefer-standalone': 'error',
       '@angular-eslint/sort-lifecycle-methods': 'error',
       '@typescript-eslint/no-deprecated': 'error',
