@@ -3,22 +3,33 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "ng build",
-    "build:dev": "npm run build -- --configuration development",
-    "lint": "ng lint",
-    "lint:fix": "npm run lint -- --fix",
+    "build": "npm run build:ngx-example-theme && npm run build:example-theme-app",
+    "build:dev": "npm run build:ngx-example-theme:dev && npm run build:example-theme-app:dev",
+    "build:example-theme-app": "ng build example-theme-app",
+    "build:example-theme-app:dev": "npm run build -- --configuration development",
+    "build:ngx-example-theme": "ng build ngx-example-theme",
+    "build:ngx-example-theme:dev": "npm run build:ngx-example-theme -- --configuration development",
+    "lint": "npm run lint:ngx-example-theme && npm run lint:example-theme-app",
+    "lint:example-theme-app": "ng lint example-theme-app",
+    "lint:fix": "npm run lint:ngx-example-theme -- --fix && npm run lint:example-theme-app -- --fix",
+    "lint:ngx-example-theme": "ng lint ngx-example-theme",
     "ng": "ng",
     "prepare": "husky",
     "prettier": "prettier --config .prettierrc --write \"**/*.{css,html,js,jsx,json,md,scss,ts,tsx,yaml,yml}\"",
     "prettier:test": "prettier --config .prettierrc --list-different \"**/*.{css,html,js,jsx,json,md,scss,ts,tsx,yaml,yml}\"",
     "start": "ng serve",
     "test": "npm run lint && npm run test:ci",
-    "test:ci": "ng test --no-watch --no-progress --browsers=ChromeHeadless",
+    "test:ci": "npm run test:ci:example-theme-app && npm run test:ci:ngx-example-theme",
+    "test:ci:example-theme-app": "ng test example-theme-app --no-watch --no-progress --browsers=ChromeHeadless",
+    "test:ci:ngx-example-theme": "ng test ngx-example-theme --no-watch --no-progress --browsers=ChromeHeadless",
     "watch": "ng build --watch --configuration development"
   },
   "lint-staged": {
     "*.{css,html,js,jsx,json,md,scss,ts,tsx,yaml,yml}": [
       "prettier --write"
+    ],
+    "projects/example-theme-app/**/*.{html,js,jsx,ts,tsx}": [
+      "ng-lint-staged lint --fix --"
     ],
     "projects/ngx-example-theme/**/*.{html,js,jsx,ts,tsx}": [
       "ng-lint-staged lint --fix --"
