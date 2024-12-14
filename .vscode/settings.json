@@ -6,8 +6,9 @@
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "eslint.useFlatConfig": true,
   "eslint.options": {
-    "cache": true,
+    "cache": false,
     "fix": true
   },
   "eslint.validate": ["html", "javascript", "javascriptreact", "typescript", "typescriptreact"],
