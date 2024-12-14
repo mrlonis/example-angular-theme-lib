@@ -134,34 +134,3 @@ $_rest: (
 );
 $primary: map.merge(map.get($_palettes, primary), $_rest);
 $tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
-
-$light-theme: mat.define-theme(
-  (
-    color: (
-      theme-type: light,
-      primary: $tertiary,
-      tertiary: $primary,
-      use-system-variables: true,
-      system-variables-prefix: sys,
-    ),
-    typography: (
-      use-system-variables: true,
-      system-variables-prefix: sys,
-    ),
-  )
-);
-$dark-theme: mat.define-theme(
-  (
-    color: (
-      theme-type: dark,
-      primary: $primary,
-      tertiary: $tertiary,
-      use-system-variables: true,
-      system-variables-prefix: sys,
-    ),
-    typography: (
-      use-system-variables: true,
-      system-variables-prefix: sys,
-    ),
-  )
-);
