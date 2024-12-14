@@ -1,20 +1,72 @@
+@use 'sass:meta';
+@use '@angular/material' as mat;
 @use 'm2-theme' as m2Theme;
 @use 'm3-theme' as m3Theme;
-@use '@angular/material' as mat;
 
-@mixin ngx-example-theme($theme) {
-  @if (mat.get-theme-version($theme) == 1) {
-    //Add your new M3 styles here.
-    html {
-      color-scheme: light dark;
-      color: rgb(255, 255, 255);
-      // Apply the dark theme by default
+@mixin define-m3-theme() {
+  $light-theme: mat.define-theme(
+    (
+      color: (
+        theme-type: light,
+        primary: m3Theme.$tertiary,
+        tertiary: m3Theme.$primary,
+        use-system-variables: true,
+        system-variables-prefix: sys,
+      ),
+      typography: (
+        use-system-variables: true,
+        system-variables-prefix: sys,
+      ),
+    )
+  );
+  $dark-theme: mat.define-theme(
+    (
+      color: (
+        theme-type: dark,
+        primary: m3Theme.$primary,
+        tertiary: m3Theme.$tertiary,
+        use-system-variables: true,
+        system-variables-prefix: sys,
+      ),
+      typography: (
+        use-system-variables: true,
+        system-variables-prefix: sys,
+      ),
+    )
+  );
+
+  html {
+    color-scheme: light dark;
+    color: rgb(255, 255, 255);
+    // Apply the dark theme by default
+    @include mat.theme(
+      (
+        color: (
+          theme-type: dark,
+          primary: m3Theme.$primary,
+          tertiary: m3Theme.$tertiary,
+          use-system-variables: true,
+          system-variables-prefix: sys,
+        ),
+        typography: (
+          use-system-variables: true,
+          system-variables-prefix: sys,
+        ),
+        density: 0,
+      )
+    );
+    @include mat.all-component-themes($dark-theme);
+    @include mat.strong-focus-indicators-theme($dark-theme);
+    @include mat.system-level-colors($dark-theme);
+
+    @media (prefers-color-scheme: light) {
+      color: rgb(0, 0, 0);
       @include mat.theme(
         (
           color: (
-            theme-type: dark,
-            primary: m3Theme.$primary,
-            tertiary: m3Theme.$tertiary,
+            theme-type: light,
+            primary: m3Theme.$tertiary,
+            tertiary: m3Theme.$primary,
             use-system-variables: true,
             system-variables-prefix: sys,
           ),
@@ -25,49 +77,151 @@
           density: 0,
         )
       );
-      @include mat.all-component-themes(m3Theme.$dark-theme);
-      @include mat.strong-focus-indicators-theme(m3Theme.$dark-theme);
-      @include mat.system-level-colors(m3Theme.$dark-theme);
-
-      @media (prefers-color-scheme: light) {
-        color: rgb(0, 0, 0);
-        @include mat.theme(
-          (
-            color: (
-              theme-type: light,
-              primary: m3Theme.$tertiary,
-              tertiary: m3Theme.$primary,
-              use-system-variables: true,
-              system-variables-prefix: sys,
-            ),
-            typography: (
-              use-system-variables: true,
-              system-variables-prefix: sys,
-            ),
-            density: 0,
-          )
-        );
-        // Use the `-color` mixins to only apply color styles without reapplying the same
-        // typography and density styles.
-        @include mat.all-component-colors(m3Theme.$light-theme);
-        @include mat.strong-focus-indicators-color(m3Theme.$light-theme);
-        @include mat.system-level-colors(m3Theme.$light-theme);
-      }
-    }
-  } @else {
-    // Keep your old M2 styles here.
-    // Apply the dark theme by default
-    @include mat.all-component-themes(m2Theme.$dark-theme);
-    @include mat.strong-focus-indicators-theme(m2Theme.$dark-theme);
-
-    // Apply the light theme only when the user prefers light themes.
-    @media (prefers-color-scheme: light) {
       // Use the `-color` mixins to only apply color styles without reapplying the same
       // typography and density styles.
-      @include mat.all-component-colors(m2Theme.$light-theme);
-      @include mat.strong-focus-indicators-color(m2Theme.$light-theme);
+      @include mat.all-component-colors($light-theme);
+      @include mat.strong-focus-indicators-color($light-theme);
+      @include mat.system-level-colors($light-theme);
     }
   }
 }
 
-@include ngx-example-theme(mat.define-theme());
+@mixin define-m2-theme() {
+  // Define a dark theme
+  $dark-theme: mat.m2-define-dark-theme(
+    (
+      color: (
+        primary: mat.m2-define-palette(m2Theme.$primary-palette, 200),
+        accent: mat.m2-define-palette(m2Theme.$primary-palette, 800),
+      ),
+      // Only include `typography` and `density` in the default dark theme.
+      typography: mat.m2-define-typography-config(),
+      density: 0,
+    )
+  );
+
+  // Define a light theme
+  $light-theme: mat.m2-define-light-theme(
+    (
+      color: (
+        primary: mat.m2-define-palette(m2Theme.$tertiary-palette, 600),
+        accent: mat.m2-define-palette(m2Theme.$tertiary-palette, 100),
+      ),
+    )
+  );
+
+  // Apply the dark theme by default
+  @include mat.all-component-themes($dark-theme);
+  // @include mat.strong-focus-indicators();
+  @include mat.strong-focus-indicators-theme($dark-theme);
+
+  // Apply the light theme only when the user prefers light themes.
+  @media (prefers-color-scheme: light) {
+    // Use the `-color` mixins to only apply color styles without reapplying the same
+    // typography and density styles.
+    @include mat.all-component-colors($light-theme);
+    @include mat.strong-focus-indicators-color($light-theme);
+  }
+
+  html {
+    color: rgb(0, 0, 0);
+
+    @media (prefers-color-scheme: light) {
+      color: rgb(255, 255, 255);
+    }
+  }
+}
+
+@mixin define-legacy-theme() {
+  // Define a dark theme
+  $dark-theme: mat.define-dark-theme(
+    (
+      color: (
+        primary: mat.define-palette(m2Theme.$primary-palette, A100),
+        accent: mat.define-palette(m2Theme.$primary-palette, 800),
+      ),
+      // Only include `typography` and `density` in the default dark theme.
+      typography: mat.define-typography-config(),
+      density: 0,
+    )
+  );
+  // Define a light theme
+  $light-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: mat.define-palette(m2Theme.$tertiary-palette, 600),
+        accent: mat.define-palette(m2Theme.$tertiary-palette, 100),
+      ),
+    )
+  );
+
+  // Apply the dark theme by default
+  @include mat.all-component-themes($dark-theme);
+  // @include mat.strong-focus-indicators();
+  @include mat.strong-focus-indicators-theme($dark-theme);
+
+  // Apply the light theme only when the user prefers light themes.
+  @media (prefers-color-scheme: light) {
+    // Use the `-color` mixins to only apply color styles without reapplying the same
+    // typography and density styles.
+    @include mat.all-component-colors($light-theme);
+    @include mat.strong-focus-indicators-color($light-theme);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      color: rgb(255, 255, 255);
+    }
+  }
+  @media (prefers-color-scheme: light) {
+    html {
+      color: rgb(0, 0, 0);
+    }
+  }
+}
+
+@mixin ngx-example-theme($theme) {
+  @if (mat.get-theme-version($theme) == 1) {
+    // Add your new M3 styles here.
+    @include define-m3-theme();
+  } @else {
+    // Keep your old M2 styles here.
+    @if (meta.function-exists('m2-define-dark-theme', 'mat')) {
+      @include define-m2-theme();
+    } @else {
+      @include define-legacy-theme();
+    }
+  }
+}
+
+@mixin determine-theme-version() {
+  @if (meta.function-exists('define-theme', 'mat')) {
+    @include ngx-example-theme(mat.define-theme());
+  } @else if (meta.function-exists('define-light-theme', 'mat')) {
+    @include ngx-example-theme(
+      mat.define-light-theme(
+        (
+          color: (
+            primary: mat.define-palette(mat.$indigo-palette),
+            accent: mat.define-palette(mat.$pink-palette),
+          ),
+        )
+      )
+    );
+  } @else if (meta.function-exists('m2-define-light-theme', 'mat')) {
+    @include ngx-example-theme(
+      mat.m2-define-light-theme(
+        (
+          color: (
+            primary: mat.m2-define-palette(mat.$m2-indigo-palette),
+            accent: mat.m2-define-palette(mat.$m2-pink-palette),
+          ),
+        )
+      )
+    );
+  } @else {
+    @error 'Could not determine the Angular Material version. Make sure you have Angular Material installed.';
+  }
+}
+
+@include determine-theme-version();
