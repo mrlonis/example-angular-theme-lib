@@ -20,7 +20,7 @@
     "prettier": "prettier --config .prettierrc --write \"**/*.{css,html,js,jsx,json,md,scss,ts,tsx,yaml,yml}\"",
     "prettier:test": "prettier --config .prettierrc --list-different \"**/*.{css,html,js,jsx,json,md,scss,ts,tsx,yaml,yml}\"",
     "start": "ng serve example-theme-app",
-    "test": "npm run lint && npm run test:ci && test:cypress",
+    "test": "npm run lint && npm run test:ci && npm run test:cypress",
     "test:ci": "npm run test:ci:example-theme-app && npm run test:ci:ngx-example-theme",
     "test:ci:example-theme-app": "ng test example-theme-app --no-watch --no-progress --browsers=ChromeHeadless",
     "test:ci:ngx-example-theme": "ng test ngx-example-theme --no-watch --no-progress --browsers=ChromeHeadless",
