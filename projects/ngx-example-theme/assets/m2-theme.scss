@@ -1,25 +1,65 @@
-@use '@angular/material' as mat;
-@include mat.strong-focus-indicators();
-
-// Define a dark theme
-$dark-theme: mat.m2-define-dark-theme(
-  (
-    color: (
-      primary: mat.m2-define-palette(mat.$m2-pink-palette),
-      accent: mat.m2-define-palette(mat.$m2-blue-grey-palette),
-    ),
-    // Only include `typography` and `density` in the default dark theme.
-    typography: mat.m2-define-typography-config(),
-    density: 0,
-  )
+$primary-palette: (
+  50: #e7f2ff,
+  100: #cce5ff,
+  200: #91ffcd,
+  300: #65b2ed,
+  400: #4797d1,
+  500: #257db5,
+  600: #006496,
+  700: #005784,
+  800: #004b72,
+  900: #003350,
+  A100: #91cdff,
+  A200: #65b2ed,
+  A400: #4797d1,
+  A700: #257db5,
+  contrast: (
+    50: black,
+    100: black,
+    200: black,
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: black,
+    A200: white,
+    A400: white,
+    A700: white,
+  ),
 );
 
-// Define a light theme
-$light-theme: mat.m2-define-light-theme(
-  (
-    color: (
-      primary: mat.m2-define-palette(mat.$m2-indigo-palette),
-      accent: mat.m2-define-palette(mat.$m2-pink-palette),
-    ),
-  )
+$tertiary-palette: (
+  50: #ffeedf,
+  100: #ffddba,
+  200: #f9bb73,
+  300: #daa05b,
+  400: #bd8644,
+  500: #9f6c2d,
+  600: #835416,
+  700: #754909,
+  800: #663d00,
+  900: #482a00,
+  A100: #f9bb73,
+  A200: #daa05b,
+  A400: #bd8644,
+  A700: #9f6c2d,
+  contrast: (
+    50: black,
+    100: black,
+    200: black,
+    300: black,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: black,
+    A200: black,
+    A400: white,
+    A700: white,
+  ),
 );
