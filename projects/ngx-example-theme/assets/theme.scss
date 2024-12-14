@@ -12,9 +12,9 @@
       @include mat.system-level-colors(m3Theme.$dark-theme);
 
       @media (prefers-color-scheme: light) {
+        color: rgb(0, 0, 0);
         // Use the `-color` mixins to only apply color styles without reapplying the same
         // typography and density styles.
-        color: rgb(0, 0, 0);
         @include mat.all-component-colors(m3Theme.$light-theme);
         @include mat.strong-focus-indicators-color(m3Theme.$light-theme);
         @include mat.system-level-colors(m3Theme.$light-theme);
