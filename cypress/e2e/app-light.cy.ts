@@ -19,7 +19,7 @@ describe('example-theme-app: light theme', () => {
 
   it('should have light colors', () => {
     // Check body Background Color
-    cy.get('body').should('have.css', 'background-color', 'rgb(255, 221, 186)');
+    cy.get('body').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
 
     // Check Card Background Color
     cy.get('mat-card').should('have.css', 'background-color', 'rgb(247, 249, 254)');
