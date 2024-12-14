@@ -1,0 +1,71 @@
+@use 'm2-theme' as m2Theme;
+@use 'm3-theme' as m3Theme;
+@use '@angular/material' as mat;
+
+@mixin ngx-example-theme($theme) {
+  @if (mat.get-theme-version($theme) == 1) {
+    //Add your new M3 styles here.
+    html {
+      color-scheme: light dark;
+      // Apply the dark theme by default
+      @include mat.theme(
+        (
+          color: (
+            theme-type: dark,
+            primary: m3Theme.$primary,
+            tertiary: m3Theme.$tertiary,
+            use-system-variables: true,
+            system-variables-prefix: sys,
+          ),
+          typography: (
+            use-system-variables: true,
+            system-variables-prefix: sys,
+          ),
+          density: 0,
+        )
+      );
+      @include mat.all-component-themes(m3Theme.$dark-theme);
+      @include mat.strong-focus-indicators-theme(m3Theme.$dark-theme);
+      @include mat.system-level-colors(m3Theme.$dark-theme);
+
+      @media (prefers-color-scheme: light) {
+        @include mat.theme(
+          (
+            color: (
+              theme-type: light,
+              primary: m3Theme.$tertiary,
+              tertiary: m3Theme.$primary,
+              use-system-variables: true,
+              system-variables-prefix: sys,
+            ),
+            typography: (
+              use-system-variables: true,
+              system-variables-prefix: sys,
+            ),
+            density: 0,
+          )
+        );
+        // Use the `-color` mixins to only apply color styles without reapplying the same
+        // typography and density styles.
+        @include mat.all-component-colors(m3Theme.$light-theme);
+        @include mat.strong-focus-indicators-color(m3Theme.$light-theme);
+        @include mat.system-level-colors(m3Theme.$light-theme);
+      }
+    }
+  } @else {
+    // Keep your old M2 styles here.
+    // Apply the dark theme by default
+    @include mat.all-component-themes(m2Theme.$dark-theme);
+    @include mat.strong-focus-indicators-theme(m2Theme.$dark-theme);
+
+    // Apply the light theme only when the user prefers light themes.
+    @media (prefers-color-scheme: light) {
+      // Use the `-color` mixins to only apply color styles without reapplying the same
+      // typography and density styles.
+      @include mat.all-component-colors(m2Theme.$light-theme);
+      @include mat.strong-focus-indicators-color(m2Theme.$light-theme);
+    }
+  }
+}
+
+@include ngx-example-theme(mat.define-theme());

@@ -68,10 +68,7 @@
                 "input": "projects/example-theme-app/public"
               }
             ],
-            "styles": [
-              "@angular/material/prebuilt-themes/azure-blue.css",
-              "projects/example-theme-app/src/styles.scss"
-            ],
+            "styles": ["projects/ngx-example-theme/assets/theme.scss", "projects/example-theme-app/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
