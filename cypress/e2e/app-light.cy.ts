@@ -65,8 +65,8 @@ describe('example-theme-app: light theme', () => {
     cy.get('.example-label').eq(7).should('have.css', 'color', 'rgb(0, 0, 0)').should('contain.text', 'Extended Fab');
     cy.get('.example-button-container > button')
       .eq(4)
-      .should('have.css', 'background-color', 'rgb(204, 229, 255)')
-      .should('have.css', 'color', 'rgb(0, 30, 49)')
+      .should('have.css', 'background-color', 'rgb(255, 221, 186)')
+      .should('have.css', 'color', 'rgb(43, 23, 0)')
       .should('contain.text', 'Basic');
     cy.get('.example-button-container > button')
       .eq(5)
@@ -74,8 +74,8 @@ describe('example-theme-app: light theme', () => {
       .should('have.css', 'color', 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)')
       .should('contain.text', 'Disabled');
     cy.get('.example-button-container > a')
-      .should('have.css', 'background-color', 'rgb(204, 229, 255)')
-      .should('have.css', 'color', 'rgb(0, 30, 49)')
+      .should('have.css', 'background-color', 'rgb(255, 221, 186)')
+      .should('have.css', 'color', 'rgb(43, 23, 0)')
       .should('contain.text', 'Link');
 
     // Check Input
