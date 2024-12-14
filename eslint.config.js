@@ -28,21 +28,14 @@ module.exports = tseslint.config(
       'import/resolver': {
         typescript: {
           alwaysTryTypes: true,
-          project: [
-            'tsconfig.json',
-            'projects/ngx-example-theme/tsconfig.lib.json',
-            'projects/ngx-example-theme/tsconfig.lib.prod.json',
-            'projects/ngx-example-theme/tsconfig.spec.json',
-            'projects/example-theme-app/tsconfig.app.json',
-            'projects/example-theme-app/tsconfig.spec.json',
-          ],
+          project: ['./tsconfig.json'],
         },
       },
     },
     languageOptions: {
       parserOptions: {
-        project: true,
-        tsconfigRootDir: '.',
+        project: ['./tsconfig.json'],
+        tsconfigRootDir: __dirname,
       },
     },
     rules: {

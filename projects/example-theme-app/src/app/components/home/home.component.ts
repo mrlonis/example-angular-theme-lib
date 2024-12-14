@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 @Component({
+  standalone: true,
   selector: 'app-home',
   imports: [
     FormsModule,

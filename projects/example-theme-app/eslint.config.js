@@ -1,32 +1,45 @@
 // @ts-check
 const tseslint = require('typescript-eslint');
 const rootConfig = require('../../eslint.config.js');
+const angular = require('angular-eslint');
+const eslintConfigPrettier = require('eslint-config-prettier');
+const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 
-module.exports = tseslint.config(
-  ...rootConfig,
-  {
-    files: ['**/*.ts'],
-    rules: {
-      '@angular-eslint/directive-selector': [
-        'error',
-        {
-          type: 'attribute',
-          prefix: 'app',
-          style: 'camelCase',
-        },
-      ],
-      '@angular-eslint/component-selector': [
-        'error',
-        {
-          type: 'element',
-          prefix: 'app',
-          style: 'kebab-case',
-        },
-      ],
+module.exports = tseslint.config(...rootConfig, {
+  files: ['**/*.ts'],
+  settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {
+        alwaysTryTypes: true,
+        project: ['./tsconfig.app.json', './tsconfig.spec.json', '../../tsconfig.json'],
+      },
     },
   },
-  {
-    files: ['**/*.html'],
-    rules: {},
+  languageOptions: {
+    parserOptions: {
+      project: ['./tsconfig.app.json', './tsconfig.spec.json', '../../tsconfig.json'],
+      tsconfigRootDir: __dirname,
+    },
   },
-);
+  rules: {
+    '@angular-eslint/directive-selector': [
+      'error',
+      {
+        type: 'attribute',
+        prefix: 'app',
+        style: 'camelCase',
+      },
+    ],
+    '@angular-eslint/component-selector': [
+      'error',
+      {
+        type: 'element',
+        prefix: 'app',
+        style: 'kebab-case',
+      },
+    ],
+  },
+});
