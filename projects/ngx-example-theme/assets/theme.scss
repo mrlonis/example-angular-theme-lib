@@ -7,6 +7,7 @@
     //Add your new M3 styles here.
     html {
       color-scheme: light dark;
+      color: rgb(255, 255, 255);
       // Apply the dark theme by default
       @include mat.theme(
         (
@@ -29,6 +30,7 @@
       @include mat.system-level-colors(m3Theme.$dark-theme);
 
       @media (prefers-color-scheme: light) {
+        color: rgb(0, 0, 0);
         @include mat.theme(
           (
             color: (
