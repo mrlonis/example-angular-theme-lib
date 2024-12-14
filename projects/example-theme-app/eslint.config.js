@@ -1,9 +1,6 @@
 // @ts-check
 const tseslint = require('typescript-eslint');
 const rootConfig = require('../../eslint.config.js');
-const angular = require('angular-eslint');
-const eslintConfigPrettier = require('eslint-config-prettier');
-const eslintPluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 
 module.exports = tseslint.config(...rootConfig, {
   files: ['**/*.ts'],
