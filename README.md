@@ -12,11 +12,11 @@
 To update Angular, run the following command replacing VERSION with the version you want to update to:
 
 ```shell
-npm run ng -- update @angular/core@VERSION @angular/cli@VERSION @angular/material@VERSION angular-eslint@VERSION
+npm run ng -- update @angular/core@VERSION @angular/cli@VERSION @angular/material@VERSION @angular-eslint/schematics@VERSION
 ```
 
 ### Example
 
 ```shell
-npm run ng -- update @angular/core@19 @angular/cli@19 @angular/material@19 angular-eslint@19
+npm run ng -- update @angular/core@17 @angular/cli@17 @angular/material@17 @angular-eslint/schematics@17
 ```
