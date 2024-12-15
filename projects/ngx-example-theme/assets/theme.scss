@@ -3,6 +3,27 @@
 @use 'm2-theme' as m2Theme;
 @use 'm3-theme' as m3Theme;
 
+@mixin set-mat-component-themes($dark-theme, $light-theme) {
+  // Apply the dark theme by default
+  @include mat.all-component-themes($dark-theme);
+  @include mat.strong-focus-indicators-theme($dark-theme);
+
+  @media (prefers-color-scheme: light) {
+    // Use the `-color` mixins to only apply color styles without reapplying the same
+    // typography and density styles.
+    @include mat.all-component-colors($light-theme);
+    @include mat.strong-focus-indicators-color($light-theme);
+  }
+}
+
+@mixin set-system-level-colors($dark-theme, $light-theme) {
+  @include mat.system-level-colors($dark-theme);
+
+  @media (prefers-color-scheme: light) {
+    @include mat.system-level-colors($light-theme);
+  }
+}
+
 @mixin define-angular-19-m3-theme() {
   html {
     color-scheme: light dark;
@@ -39,27 +60,6 @@
         )
       );
     }
-  }
-}
-
-@mixin set-mat-component-themes($dark-theme, $light-theme) {
-  // Apply the dark theme by default
-  @include mat.all-component-themes($dark-theme);
-  @include mat.strong-focus-indicators-theme($dark-theme);
-
-  @media (prefers-color-scheme: light) {
-    // Use the `-color` mixins to only apply color styles without reapplying the same
-    // typography and density styles.
-    @include mat.all-component-colors($light-theme);
-    @include mat.strong-focus-indicators-color($light-theme);
-  }
-}
-
-@mixin set-system-level-colors($dark-theme, $light-theme) {
-  @include mat.system-level-colors($dark-theme);
-
-  @media (prefers-color-scheme: light) {
-    @include mat.system-level-colors($light-theme);
   }
 }
 
