@@ -1,24 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
+import { ExampleButtonsComponent } from '../example-buttons/example-buttons.component';
+import { ExampleInputsComponent } from '../example-inputs';
 
 @Component({
   standalone: true,
   selector: 'app-home',
-  imports: [
-    FormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatDividerModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-  ],
+  imports: [MatCardModule, MatDividerModule, ExampleButtonsComponent, ExampleInputsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
