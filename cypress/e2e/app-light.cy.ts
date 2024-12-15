@@ -33,7 +33,7 @@ describe('example-theme-app: light theme', () => {
       .should('have.css', 'color', 'rgb(131, 84, 22)')
       .should('contain.text', 'Basic');
     cy.get('.example-button-row > button')
-      .eq(1)
+      .eq(4)
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
       .should('have.css', 'color', 'rgba(0, 0, 0, 0.38)')
       .should('contain.text', 'Disabled');
@@ -46,12 +46,12 @@ describe('example-theme-app: light theme', () => {
     // Check Flat Buttons
     cy.get('.example-label').eq(3).should('have.css', 'color', 'rgb(0, 0, 0)').should('contain.text', 'Flat');
     cy.get('.example-button-row > button')
-      .eq(6)
+      .eq(15)
       .should('have.css', 'background-color', 'rgb(131, 84, 22)')
       .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Basic');
     cy.get('.example-button-row > button')
-      .eq(7)
+      .eq(19)
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0.12)')
       .should('have.css', 'color', 'rgba(0, 0, 0, 0.38)')
       .should('contain.text', 'Disabled');
@@ -64,12 +64,12 @@ describe('example-theme-app: light theme', () => {
     // Check Extended FAB Buttons
     cy.get('.example-label').eq(7).should('have.css', 'color', 'rgb(0, 0, 0)').should('contain.text', 'Extended Fab');
     cy.get('.example-button-container > button')
-      .eq(4)
+      .eq(8)
       .should('have.css', 'background-color', 'rgb(255, 221, 186)')
       .should('have.css', 'color', 'rgb(0, 0, 0)')
       .should('contain.text', 'Basic');
     cy.get('.example-button-container > button')
-      .eq(5)
+      .eq(9)
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0.12)')
       .should('have.css', 'color', 'rgba(0, 0, 0, 0.38)')
       .should('contain.text', 'Disabled');
