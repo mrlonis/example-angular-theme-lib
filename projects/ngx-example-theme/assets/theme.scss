@@ -151,6 +151,7 @@
       color: (
         primary: mat.define-palette(m2Theme.$primary-palette, A100),
         accent: mat.define-palette(m2Theme.$primary-palette, 800),
+        warn: mat.define-palette(m2Theme.$error-palette, 600),
       ),
       // Only include `typography` and `density` in the default dark theme.
       typography: mat.define-typography-config(),
@@ -162,6 +163,7 @@
       color: (
         primary: mat.define-palette(m2Theme.$tertiary-palette, 600),
         accent: mat.define-palette(m2Theme.$tertiary-palette, 100),
+        warn: mat.define-palette(m2Theme.$error-palette, 500),
       ),
     )
   );
