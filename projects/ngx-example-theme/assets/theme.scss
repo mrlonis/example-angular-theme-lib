@@ -32,11 +32,9 @@
   @if (meta.function-exists('get-theme-version', 'mat')) {
     @if mat.get-theme-version($theme) == 1 {
       @if (meta.mixin-exists('color-variants-backwards-compatibility', 'mat')) {
-        @debug 'Setting m2 color variants backwards compatibility';
         @include mat.color-variants-backwards-compatibility($theme);
       }
       @if (meta.mixin-exists('typography-hierarchy', 'mat')) {
-        @debug 'Setting m2 typography hierarchy backwards compatibility';
         @include mat.typography-hierarchy($theme);
       }
     }
@@ -197,6 +195,7 @@
 }
 
 @mixin determine-theme-version() {
+  @debug 'Executing ngx-example-theme mixin: determine-theme-version';
   @if (meta.mixin-exists('theme', 'mat')) {
     @include define-angular-19-m3-theme();
   } @else if (meta.function-exists('define-theme', 'mat')) {
