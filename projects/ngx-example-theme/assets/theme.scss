@@ -3,10 +3,19 @@
 @use 'm2-theme' as m2Theme;
 @use 'm3-theme' as m3Theme;
 
+@mixin set-font-colors() {
+  html {
+    color: rgb(255, 255, 255);
+
+    @media (prefers-color-scheme: light) {
+      color: rgb(0, 0, 0);
+    }
+  }
+}
+
 @mixin define-angular-19-m3-theme() {
   html {
     color-scheme: light dark;
-    color: rgb(255, 255, 255);
     @include mat.theme(
       (
         color: (
@@ -23,7 +32,6 @@
     );
 
     @media (prefers-color-scheme: light) {
-      color: rgb(0, 0, 0);
       @include mat.theme(
         (
           color: (
@@ -41,6 +49,28 @@
         )
       );
     }
+  }
+  @include set-font-colors();
+}
+
+@mixin set-mat-component-themes($dark-theme, $light-theme) {
+  // Apply the dark theme by default
+  @include mat.all-component-themes($dark-theme);
+  @include mat.strong-focus-indicators-theme($dark-theme);
+
+  @media (prefers-color-scheme: light) {
+    // Use the `-color` mixins to only apply color styles without reapplying the same
+    // typography and density styles.
+    @include mat.all-component-colors($light-theme);
+    @include mat.strong-focus-indicators-color($light-theme);
+  }
+}
+
+@mixin set-system-level-colors($dark-theme, $light-theme) {
+  @include mat.system-level-colors($dark-theme);
+
+  @media (prefers-color-scheme: light) {
+    @include mat.system-level-colors($light-theme);
   }
 }
 
@@ -78,21 +108,10 @@
 
   html {
     color-scheme: light dark;
-    color: rgb(255, 255, 255);
-    // Apply the dark theme by default
-    @include mat.all-component-themes($dark-theme);
-    @include mat.strong-focus-indicators-theme($dark-theme);
-    @include mat.system-level-colors($dark-theme);
-
-    @media (prefers-color-scheme: light) {
-      color: rgb(0, 0, 0);
-      // Use the `-color` mixins to only apply color styles without reapplying the same
-      // typography and density styles.
-      @include mat.all-component-colors($light-theme);
-      @include mat.strong-focus-indicators-color($light-theme);
-      @include mat.system-level-colors($light-theme);
-    }
+    @include set-mat-component-themes($dark-theme, $light-theme);
+    @include set-system-level-colors($dark-theme, $light-theme);
   }
+  @include set-font-colors();
 }
 
 @mixin define-legacy-theme() {
@@ -116,24 +135,8 @@
     )
   );
 
-  // Apply the dark theme by default
-  @include mat.all-component-themes($dark-theme);
-  @include mat.strong-focus-indicators-theme($dark-theme);
-
-  @media (prefers-color-scheme: light) {
-    // Use the `-color` mixins to only apply color styles without reapplying the same
-    // typography and density styles.
-    @include mat.all-component-colors($light-theme);
-    @include mat.strong-focus-indicators-color($light-theme);
-  }
-
-  html {
-    color: rgb(255, 255, 255);
-
-    @media (prefers-color-scheme: light) {
-      color: rgb(0, 0, 0);
-    }
-  }
+  @include set-mat-component-themes($dark-theme, $light-theme);
+  @include set-font-colors();
 }
 
 @mixin define-m2-theme() {
@@ -157,24 +160,8 @@
     )
   );
 
-  // Apply the dark theme by default
-  @include mat.all-component-themes($dark-theme);
-  @include mat.strong-focus-indicators-theme($dark-theme);
-
-  @media (prefers-color-scheme: light) {
-    // Use the `-color` mixins to only apply color styles without reapplying the same
-    // typography and density styles.
-    @include mat.all-component-colors($light-theme);
-    @include mat.strong-focus-indicators-color($light-theme);
-  }
-
-  html {
-    color: rgb(255, 255, 255);
-
-    @media (prefers-color-scheme: light) {
-      color: rgb(0, 0, 0);
-    }
-  }
+  @include set-mat-component-themes($dark-theme, $light-theme);
+  @include set-font-colors();
 }
 
 @mixin determine-theme-version() {
