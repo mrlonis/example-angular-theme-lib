@@ -3,6 +3,7 @@ describe('example-theme-app: dark theme', () => {
   const primaryColor = 'rgb(145, 205, 255)';
   const accentColor = 'rgb(0, 75, 114)';
   const warnColor = 'rgb(186, 26, 26)';
+  const formFieldPrimaryColor = 'rgba(145, 205, 255, 0.87)';
 
   beforeEach(() => {
     cy.wrap(
@@ -77,7 +78,7 @@ describe('example-theme-app: dark theme', () => {
       .should('contain.text', 'Basic');
     cy.get('.example-button-row > button')
       .eq(6)
-      .should('have.css', 'background-color', 'primaryColor')
+      .should('have.css', 'background-color', primaryColor)
       .should('have.css', 'color', 'rgb(0, 0, 0)')
       .should('contain.text', 'Primary');
     cy.get('.example-button-row > button')
@@ -209,6 +210,6 @@ describe('example-theme-app: dark theme', () => {
   it('Inputs should have theme colors', () => {
     cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', 'rgba(255, 255, 255, 0.6)');
     cy.get('input').eq(0).click();
-    cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', primaryColor);
+    cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', formFieldPrimaryColor);
   });
 });

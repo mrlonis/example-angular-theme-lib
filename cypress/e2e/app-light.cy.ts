@@ -3,6 +3,7 @@ describe('example-theme-app: light theme', () => {
   const primaryColor = 'rgb(131, 84, 22)';
   const accentColor = 'rgb(255, 221, 186)';
   const warnColor = 'rgb(222, 55, 48)';
+  const formFieldPrimaryColor = 'rgba(131, 84, 22, 0.87)';
 
   beforeEach(() => {
     cy.wrap(
@@ -206,6 +207,6 @@ describe('example-theme-app: light theme', () => {
   it('Inputs should have theme colors', () => {
     cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', 'rgba(0, 0, 0, 0.6)');
     cy.get('input').eq(0).click();
-    cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', primaryColor);
+    cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', formFieldPrimaryColor);
   });
 });
