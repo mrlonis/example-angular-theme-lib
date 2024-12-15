@@ -30,7 +30,7 @@ describe('example-theme-app: dark theme', () => {
     cy.get('.example-button-row > button')
       .eq(0)
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(145, 205, 255)')
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Basic');
     cy.get('.example-button-row > button')
       .eq(4)
@@ -40,15 +40,15 @@ describe('example-theme-app: dark theme', () => {
     cy.get('.example-button-row > a')
       .eq(0)
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(145, 205, 255)')
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Link');
 
     // Check Flat Buttons
     cy.get('.example-label').eq(3).should('have.css', 'color', 'rgb(255, 255, 255)').should('contain.text', 'Flat');
     cy.get('.example-button-row > button')
       .eq(15)
-      .should('have.css', 'background-color', 'rgb(145, 205, 255)')
-      .should('have.css', 'color', 'rgb(0, 0, 0)')
+      .should('have.css', 'background-color', 'rgb(66, 66, 66)')
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Basic');
     cy.get('.example-button-row > button')
       .eq(19)
@@ -57,8 +57,8 @@ describe('example-theme-app: dark theme', () => {
       .should('contain.text', 'Disabled');
     cy.get('.example-button-row > a')
       .eq(3)
-      .should('have.css', 'background-color', 'rgb(145, 205, 255)')
-      .should('have.css', 'color', 'rgb(0, 0, 0)')
+      .should('have.css', 'background-color', 'rgb(66, 66, 66)')
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Link');
 
     // Check Extended FAB Buttons
