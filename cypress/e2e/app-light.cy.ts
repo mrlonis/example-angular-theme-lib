@@ -1,8 +1,8 @@
 describe('example-theme-app: light theme', () => {
   const basicColor = 'rgb(0, 0, 0)';
   const primaryColor = 'rgb(131, 84, 22)';
-  const accentColor = 'rgb(255, 221, 186)';
-  const warnColor = 'rgb(222, 55, 48)';
+  const accentColor = 'rgb(0, 100, 150)';
+  const warnColor = 'rgb(186, 26, 26)';
   const formFieldPrimaryColor = 'rgba(131, 84, 22, 0.87)';
 
   beforeEach(() => {
@@ -84,7 +84,7 @@ describe('example-theme-app: light theme', () => {
     cy.get('.example-button-row > button')
       .eq(7)
       .should('have.css', 'background-color', accentColor)
-      .should('have.css', 'color', 'rgb(0, 0, 0)')
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Accent');
     cy.get('.example-button-row > button')
       .eq(8)
@@ -152,7 +152,7 @@ describe('example-theme-app: light theme', () => {
     cy.get('.example-button-row > button')
       .eq(17)
       .should('have.css', 'background-color', accentColor)
-      .should('have.css', 'color', 'rgb(0, 0, 0)')
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Accent');
     cy.get('.example-button-row > button')
       .eq(18)
@@ -175,22 +175,22 @@ describe('example-theme-app: light theme', () => {
     cy.get('.example-label').eq(7).should('have.css', 'color', 'rgb(0, 0, 0)').should('contain.text', 'Extended Fab');
     cy.get('.example-button-container > button')
       .eq(8)
-      .should('have.css', 'background-color', 'rgb(255, 221, 186)')
-      .should('have.css', 'color', 'rgb(0, 0, 0)')
+      .should('have.css', 'background-color', accentColor)
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Basic');
     cy.get('.example-button-container > button')
       .eq(9)
-      .should('have.css', 'background-color', 'rgb(131, 84, 22)')
+      .should('have.css', 'background-color', primaryColor)
       .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Primary');
     cy.get('.example-button-container > button')
       .eq(10)
-      .should('have.css', 'background-color', 'rgb(255, 221, 186)')
-      .should('have.css', 'color', 'rgb(0, 0, 0)')
+      .should('have.css', 'background-color', accentColor)
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Accent');
     cy.get('.example-button-container > button')
       .eq(11)
-      .should('have.css', 'background-color', 'rgb(222, 55, 48)')
+      .should('have.css', 'background-color', warnColor)
       .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Warn');
     cy.get('.example-button-container > button')
@@ -199,8 +199,8 @@ describe('example-theme-app: light theme', () => {
       .should('have.css', 'color', 'rgba(0, 0, 0, 0.38)')
       .should('contain.text', 'Disabled');
     cy.get('.example-button-container > a')
-      .should('have.css', 'background-color', 'rgb(255, 221, 186)')
-      .should('have.css', 'color', 'rgb(0, 0, 0)')
+      .should('have.css', 'background-color', accentColor)
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('contain.text', 'Link');
   });
 
