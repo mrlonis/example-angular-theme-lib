@@ -69,7 +69,7 @@ describe('example-theme-app: light theme', () => {
       .should('have.css', 'color', 'rgb(0, 30, 49)')
       .should('contain.text', 'Basic');
     cy.get('.example-button-container > button')
-      .eq(9)
+      .eq(12)
       .should('have.css', 'background-color', 'color(srgb 0.0941176 0.109804 0.12549 / 0.12)')
       .should('have.css', 'color', 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)')
       .should('contain.text', 'Disabled');
