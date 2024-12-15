@@ -3,16 +3,6 @@
 @use 'm2-theme' as m2Theme;
 @use 'm3-theme' as m3Theme;
 
-@mixin set-font-colors() {
-  html {
-    color: rgb(255, 255, 255);
-
-    @media (prefers-color-scheme: light) {
-      color: rgb(0, 0, 0);
-    }
-  }
-}
-
 @mixin define-angular-19-m3-theme() {
   html {
     color-scheme: light dark;
@@ -50,7 +40,6 @@
       );
     }
   }
-  @include set-font-colors();
 }
 
 @mixin set-mat-component-themes($dark-theme, $light-theme) {
@@ -111,7 +100,6 @@
     @include set-mat-component-themes($dark-theme, $light-theme);
     @include set-system-level-colors($dark-theme, $light-theme);
   }
-  @include set-font-colors();
 }
 
 @mixin define-legacy-theme() {
@@ -136,7 +124,6 @@
   );
 
   @include set-mat-component-themes($dark-theme, $light-theme);
-  @include set-font-colors();
 }
 
 @mixin define-m2-theme() {
@@ -161,7 +148,6 @@
   );
 
   @include set-mat-component-themes($dark-theme, $light-theme);
-  @include set-font-colors();
 }
 
 @mixin determine-theme-version() {
@@ -181,3 +167,11 @@
 }
 
 @include determine-theme-version();
+
+html {
+  color: rgb(255, 255, 255);
+
+  @media (prefers-color-scheme: light) {
+    color: rgb(0, 0, 0);
+  }
+}
