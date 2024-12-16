@@ -1,3 +1,6 @@
+@use '@angular/material' as mat;
+@use 'base' as base;
+
 $primary-palette: (
   50: #e7f2ff,
   100: #cce5ff,
@@ -195,3 +198,57 @@ $error-palette: (
     A700: white,
   ),
 );
+
+@mixin define-legacy-theme() {
+  @debug 'Executing ngx-example-theme mixin: define-legacy-theme';
+  $dark-theme: mat.define-dark-theme(
+    (
+      color: (
+        primary: mat.define-palette($primary-palette, A100),
+        accent: mat.define-palette($tertiary-palette, A100),
+        warn: mat.define-palette($error-palette, 200),
+      ),
+      // Only include `typography` and `density` in the default dark theme.
+      typography: mat.define-typography-config(),
+      density: 0,
+    )
+  );
+  $light-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: mat.define-palette($tertiary-palette, 600),
+        accent: mat.define-palette($primary-palette, 600),
+        warn: mat.define-palette($error-palette, 600),
+      ),
+    )
+  );
+
+  @include base.set-mat-component-themes($dark-theme, $light-theme);
+}
+
+@mixin define-m2-theme() {
+  @debug 'Executing ngx-example-theme mixin: define-m2-theme';
+  $dark-theme: mat.m2-define-dark-theme(
+    (
+      color: (
+        primary: mat.define-palette($primary-palette, A100),
+        accent: mat.define-palette($tertiary-palette, A100),
+        warn: mat.define-palette($error-palette, 200),
+      ),
+      // Only include `typography` and `density` in the default dark theme.
+      typography: mat.m2-define-typography-config(),
+      density: 0,
+    )
+  );
+  $light-theme: mat.m2-define-light-theme(
+    (
+      color: (
+        primary: mat.define-palette($tertiary-palette, 600),
+        accent: mat.define-palette($primary-palette, 600),
+        warn: mat.define-palette($error-palette, 600),
+      ),
+    )
+  );
+
+  @include base.set-mat-component-themes($dark-theme, $light-theme);
+}
