@@ -1,4 +1,14 @@
-import { testBackground, testMatButtonsBasic, testMatButtonsRaised, testMatCard } from '../fixtures';
+import {
+  testBackground,
+  testMatButtonsBasic,
+  testMatButtonsRaised,
+  testMatButtonsStroked,
+  testMatCard,
+  testMatCheckboxes,
+  testMatInput,
+  testMatRadioButtons,
+  testMatSlideToggle,
+} from '../fixtures';
 
 describe('example-theme-app: light theme', () => {
   const basicColor = 'rgb(131, 84, 22)';
@@ -58,37 +68,15 @@ describe('example-theme-app: light theme', () => {
   });
 
   it('Stroked Buttons should have theme colors', () => {
-    cy.get('.example-label').eq(2).should('have.css', 'color', 'rgb(0, 0, 0)').should('contain.text', 'Stroked');
-    cy.get('.example-button-row > button')
-      .eq(10)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', basicColor)
-      .should('contain.text', 'Basic');
-    cy.get('.example-button-row > button')
-      .eq(11)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', primaryColor)
-      .should('contain.text', 'Primary');
-    cy.get('.example-button-row > button')
-      .eq(12)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', accentColor)
-      .should('contain.text', 'Accent');
-    cy.get('.example-button-row > button')
-      .eq(13)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', warnColor)
-      .should('contain.text', 'Warn');
-    cy.get('.example-button-row > button')
-      .eq(14)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)')
-      .should('contain.text', 'Disabled');
-    cy.get('.example-button-row > a')
-      .eq(2)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', basicColor)
-      .should('contain.text', 'Link');
+    testMatButtonsStroked(
+      'rgb(0, 0, 0)',
+      basicColor,
+      primaryColor,
+      accentColor,
+      warnColor,
+      'rgba(0, 0, 0, 0)',
+      'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+    );
   });
 
   it('Flat Buttons should have theme colors', () => {
@@ -159,126 +147,18 @@ describe('example-theme-app: light theme', () => {
   });
 
   it('Inputs should have theme colors', () => {
-    cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', 'rgb(64, 72, 79)');
-    cy.get('input').eq(0).click();
-    cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', primaryColor);
+    testMatInput('rgb(64, 72, 79)', primaryColor);
   });
 
   it('Checkboxes should have theme colors', () => {
-    cy.get('.mdc-checkbox__background').eq(0).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-    cy.get('.example-margin').eq(0).click();
-    cy.get('.mdc-checkbox__background').eq(0).should('have.css', 'background-color', accentColor);
-
-    cy.get('.example-margin').eq(1).find('input').should('be.disabled');
-
-    cy.get('.example-margin').eq(2).click();
-    cy.get('.mdc-checkbox__background').eq(3).should('have.css', 'background-color', primaryColor);
-    cy.get('.mdc-checkbox__background').eq(4).should('have.css', 'background-color', accentColor);
-    cy.get('.mdc-checkbox__background').eq(5).should('have.css', 'background-color', warnColor);
+    testMatCheckboxes('rgba(0, 0, 0, 0)', primaryColor, accentColor, warnColor);
   });
 
   it('Radio buttons should have theme colors', () => {
-    cy.get('.mdc-radio__background')
-      .eq(0)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(24, 28, 32)');
-    cy.get('.mdc-radio__background')
-      .eq(0)
-      .find('.mdc-radio__outer-circle')
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(24, 28, 32)')
-      .should('have.css', 'border-bottom-color', 'rgb(64, 72, 79)')
-      .should('have.css', 'border-left-color', 'rgb(64, 72, 79)')
-      .should('have.css', 'border-right-color', 'rgb(64, 72, 79)')
-      .should('have.css', 'border-top-color', 'rgb(64, 72, 79)');
-    cy.get('.mdc-radio__background')
-      .eq(0)
-      .find('.mdc-radio__inner-circle')
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(24, 28, 32)')
-      .should('have.css', 'border-bottom-color', 'rgb(24, 28, 32)')
-      .should('have.css', 'border-left-color', 'rgb(24, 28, 32)')
-      .should('have.css', 'border-right-color', 'rgb(24, 28, 32)')
-      .should('have.css', 'border-top-color', 'rgb(24, 28, 32)');
-
-    cy.get('mat-radio-button').eq(0).click();
-
-    cy.get('.mdc-radio__background')
-      .eq(0)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(24, 28, 32)');
-    cy.get('.mdc-radio__background')
-      .eq(0)
-      .find('.mdc-radio__outer-circle')
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(24, 28, 32)')
-      .should('have.css', 'border-bottom-color', accentColor)
-      .should('have.css', 'border-left-color', accentColor)
-      .should('have.css', 'border-right-color', accentColor)
-      .should('have.css', 'border-top-color', accentColor);
-    cy.get('.mdc-radio__background')
-      .eq(0)
-      .find('.mdc-radio__inner-circle')
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(24, 28, 32)')
-      .should('have.css', 'border-bottom-color', accentColor)
-      .should('have.css', 'border-left-color', accentColor)
-      .should('have.css', 'border-right-color', accentColor)
-      .should('have.css', 'border-top-color', accentColor);
+    testMatRadioButtons('rgba(0, 0, 0, 0)', 'rgb(24, 28, 32)', 'rgb(64, 72, 79)', 'rgb(24, 28, 32)', accentColor);
   });
 
   it('Slide Toggle should have theme colors', () => {
-    // Accent color is the default
-    cy.get('mat-slide-toggle')
-      .find('.mdc-switch__track')
-      .then(($els) => {
-        // get Window reference from element
-        const win = $els[0].ownerDocument.defaultView;
-        // use getComputedStyle to read the pseudo selector
-        const before = win?.getComputedStyle($els[0], 'before');
-        let contentValue = before?.getPropertyValue('background-color');
-        expect(contentValue).to.eq('rgb(220, 227, 237)');
-
-        // use getComputedStyle to read the pseudo selector
-        const after = win?.getComputedStyle($els[0], 'after');
-        contentValue = after?.getPropertyValue('background-color');
-        expect(contentValue).to.eq(accentColor);
-      });
-
-    // Primary
-    cy.get('mat-radio-button').eq(2).click();
-    cy.get('mat-slide-toggle')
-      .find('.mdc-switch__track')
-      .then(($els) => {
-        // get Window reference from element
-        const win = $els[0].ownerDocument.defaultView;
-        // use getComputedStyle to read the pseudo selector
-        const before = win?.getComputedStyle($els[0], 'before');
-        let contentValue = before?.getPropertyValue('background-color');
-        expect(contentValue).to.eq('rgb(220, 227, 237)');
-
-        // use getComputedStyle to read the pseudo selector
-        const after = win?.getComputedStyle($els[0], 'after');
-        contentValue = after?.getPropertyValue('background-color');
-        expect(contentValue).to.eq(primaryColor);
-      });
-
-    // Warn
-    cy.get('mat-radio-button').eq(4).click();
-    cy.get('mat-slide-toggle')
-      .find('.mdc-switch__track')
-      .then(($els) => {
-        // get Window reference from element
-        const win = $els[0].ownerDocument.defaultView;
-        // use getComputedStyle to read the pseudo selector
-        const before = win?.getComputedStyle($els[0], 'before');
-        let contentValue = before?.getPropertyValue('background-color');
-        expect(contentValue).to.eq('rgb(220, 227, 237)');
-
-        // use getComputedStyle to read the pseudo selector
-        const after = win?.getComputedStyle($els[0], 'after');
-        contentValue = after?.getPropertyValue('background-color');
-        expect(contentValue).to.eq(warnColor);
-      });
+    testMatSlideToggle('rgb(220, 227, 237)', primaryColor, accentColor, warnColor);
   });
 });
