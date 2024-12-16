@@ -1,3 +1,5 @@
+import { testBackground, testMatButtonsBasic, testMatCard } from '../fixtures';
+
 describe('example-theme-app: light theme', () => {
   const basicColor = 'rgb(131, 84, 22)';
   const primaryColor = 'rgb(131, 84, 22)';
@@ -23,49 +25,23 @@ describe('example-theme-app: light theme', () => {
   });
 
   it('Background should have theme colors', () => {
-    cy.get('body').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-    cy.get('body').should('have.css', 'color', 'rgb(0, 0, 0)');
-    cy.get('.mat-app-background').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
-    cy.get('.mat-app-background').should('have.css', 'color', 'rgb(0, 0, 0)');
+    testBackground('rgba(0, 0, 0, 0)', 'rgb(0, 0, 0)');
   });
 
   it('Mat Card should have theme colors', () => {
-    cy.get('mat-card').should('have.css', 'background-color', 'rgb(247, 249, 254)');
-    cy.get('mat-card-content').should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+    testMatCard('rgb(247, 249, 254)', 'rgba(0, 0, 0, 0)');
   });
 
   it('Basic Buttons should have theme colors', () => {
-    cy.get('.example-label').eq(0).should('have.css', 'color', 'rgb(0, 0, 0)').should('contain.text', 'Basic');
-    cy.get('.example-button-row > button')
-      .eq(0)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', basicColor)
-      .should('contain.text', 'Basic');
-    cy.get('.example-button-row > button')
-      .eq(1)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', primaryColor)
-      .should('contain.text', 'Primary');
-    cy.get('.example-button-row > button')
-      .eq(2)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', accentColor)
-      .should('contain.text', 'Accent');
-    cy.get('.example-button-row > button')
-      .eq(3)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', warnColor)
-      .should('contain.text', 'Warn');
-    cy.get('.example-button-row > button')
-      .eq(4)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)')
-      .should('contain.text', 'Disabled');
-    cy.get('.example-button-row > a')
-      .eq(0)
-      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', basicColor)
-      .should('contain.text', 'Link');
+    testMatButtonsBasic(
+      'rgb(0, 0, 0)',
+      basicColor,
+      primaryColor,
+      accentColor,
+      warnColor,
+      'rgba(0, 0, 0, 0)',
+      'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+    );
   });
 
   it('Raised Buttons should have theme colors', () => {
