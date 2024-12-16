@@ -77,7 +77,9 @@
   @include mat.sort-theme($dark-theme);
   @include mat.toolbar-theme($dark-theme);
   @include mat.tree-theme($dark-theme);
-  @include mat.timepicker-theme($dark-theme);
+  @if (meta.mixin-exists('timepicker-theme', 'mat')) {
+    @include mat.timepicker-theme($dark-theme);
+  }
 
   // Apply Alternative Dark Theme For Select Components
   @include mat.checkbox-theme($dark-theme);
@@ -127,7 +129,9 @@
     @include mat.sort-color($light-theme);
     @include mat.toolbar-color($light-theme);
     @include mat.tree-color($light-theme);
-    @include mat.timepicker-color($light-theme);
+    @if (meta.mixin-exists('timepicker-color', 'mat')) {
+      @include mat.timepicker-color($light-theme);
+    }
 
     // Apply Alternative Light Colors For Select Components
     @include mat.checkbox-color($light-theme);
