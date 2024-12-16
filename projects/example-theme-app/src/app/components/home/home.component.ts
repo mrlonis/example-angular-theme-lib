@@ -1,26 +1,25 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
+import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
+import { ExampleButtonsComponent } from '../example-buttons';
+import { ExampleCheckboxesComponent } from '../example-checkboxes';
+import { ExampleInputsComponent } from '../example-inputs';
+import { ExampleRadioButtonsComponent } from '../example-radio-buttons';
+import { ExampleSlideToggleComponent } from '../example-slide-toggle';
 
 @Component({
   standalone: true,
   selector: 'app-home',
   imports: [
-    FormsModule,
-    MatButtonModule,
     MatCardModule,
     MatDividerModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
+    ExampleButtonsComponent,
+    ExampleInputsComponent,
+    ExampleCheckboxesComponent,
+    ExampleRadioButtonsComponent,
+    ExampleSlideToggleComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {}
