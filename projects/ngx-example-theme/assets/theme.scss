@@ -1,20 +1,20 @@
 @use 'sass:meta';
 @use '@angular/material' as mat;
-@use 'm2-theme' as m2Theme;
-@use 'm3-theme' as m3Theme;
+@use 'm2-theme';
+@use 'm3-theme';
 
 @mixin determine-theme-version() {
   @debug 'Executing ngx-example-theme mixin: determine-theme-version';
   @if (meta.mixin-exists('theme', 'mat')) {
-    @include m3Theme.define-angular-19-m3-theme();
+    @include m3-theme.define-angular-19-m3-theme();
   } @else if (meta.function-exists('define-theme', 'mat')) {
-    @include m3Theme.define-angular-18-m3-theme();
+    @include m3-theme.define-angular-18-m3-theme();
   } @else if (meta.function-exists('define-light-theme', 'mat') or meta.function-exists('define-dark-theme', 'mat')) {
-    @include m2Theme.define-legacy-theme();
+    @include m2-theme.define-legacy-theme();
   } @else if
     (meta.function-exists('m2-define-light-theme', 'mat') or meta.function-exists('m2-define-dark-theme', 'mat'))
   {
-    @include m2Theme.define-m2-theme();
+    @include m2-theme.define-m2-theme();
   } @else {
     @error 'Could not determine the Angular Material version. Make sure you have Angular Material installed.';
   }
