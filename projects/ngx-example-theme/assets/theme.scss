@@ -1,99 +1,25 @@
 @use 'sass:meta';
+// Even though we don't use the 'mat' module in this file, we need to import it to perform the sass meta checks
 @use '@angular/material' as mat;
-@use 'm2-theme' as m2Theme;
-@use 'm3-theme' as m3Theme;
-@use 'base' as base;
-
-@mixin define-angular-19-m3-theme() {
-  @debug 'Executing ngx-example-theme mixin: define-angular-19-m3-theme';
-  html {
-    color-scheme: light dark;
-    @include mat.theme(m3Theme.$dark-theme-config);
-
-    @media (prefers-color-scheme: light) {
-      @include mat.theme(m3Theme.$light-theme-config);
-    }
-  }
-  @include define-angular-18-m3-theme();
-}
-
-@mixin define-angular-18-m3-theme() {
-  @debug 'Executing ngx-example-theme mixin: define-angular-18-m3-theme';
-  $light-theme: mat.define-theme(m3Theme.$light-theme-config);
-  $dark-theme: mat.define-theme(m3Theme.$dark-theme-config);
-
-  html {
-    color-scheme: light dark;
-    @include base.set-mat-component-themes($dark-theme, $light-theme);
-  }
-}
-
-@mixin define-legacy-theme() {
-  @debug 'Executing ngx-example-theme mixin: define-legacy-theme';
-  $dark-theme: mat.define-dark-theme(
-    (
-      color: (
-        primary: mat.define-palette(m2Theme.$primary-palette, A100),
-        accent: mat.define-palette(m2Theme.$tertiary-palette, A100),
-        warn: mat.define-palette(m2Theme.$error-palette, 200),
-      ),
-      // Only include `typography` and `density` in the default dark theme.
-      typography: mat.define-typography-config(),
-      density: 0,
-    )
-  );
-  $light-theme: mat.define-light-theme(
-    (
-      color: (
-        primary: mat.define-palette(m2Theme.$tertiary-palette, 600),
-        accent: mat.define-palette(m2Theme.$primary-palette, 600),
-        warn: mat.define-palette(m2Theme.$error-palette, 600),
-      ),
-    )
-  );
-
-  @include base.set-mat-component-themes($dark-theme, $light-theme);
-}
-
-@mixin define-m2-theme() {
-  @debug 'Executing ngx-example-theme mixin: define-m2-theme';
-  $dark-theme: mat.m2-define-dark-theme(
-    (
-      color: (
-        primary: mat.define-palette(m2Theme.$primary-palette, A100),
-        accent: mat.define-palette(m2Theme.$tertiary-palette, A100),
-        warn: mat.define-palette(m2Theme.$error-palette, 200),
-      ),
-      // Only include `typography` and `density` in the default dark theme.
-      typography: mat.m2-define-typography-config(),
-      density: 0,
-    )
-  );
-  $light-theme: mat.m2-define-light-theme(
-    (
-      color: (
-        primary: mat.define-palette(m2Theme.$tertiary-palette, 600),
-        accent: mat.define-palette(m2Theme.$primary-palette, 600),
-        warn: mat.define-palette(m2Theme.$error-palette, 600),
-      ),
-    )
-  );
-
-  @include base.set-mat-component-themes($dark-theme, $light-theme);
-}
+@use 'm2-theme';
+@use 'm3-theme';
 
 @mixin determine-theme-version() {
   @debug 'Executing ngx-example-theme mixin: determine-theme-version';
   @if (meta.mixin-exists('theme', 'mat')) {
-    @include define-angular-19-m3-theme();
+    // The theme mixin was added in Angular 19
+    @include m3-theme.define-angular-19-m3-theme();
   } @else if (meta.function-exists('define-theme', 'mat')) {
-    @include define-angular-18-m3-theme();
+    // The define-theme function was added in Angular 18
+    @include m3-theme.define-angular-18-m3-theme();
   } @else if (meta.function-exists('define-light-theme', 'mat') or meta.function-exists('define-dark-theme', 'mat')) {
-    @include define-legacy-theme();
+    // The define-light-theme and define-dark-theme functions, if they exist, correspond to Angular Material 2, and specifically a version of @angular/material < 18
+    @include m2-theme.define-legacy-theme();
   } @else if
     (meta.function-exists('m2-define-light-theme', 'mat') or meta.function-exists('m2-define-dark-theme', 'mat'))
   {
-    @include define-m2-theme();
+    // The m2-define-light-theme and m2-define-dark-theme functions, if they exist, correspond to Angular Material 2, and specifically a version of @angular/material >= 18
+    @include m2-theme.define-m2-theme();
   } @else {
     @error 'Could not determine the Angular Material version. Make sure you have Angular Material installed.';
   }
