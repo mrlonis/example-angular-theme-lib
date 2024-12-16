@@ -1,0 +1,136 @@
+@use 'sass:meta';
+@use '@angular/material' as mat;
+
+@mixin set-all-component-themes($theme, $alt-theme) {
+  @include mat.core-theme($theme);
+  @include mat.card-theme($theme);
+  @include mat.progress-bar-theme($theme);
+  @include mat.tooltip-theme($theme);
+  @include mat.form-field-theme($theme);
+  @include mat.input-theme($theme);
+  @include mat.select-theme($theme);
+  @include mat.autocomplete-theme($theme);
+  @include mat.dialog-theme($theme);
+  @include mat.chips-theme($theme);
+  @include mat.slider-theme($theme);
+  @include mat.menu-theme($theme);
+  @include mat.list-theme($theme);
+  @include mat.paginator-theme($theme);
+  @include mat.tabs-theme($theme);
+  @include mat.button-theme($theme);
+  @include mat.icon-button-theme($theme);
+  @include mat.fab-theme($theme);
+  @include mat.snack-bar-theme($theme);
+  @include mat.table-theme($theme);
+  @include mat.progress-spinner-theme($theme);
+  @include mat.badge-theme($theme);
+  @include mat.bottom-sheet-theme($theme);
+  @include mat.button-toggle-theme($theme);
+  @include mat.datepicker-theme($theme);
+  @include mat.divider-theme($theme);
+  @include mat.expansion-theme($theme);
+  @include mat.grid-list-theme($theme);
+  @include mat.icon-theme($theme);
+  @include mat.sidenav-theme($theme);
+  @include mat.stepper-theme($theme);
+  @include mat.sort-theme($theme);
+  @include mat.toolbar-theme($theme);
+  @include mat.tree-theme($theme);
+  @if (meta.mixin-exists('timepicker-theme', 'mat')) {
+    @include mat.timepicker-theme($theme);
+  }
+
+  @include mat.strong-focus-indicators-theme($theme);
+
+  // Apply Alternative Theme For Select Components
+  @include mat.checkbox-theme($alt-theme);
+  @include mat.radio-theme($alt-theme);
+  @include mat.slide-toggle-theme($alt-theme);
+}
+
+@mixin set-all-system-level-mixins($theme) {
+  @if (meta.mixin-exists('system-level-colors', 'mat')) {
+    @include mat.system-level-colors($theme);
+  }
+  @if (meta.mixin-exists('system-level-elevation', 'mat')) {
+    @include mat.system-level-elevation($theme);
+  }
+  @if (meta.mixin-exists('system-level-typography', 'mat')) {
+    @include mat.system-level-typography($theme);
+  }
+}
+
+@mixin set-backwards-compatibility-mixins($theme) {
+  @if (meta.function-exists('get-theme-version', 'mat')) {
+    @if mat.get-theme-version($theme) == 1 {
+      @if (meta.mixin-exists('color-variants-backwards-compatibility', 'mat')) {
+        @include mat.color-variants-backwards-compatibility($theme);
+      }
+      @if (meta.mixin-exists('typography-hierarchy', 'mat')) {
+        @include mat.typography-hierarchy($theme);
+      }
+    }
+  }
+}
+
+@mixin set-all-component-colors($theme, $alt-theme) {
+  // Use the `-color` mixins to only apply color styles without reapplying the same typography and density styles.
+  @include mat.core-color($theme);
+  @include mat.card-color($theme);
+  @include mat.progress-bar-color($theme);
+  @include mat.tooltip-color($theme);
+  @include mat.form-field-color($theme);
+  @include mat.input-color($theme);
+  @include mat.select-color($theme);
+  @include mat.autocomplete-color($theme);
+  @include mat.dialog-color($theme);
+  @include mat.chips-color($theme);
+  @include mat.slider-color($theme);
+  @include mat.menu-color($theme);
+  @include mat.list-color($theme);
+  @include mat.paginator-color($theme);
+  @include mat.tabs-color($theme);
+  @include mat.button-color($theme);
+  @include mat.icon-button-color($theme);
+  @include mat.fab-color($theme);
+  @include mat.snack-bar-color($theme);
+  @include mat.table-color($theme);
+  @include mat.progress-spinner-color($theme);
+  @include mat.badge-color($theme);
+  @include mat.bottom-sheet-color($theme);
+  @include mat.button-toggle-color($theme);
+  @include mat.datepicker-color($theme);
+  @include mat.divider-color($theme);
+  @include mat.expansion-color($theme);
+  @include mat.grid-list-color($theme);
+  @include mat.icon-color($theme);
+  @include mat.sidenav-color($theme);
+  @include mat.stepper-color($theme);
+  @include mat.sort-color($theme);
+  @include mat.toolbar-color($theme);
+  @include mat.tree-color($theme);
+  @if (meta.mixin-exists('timepicker-color', 'mat')) {
+    @include mat.timepicker-color($theme);
+  }
+
+  @include mat.strong-focus-indicators-color($theme);
+
+  // Apply Alternative Colors For Select Components
+  @include mat.checkbox-color($alt-theme);
+  @include mat.radio-color($alt-theme);
+  @include mat.slide-toggle-color($alt-theme);
+}
+
+@mixin set-mat-component-themes($dark-theme, $light-theme) {
+  // Apply the dark theme by default
+  @include set-all-component-themes($dark-theme, $dark-theme);
+  @include set-all-system-level-mixins($dark-theme);
+  @include set-backwards-compatibility-mixins($dark-theme);
+
+  @media (prefers-color-scheme: light) {
+    // Use the `-color` mixins to only apply color styles without reapplying the same typography and density styles.
+    @include set-all-component-colors($light-theme, $light-theme);
+    @include set-all-system-level-mixins($light-theme);
+    @include set-backwards-compatibility-mixins($light-theme);
+  }
+}
