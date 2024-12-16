@@ -133,3 +133,26 @@ $_rest: (
 );
 $primary: map.merge(map.get($_palettes, primary), $_rest);
 $tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
+
+$dark-theme-config: (
+  color: (
+    theme-type: dark,
+    primary: $primary,
+    tertiary: $tertiary,
+  ),
+  typography: (
+    use-system-variables: true,
+  ),
+);
+
+$light-theme-config: (
+  color: (
+    theme-type: light,
+    primary: $tertiary,
+    tertiary: $primary,
+    use-system-variables: true,
+  ),
+  typography: (
+    use-system-variables: true,
+  ),
+);
