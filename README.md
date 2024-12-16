@@ -6,6 +6,8 @@
   - [Table of Contents](#table-of-contents)
   - [Updating Angular](#updating-angular)
     - [Example](#example)
+  - [Generating Material 3 Theme](#generating-material-3-theme)
+    - [Example For This Project](#example-for-this-project)
 
 ## Updating Angular
 
@@ -19,4 +21,18 @@ npm run ng -- update @angular/core@VERSION @angular/cli@VERSION @angular/materia
 
 ```shell
 npm run ng -- update @angular/core@17 @angular/cli@17 @angular/material@17 @angular-eslint/schematics@17
+```
+
+## Generating Material 3 Theme
+
+To generate an Angular Material 3 (M3) theme, you can use the Angular Material schematics:
+
+```shell
+ng generate @angular/material:m3-theme
+```
+
+### Example For This Project
+
+```shell
+npm run ng -- generate @angular/material:m3-theme
 ```

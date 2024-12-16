@@ -2,6 +2,8 @@
 // Proceed with caution if making changes to this file.
 
 @use 'sass:map';
+@use '@angular/material' as mat;
+@use 'base' as base;
 
 // Note: Color palettes are generated from primary: #74c0fc, secondary: #dee2e6, tertiary: #ffc078
 $_palettes: (
@@ -156,3 +158,27 @@ $light-theme-config: (
     use-system-variables: true,
   ),
 );
+
+@mixin define-angular-19-m3-theme() {
+  @debug 'Executing ngx-example-theme mixin: define-angular-19-m3-theme';
+  html {
+    color-scheme: light dark;
+    @include mat.theme($dark-theme-config);
+
+    @media (prefers-color-scheme: light) {
+      @include mat.theme($light-theme-config);
+    }
+  }
+  @include define-angular-18-m3-theme();
+}
+
+@mixin define-angular-18-m3-theme() {
+  @debug 'Executing ngx-example-theme mixin: define-angular-18-m3-theme';
+  $light-theme: mat.define-theme($light-theme-config);
+  $dark-theme: mat.define-theme($dark-theme-config);
+
+  html {
+    color-scheme: light dark;
+    @include base.set-mat-component-themes($dark-theme, $light-theme);
+  }
+}
