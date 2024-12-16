@@ -230,37 +230,37 @@ describe('example-theme-app: dark theme', () => {
     cy.get('.mdc-radio__background')
       .eq(0)
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(224, 226, 231)');
+      .should('have.css', 'color', 'rgb(255, 255, 255)');
     cy.get('.mdc-radio__background')
       .eq(0)
       .find('.mdc-radio__outer-circle')
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(224, 226, 231)')
-      .should('have.css', 'border-bottom-color', 'rgb(220, 227, 237)')
-      .should('have.css', 'border-left-color', 'rgb(220, 227, 237)')
-      .should('have.css', 'border-right-color', 'rgb(220, 227, 237)')
-      .should('have.css', 'border-top-color', 'rgb(220, 227, 237)');
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
+      .should('have.css', 'border-bottom-color', 'rgba(255, 255, 255, 0.54)')
+      .should('have.css', 'border-left-color', 'rgba(255, 255, 255, 0.54)')
+      .should('have.css', 'border-right-color', 'rgba(255, 255, 255, 0.54)')
+      .should('have.css', 'border-top-color', 'rgba(255, 255, 255, 0.54)');
     cy.get('.mdc-radio__background')
       .eq(0)
       .find('.mdc-radio__inner-circle')
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(224, 226, 231)')
-      .should('have.css', 'border-bottom-color', 'rgb(224, 226, 231)')
-      .should('have.css', 'border-left-color', 'rgb(224, 226, 231)')
-      .should('have.css', 'border-right-color', 'rgb(224, 226, 231)')
-      .should('have.css', 'border-top-color', 'rgb(224, 226, 231)');
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
+      .should('have.css', 'border-bottom-color', 'rgb(249, 187, 115)')
+      .should('have.css', 'border-left-color', 'rgb(249, 187, 115)')
+      .should('have.css', 'border-right-color', 'rgb(249, 187, 115)')
+      .should('have.css', 'border-top-color', 'rgb(249, 187, 115)');
 
     cy.get('mat-radio-button').eq(0).click();
 
     cy.get('.mdc-radio__background')
       .eq(0)
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(224, 226, 231)');
+      .should('have.css', 'color', 'rgb(255, 255, 255)');
     cy.get('.mdc-radio__background')
       .eq(0)
       .find('.mdc-radio__outer-circle')
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(224, 226, 231)')
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('have.css', 'border-bottom-color', accentColor)
       .should('have.css', 'border-left-color', accentColor)
       .should('have.css', 'border-right-color', accentColor)
@@ -269,7 +269,7 @@ describe('example-theme-app: dark theme', () => {
       .eq(0)
       .find('.mdc-radio__inner-circle')
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'rgb(224, 226, 231)')
+      .should('have.css', 'color', 'rgb(255, 255, 255)')
       .should('have.css', 'border-bottom-color', accentColor)
       .should('have.css', 'border-left-color', accentColor)
       .should('have.css', 'border-right-color', accentColor)
@@ -286,12 +286,12 @@ describe('example-theme-app: dark theme', () => {
         // use getComputedStyle to read the pseudo selector
         const before = win?.getComputedStyle($els[0], 'before');
         let contentValue = before?.getPropertyValue('background-color');
-        expect(contentValue).to.eq('rgb(64, 72, 79)');
+        expect(contentValue).to.eq('rgb(97, 97, 97)');
 
         // use getComputedStyle to read the pseudo selector
         const after = win?.getComputedStyle($els[0], 'after');
         contentValue = after?.getPropertyValue('background-color');
-        expect(contentValue).to.eq(accentColor);
+        expect(contentValue).to.eq('rgb(131, 84, 22)');
       });
 
     // Primary
@@ -304,12 +304,12 @@ describe('example-theme-app: dark theme', () => {
         // use getComputedStyle to read the pseudo selector
         const before = win?.getComputedStyle($els[0], 'before');
         let contentValue = before?.getPropertyValue('background-color');
-        expect(contentValue).to.eq('rgb(64, 72, 79)');
+        expect(contentValue).to.eq('rgb(97, 97, 97)');
 
         // use getComputedStyle to read the pseudo selector
         const after = win?.getComputedStyle($els[0], 'after');
         contentValue = after?.getPropertyValue('background-color');
-        expect(contentValue).to.eq(primaryColor);
+        expect(contentValue).to.eq('rgb(0, 100, 150)');
       });
 
     // Warn
@@ -322,12 +322,12 @@ describe('example-theme-app: dark theme', () => {
         // use getComputedStyle to read the pseudo selector
         const before = win?.getComputedStyle($els[0], 'before');
         let contentValue = before?.getPropertyValue('background-color');
-        expect(contentValue).to.eq('rgb(64, 72, 79)');
+        expect(contentValue).to.eq('rgb(97, 97, 97)');
 
         // use getComputedStyle to read the pseudo selector
         const after = win?.getComputedStyle($els[0], 'after');
         contentValue = after?.getPropertyValue('background-color');
-        expect(contentValue).to.eq(warnColor);
+        expect(contentValue).to.eq('rgb(186, 26, 26)');
       });
   });
 });
