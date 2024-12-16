@@ -40,7 +40,7 @@ describe('example-theme-app: dark theme', () => {
   });
 
   it('Mat Card should have theme colors', () => {
-    testMatCard('rgb(16, 20, 23)', 'rgba(0, 0, 0, 0)');
+    testMatCard('rgb(66, 66, 66)', 'rgba(0, 0, 0, 0)');
   });
 
   it('Basic Buttons should have theme colors', () => {
@@ -51,7 +51,7 @@ describe('example-theme-app: dark theme', () => {
       accentColor,
       warnColor,
       'rgba(0, 0, 0, 0)',
-      'rgba(224, 226, 231, 0.38)',
+      'rgba(255, 255, 255, 0.5)',
     );
   });
 
@@ -62,9 +62,9 @@ describe('example-theme-app: dark theme', () => {
       primaryColor,
       accentColor,
       warnColor,
-      'rgb(16, 20, 23)',
+      'rgb(66, 66, 66)',
       'rgba(224, 226, 231, 0.12)',
-      'rgba(224, 226, 231, 0.38)',
+      'rgba(255, 255, 255, 0.5)',
     );
   });
 
@@ -76,7 +76,7 @@ describe('example-theme-app: dark theme', () => {
       accentColor,
       warnColor,
       'rgba(0, 0, 0, 0)',
-      'rgba(224, 226, 231, 0.38)',
+      'rgba(255, 255, 255, 0.5)',
     );
   });
 
@@ -151,7 +151,7 @@ describe('example-theme-app: dark theme', () => {
   });
 
   it('Inputs should have theme colors', () => {
-    testMatInput('rgb(220, 227, 237)', primaryColor);
+    testMatInput('rgba(255, 255, 255, 0.6)', formFieldPrimaryColor);
   });
 
   it('Checkboxes should have theme colors', () => {
@@ -161,14 +161,14 @@ describe('example-theme-app: dark theme', () => {
   it('Radio buttons should have theme colors', () => {
     testMatRadioButtons(
       'rgba(0, 0, 0, 0)',
-      'rgb(224, 226, 231)',
-      'rgb(220, 227, 237)',
-      'rgb(224, 226, 231)',
+      'rgb(255, 255, 255)',
+      'rgba(255, 255, 255, 0.54)',
+      accentColor,
       accentColor,
     );
   });
 
   it('Slide Toggle should have theme colors', () => {
-    testMatSlideToggle('rgb(64, 72, 79)', primaryColor, accentColor, warnColor);
+    testMatSlideToggle('rgb(97, 97, 97)', 'rgb(0, 100, 150)', 'rgb(131, 84, 22)', 'rgb(186, 26, 26)');
   });
 });
