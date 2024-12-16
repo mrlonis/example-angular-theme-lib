@@ -27,7 +27,8 @@
     "test:ci:ngx-example-theme": "ng test ngx-example-theme --no-watch --no-progress --browsers=ChromeHeadless",
     "test:cypress": "start-server-and-test start http://localhost:4200 cypress:headless",
     "test:cypress:open": "start-server-and-test start http://localhost:4200 cypress:open",
-    "watch": "ng build --watch --configuration development"
+    "watch:example-theme-app": "npm run build:example-theme-app:dev -- --watch",
+    "watch:ngx-example-theme": "npm run build:ngx-example-theme:dev -- --watch"
   },
   "lint-staged": {
     "*.{css,html,js,jsx,json,md,scss,ts,tsx,yaml,yml}": [
