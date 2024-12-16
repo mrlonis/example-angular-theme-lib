@@ -59,7 +59,7 @@ describe('example-theme-app: dark theme', () => {
     cy.get('.example-button-row > button')
       .eq(4)
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'color(srgb 0.878431 0.886275 0.905882 / 0.38)')
+      .should('have.css', 'color', 'rgba(224, 226, 231, 0.38)')
       .should('contain.text', 'Disabled');
     cy.get('.example-button-row > a')
       .eq(0)
@@ -92,8 +92,8 @@ describe('example-theme-app: dark theme', () => {
       .should('contain.text', 'Warn');
     cy.get('.example-button-row > button')
       .eq(9)
-      .should('have.css', 'background-color', 'color(srgb 0.878431 0.886275 0.905882 / 0.12)')
-      .should('have.css', 'color', 'color(srgb 0.878431 0.886275 0.905882 / 0.38)')
+      .should('have.css', 'background-color', 'rgba(224, 226, 231, 0.12)')
+      .should('have.css', 'color', 'rgba(224, 226, 231, 0.38)')
       .should('contain.text', 'Disabled');
     cy.get('.example-button-row > a')
       .eq(1)
@@ -127,7 +127,7 @@ describe('example-theme-app: dark theme', () => {
     cy.get('.example-button-row > button')
       .eq(14)
       .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
-      .should('have.css', 'color', 'color(srgb 0.878431 0.886275 0.905882 / 0.38)')
+      .should('have.css', 'color', 'rgba(224, 226, 231, 0.38)')
       .should('contain.text', 'Disabled');
     cy.get('.example-button-row > a')
       .eq(2)
@@ -160,8 +160,8 @@ describe('example-theme-app: dark theme', () => {
       .should('contain.text', 'Warn');
     cy.get('.example-button-row > button')
       .eq(19)
-      .should('have.css', 'background-color', 'color(srgb 0.878431 0.886275 0.905882 / 0.12)')
-      .should('have.css', 'color', 'color(srgb 0.878431 0.886275 0.905882 / 0.38)')
+      .should('have.css', 'background-color', 'rgba(224, 226, 231, 0.12)')
+      .should('have.css', 'color', 'rgba(224, 226, 231, 0.38)')
       .should('contain.text', 'Disabled');
     cy.get('.example-button-row > a')
       .eq(3)
@@ -197,8 +197,8 @@ describe('example-theme-app: dark theme', () => {
       .should('contain.text', 'Warn');
     cy.get('.example-button-container > button')
       .eq(12)
-      .should('have.css', 'background-color', 'color(srgb 0.878431 0.886275 0.905882 / 0.12)')
-      .should('have.css', 'color', 'color(srgb 0.878431 0.886275 0.905882 / 0.38)')
+      .should('have.css', 'background-color', 'rgba(224, 226, 231, 0.12)')
+      .should('have.css', 'color', 'rgba(224, 226, 231, 0.38)')
       .should('contain.text', 'Disabled');
     cy.get('.example-button-container > a')
       .should('have.css', 'background-color', 'rgb(102, 61, 0)')
