@@ -209,4 +209,122 @@ describe('example-theme-app: light theme', () => {
     cy.get('input').eq(0).click();
     cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', formFieldPrimaryColor);
   });
+
+  it('Checkboxes should have theme colors', () => {
+    cy.get('.mdc-checkbox__background').eq(0).should('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+    cy.get('.example-margin').eq(0).click();
+    cy.get('.mdc-checkbox__background').eq(0).should('have.css', 'background-color', accentColor);
+
+    cy.get('.example-margin').eq(1).find('input').should('be.disabled');
+
+    cy.get('.example-margin').eq(2).click();
+    cy.get('.mdc-checkbox__background').eq(3).should('have.css', 'background-color', primaryColor);
+    cy.get('.mdc-checkbox__background').eq(4).should('have.css', 'background-color', accentColor);
+    cy.get('.mdc-checkbox__background').eq(5).should('have.css', 'background-color', warnColor);
+  });
+
+  it('Radio buttons should have theme colors', () => {
+    cy.get('.mdc-radio__background')
+      .eq(0)
+      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+      .should('have.css', 'color', 'rgba(0, 0, 0, 0.87)');
+    cy.get('.mdc-radio__background')
+      .eq(0)
+      .find('.mdc-radio__outer-circle')
+      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+      .should('have.css', 'color', 'rgba(0, 0, 0, 0.87)')
+      .should('have.css', 'border-bottom-color', 'rgba(0, 0, 0, 0.54)')
+      .should('have.css', 'border-left-color', 'rgba(0, 0, 0, 0.54)')
+      .should('have.css', 'border-right-color', 'rgba(0, 0, 0, 0.54)')
+      .should('have.css', 'border-top-color', 'rgba(0, 0, 0, 0.54)');
+    cy.get('.mdc-radio__background')
+      .eq(0)
+      .find('.mdc-radio__inner-circle')
+      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+      .should('have.css', 'color', 'rgba(0, 0, 0, 0.87)')
+      .should('have.css', 'border-bottom-color', 'rgb(0, 100, 150)')
+      .should('have.css', 'border-left-color', 'rgb(0, 100, 150)')
+      .should('have.css', 'border-right-color', 'rgb(0, 100, 150)')
+      .should('have.css', 'border-top-color', 'rgb(0, 100, 150)');
+
+    cy.get('mat-radio-button').eq(0).click();
+
+    cy.get('.mdc-radio__background')
+      .eq(0)
+      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+      .should('have.css', 'color', 'rgba(0, 0, 0, 0.87)');
+    cy.get('.mdc-radio__background')
+      .eq(0)
+      .find('.mdc-radio__outer-circle')
+      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+      .should('have.css', 'color', 'rgba(0, 0, 0, 0.87)')
+      .should('have.css', 'border-bottom-color', accentColor)
+      .should('have.css', 'border-left-color', accentColor)
+      .should('have.css', 'border-right-color', accentColor)
+      .should('have.css', 'border-top-color', accentColor);
+    cy.get('.mdc-radio__background')
+      .eq(0)
+      .find('.mdc-radio__inner-circle')
+      .should('have.css', 'background-color', 'rgba(0, 0, 0, 0)')
+      .should('have.css', 'color', 'rgba(0, 0, 0, 0.87)')
+      .should('have.css', 'border-bottom-color', accentColor)
+      .should('have.css', 'border-left-color', accentColor)
+      .should('have.css', 'border-right-color', accentColor)
+      .should('have.css', 'border-top-color', accentColor);
+  });
+
+  it('Slide Toggle should have theme colors', () => {
+    // Accent color is the default
+    cy.get('mat-slide-toggle')
+      .find('.mdc-switch__track')
+      .then(($els) => {
+        // get Window reference from element
+        const win = $els[0].ownerDocument.defaultView;
+        // use getComputedStyle to read the pseudo selector
+        const before = win?.getComputedStyle($els[0], 'before');
+        let contentValue = before?.getPropertyValue('background-color');
+        expect(contentValue).to.eq('rgb(224, 224, 224)');
+
+        // use getComputedStyle to read the pseudo selector
+        const after = win?.getComputedStyle($els[0], 'after');
+        contentValue = after?.getPropertyValue('background-color');
+        expect(contentValue).to.eq('rgb(101, 178, 237)');
+      });
+
+    // Primary
+    cy.get('mat-radio-button').eq(2).click();
+    cy.get('mat-slide-toggle')
+      .find('.mdc-switch__track')
+      .then(($els) => {
+        // get Window reference from element
+        const win = $els[0].ownerDocument.defaultView;
+        // use getComputedStyle to read the pseudo selector
+        const before = win?.getComputedStyle($els[0], 'before');
+        let contentValue = before?.getPropertyValue('background-color');
+        expect(contentValue).to.eq('rgb(224, 224, 224)');
+
+        // use getComputedStyle to read the pseudo selector
+        const after = win?.getComputedStyle($els[0], 'after');
+        contentValue = after?.getPropertyValue('background-color');
+        expect(contentValue).to.eq('rgb(218, 160, 91)');
+      });
+
+    // Warn
+    cy.get('mat-radio-button').eq(4).click();
+    cy.get('mat-slide-toggle')
+      .find('.mdc-switch__track')
+      .then(($els) => {
+        // get Window reference from element
+        const win = $els[0].ownerDocument.defaultView;
+        // use getComputedStyle to read the pseudo selector
+        const before = win?.getComputedStyle($els[0], 'before');
+        let contentValue = before?.getPropertyValue('background-color');
+        expect(contentValue).to.eq('rgb(224, 224, 224)');
+
+        // use getComputedStyle to read the pseudo selector
+        const after = win?.getComputedStyle($els[0], 'after');
+        contentValue = after?.getPropertyValue('background-color');
+        expect(contentValue).to.eq('rgb(255, 137, 125)');
+      });
+  });
 });

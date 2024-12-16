@@ -43,7 +43,49 @@
 
 @mixin set-mat-component-themes($dark-theme, $light-theme) {
   // Apply the dark theme by default
-  @include mat.all-component-themes($dark-theme);
+  @include mat.core-theme($dark-theme);
+  @include mat.card-theme($dark-theme);
+  @include mat.progress-bar-theme($dark-theme);
+  @include mat.tooltip-theme($dark-theme);
+  @include mat.form-field-theme($dark-theme);
+  @include mat.input-theme($dark-theme);
+  @include mat.select-theme($dark-theme);
+  @include mat.autocomplete-theme($dark-theme);
+  @include mat.dialog-theme($dark-theme);
+  @include mat.chips-theme($dark-theme);
+  @include mat.slider-theme($dark-theme);
+  @include mat.menu-theme($dark-theme);
+  @include mat.list-theme($dark-theme);
+  @include mat.paginator-theme($dark-theme);
+  @include mat.tabs-theme($dark-theme);
+  @include mat.button-theme($dark-theme);
+  @include mat.icon-button-theme($dark-theme);
+  @include mat.fab-theme($dark-theme);
+  @include mat.snack-bar-theme($dark-theme);
+  @include mat.table-theme($dark-theme);
+  @include mat.progress-spinner-theme($dark-theme);
+  @include mat.badge-theme($dark-theme);
+  @include mat.bottom-sheet-theme($dark-theme);
+  @include mat.button-toggle-theme($dark-theme);
+  @include mat.datepicker-theme($dark-theme);
+  @include mat.divider-theme($dark-theme);
+  @include mat.expansion-theme($dark-theme);
+  @include mat.grid-list-theme($dark-theme);
+  @include mat.icon-theme($dark-theme);
+  @include mat.sidenav-theme($dark-theme);
+  @include mat.stepper-theme($dark-theme);
+  @include mat.sort-theme($dark-theme);
+  @include mat.toolbar-theme($dark-theme);
+  @include mat.tree-theme($dark-theme);
+  @if (meta.mixin-exists('timepicker-theme', 'mat')) {
+    @include mat.timepicker-theme($dark-theme);
+  }
+
+  // Apply Alternative Dark Theme For Select Components
+  @include mat.checkbox-theme($dark-theme);
+  @include mat.radio-theme($dark-theme);
+  @include mat.slide-toggle-theme($dark-theme);
+
   @include mat.strong-focus-indicators-theme($dark-theme);
   @if (meta.mixin-exists('system-level-colors', 'mat')) {
     @include mat.system-level-colors($dark-theme);
@@ -53,7 +95,49 @@
   @media (prefers-color-scheme: light) {
     // Use the `-color` mixins to only apply color styles without reapplying the same
     // typography and density styles.
-    @include mat.all-component-colors($light-theme);
+    @include mat.core-color($light-theme);
+    @include mat.card-color($light-theme);
+    @include mat.progress-bar-color($light-theme);
+    @include mat.tooltip-color($light-theme);
+    @include mat.form-field-color($light-theme);
+    @include mat.input-color($light-theme);
+    @include mat.select-color($light-theme);
+    @include mat.autocomplete-color($light-theme);
+    @include mat.dialog-color($light-theme);
+    @include mat.chips-color($light-theme);
+    @include mat.slider-color($light-theme);
+    @include mat.menu-color($light-theme);
+    @include mat.list-color($light-theme);
+    @include mat.paginator-color($light-theme);
+    @include mat.tabs-color($light-theme);
+    @include mat.button-color($light-theme);
+    @include mat.icon-button-color($light-theme);
+    @include mat.fab-color($light-theme);
+    @include mat.snack-bar-color($light-theme);
+    @include mat.table-color($light-theme);
+    @include mat.progress-spinner-color($light-theme);
+    @include mat.badge-color($light-theme);
+    @include mat.bottom-sheet-color($light-theme);
+    @include mat.button-toggle-color($light-theme);
+    @include mat.datepicker-color($light-theme);
+    @include mat.divider-color($light-theme);
+    @include mat.expansion-color($light-theme);
+    @include mat.grid-list-color($light-theme);
+    @include mat.icon-color($light-theme);
+    @include mat.sidenav-color($light-theme);
+    @include mat.stepper-color($light-theme);
+    @include mat.sort-color($light-theme);
+    @include mat.toolbar-color($light-theme);
+    @include mat.tree-color($light-theme);
+    @if (meta.mixin-exists('timepicker-color', 'mat')) {
+      @include mat.timepicker-color($light-theme);
+    }
+
+    // Apply Alternative Light Colors For Select Components
+    @include mat.checkbox-color($light-theme);
+    @include mat.radio-color($light-theme);
+    @include mat.slide-toggle-color($light-theme);
+
     @include mat.strong-focus-indicators-color($light-theme);
     @if (meta.mixin-exists('system-level-colors', 'mat')) {
       @include mat.system-level-colors($light-theme);
@@ -120,12 +204,42 @@
       ),
     )
   );
+  $light-theme-alt: mat.define-theme(
+    (
+      color: (
+        theme-type: light,
+        primary: m3Theme.$primary,
+        tertiary: m3Theme.$tertiary,
+        use-system-variables: true,
+        system-variables-prefix: sys,
+      ),
+      typography: (
+        use-system-variables: true,
+        system-variables-prefix: sys,
+      ),
+    )
+  );
   $dark-theme: mat.define-theme(
     (
       color: (
         theme-type: dark,
         primary: m3Theme.$primary,
         tertiary: m3Theme.$tertiary,
+        use-system-variables: true,
+        system-variables-prefix: sys,
+      ),
+      typography: (
+        use-system-variables: true,
+        system-variables-prefix: sys,
+      ),
+    )
+  );
+  $dark-theme-alt: mat.define-theme(
+    (
+      color: (
+        theme-type: dark,
+        primary: m3Theme.$tertiary,
+        tertiary: m3Theme.$primary,
         use-system-variables: true,
         system-variables-prefix: sys,
       ),
