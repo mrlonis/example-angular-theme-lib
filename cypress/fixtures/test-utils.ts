@@ -51,3 +51,46 @@ export function testMatButtonsBasic(
     .should('have.css', 'color', basicColor)
     .should('contain.text', 'Link');
 }
+
+export function testMatButtonsRaised(
+  labelColor: string,
+  basicColor: string,
+  primaryColor: string,
+  accentColor: string,
+  warnColor: string,
+  backgroundColor: string,
+  disabledBackgroundColor: string,
+  disabledColor: string,
+) {
+  cy.get('.example-label').eq(1).should('have.css', 'color', labelColor).should('contain.text', 'Raised');
+  cy.get('.example-button-row > button')
+    .eq(5)
+    .should('have.css', 'background-color', backgroundColor)
+    .should('have.css', 'color', basicColor)
+    .should('contain.text', 'Basic');
+  cy.get('.example-button-row > button')
+    .eq(6)
+    .should('have.css', 'background-color', backgroundColor)
+    .should('have.css', 'color', primaryColor)
+    .should('contain.text', 'Primary');
+  cy.get('.example-button-row > button')
+    .eq(7)
+    .should('have.css', 'background-color', backgroundColor)
+    .should('have.css', 'color', accentColor)
+    .should('contain.text', 'Accent');
+  cy.get('.example-button-row > button')
+    .eq(8)
+    .should('have.css', 'background-color', backgroundColor)
+    .should('have.css', 'color', warnColor)
+    .should('contain.text', 'Warn');
+  cy.get('.example-button-row > button')
+    .eq(9)
+    .should('have.css', 'background-color', disabledBackgroundColor)
+    .should('have.css', 'color', disabledColor)
+    .should('contain.text', 'Disabled');
+  cy.get('.example-button-row > a')
+    .eq(1)
+    .should('have.css', 'background-color', backgroundColor)
+    .should('have.css', 'color', basicColor)
+    .should('contain.text', 'Link');
+}

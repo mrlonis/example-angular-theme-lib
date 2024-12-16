@@ -1,4 +1,4 @@
-import { testBackground, testMatButtonsBasic, testMatCard } from '../fixtures';
+import { testBackground, testMatButtonsBasic, testMatButtonsRaised, testMatCard } from '../fixtures';
 
 describe('example-theme-app: light theme', () => {
   const basicColor = 'rgb(131, 84, 22)';
@@ -45,37 +45,16 @@ describe('example-theme-app: light theme', () => {
   });
 
   it('Raised Buttons should have theme colors', () => {
-    cy.get('.example-label').eq(1).should('have.css', 'color', 'rgb(0, 0, 0)').should('contain.text', 'Raised');
-    cy.get('.example-button-row > button')
-      .eq(5)
-      .should('have.css', 'background-color', 'rgb(247, 249, 254)')
-      .should('have.css', 'color', basicColor)
-      .should('contain.text', 'Basic');
-    cy.get('.example-button-row > button')
-      .eq(6)
-      .should('have.css', 'background-color', 'rgb(247, 249, 254)')
-      .should('have.css', 'color', primaryColor)
-      .should('contain.text', 'Primary');
-    cy.get('.example-button-row > button')
-      .eq(7)
-      .should('have.css', 'background-color', 'rgb(247, 249, 254)')
-      .should('have.css', 'color', accentColor)
-      .should('contain.text', 'Accent');
-    cy.get('.example-button-row > button')
-      .eq(8)
-      .should('have.css', 'background-color', 'rgb(247, 249, 254)')
-      .should('have.css', 'color', warnColor)
-      .should('contain.text', 'Warn');
-    cy.get('.example-button-row > button')
-      .eq(9)
-      .should('have.css', 'background-color', 'color(srgb 0.0941176 0.109804 0.12549 / 0.12)')
-      .should('have.css', 'color', 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)')
-      .should('contain.text', 'Disabled');
-    cy.get('.example-button-row > a')
-      .eq(1)
-      .should('have.css', 'background-color', 'rgb(247, 249, 254)')
-      .should('have.css', 'color', basicColor)
-      .should('contain.text', 'Link');
+    testMatButtonsRaised(
+      'rgb(0, 0, 0)',
+      basicColor,
+      primaryColor,
+      accentColor,
+      warnColor,
+      'rgb(247, 249, 254)',
+      'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
+      'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+    );
   });
 
   it('Stroked Buttons should have theme colors', () => {
