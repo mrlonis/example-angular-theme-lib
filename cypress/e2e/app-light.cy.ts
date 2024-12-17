@@ -76,6 +76,23 @@ describe('example-theme-app: light theme', () => {
   it('Flat Buttons should have theme colors', () => {
     testMatButtonsFlat(
       'rgb(0, 0, 0)',
+      basicColor,
+      primaryColor,
+      'rgb(255, 255, 255)',
+      accentColor,
+      'rgb(255, 255, 255)',
+      warnColor,
+      'rgb(255, 255, 255)',
+      'rgb(255, 255, 255)',
+      'rgba(0, 0, 0, 0.12)',
+      'rgba(0, 0, 0, 0.38)',
+    );
+  });
+
+  it('Extended FAB Buttons should have theme colors', () => {
+    testMatButtonsExtendedFab(
+      'rgb(0, 0, 0)',
+      accentColor,
       'rgb(255, 255, 255)',
       primaryColor,
       'rgb(255, 255, 255)',
@@ -83,25 +100,8 @@ describe('example-theme-app: light theme', () => {
       'rgb(255, 255, 255)',
       warnColor,
       'rgb(255, 255, 255)',
-      basicColor,
-      'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
-      'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
-    );
-  });
-
-  it('Extended FAB Buttons should have theme colors', () => {
-    testMatButtonsExtendedFab(
-      'rgb(0, 0, 0)',
-      'rgb(204, 229, 255)',
-      'rgb(0, 30, 49)',
-      'rgb(255, 221, 186)',
-      'rgb(43, 23, 0)',
-      'rgb(204, 229, 255)',
-      'rgb(0, 30, 49)',
-      'rgb(255, 221, 186)',
-      'rgb(43, 23, 0)',
-      'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
-      'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+      'rgba(0, 0, 0, 0.12)',
+      'rgba(0, 0, 0, 0.38)',
     );
   });
 

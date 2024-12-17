@@ -76,32 +76,32 @@ describe('example-theme-app: dark theme', () => {
   it('Flat Buttons should have theme colors', () => {
     testMatButtonsFlat(
       'rgb(255, 255, 255)',
-      'rgb(0, 51, 80)',
-      primaryColor,
-      'rgb(0, 51, 80)',
-      accentColor,
-      'rgb(72, 42, 0)',
-      warnColor,
-      'rgb(105, 0, 5)',
       basicColor,
-      'rgba(224, 226, 231, 0.12)',
-      'rgba(224, 226, 231, 0.38)',
+      primaryColor,
+      'rgb(0, 0, 0)',
+      accentColor,
+      'rgb(0, 0, 0)',
+      warnColor,
+      'rgb(0, 0, 0)',
+      'rgb(66, 66, 66)',
+      'rgba(255, 255, 255, 0.12)',
+      'rgba(255, 255, 255, 0.5)',
     );
   });
 
   it('Extended FAB Buttons should have theme colors', () => {
     testMatButtonsExtendedFab(
       'rgb(255, 255, 255)',
-      'rgb(102, 61, 0)',
-      'rgb(255, 221, 186)',
-      'rgb(0, 75, 114)',
-      'rgb(204, 229, 255)',
-      'rgb(102, 61, 0)',
-      'rgb(255, 221, 186)',
-      'rgb(0, 75, 114)',
-      'rgb(204, 229, 255)',
-      'rgba(224, 226, 231, 0.12)',
-      'rgba(224, 226, 231, 0.38)',
+      accentColor,
+      'rgb(0, 0, 0)',
+      primaryColor,
+      'rgb(0, 0, 0)',
+      accentColor,
+      'rgb(0, 0, 0)',
+      warnColor,
+      'rgb(0, 0, 0)',
+      'rgba(255, 255, 255, 0.12)',
+      'rgba(255, 255, 255, 0.5)',
     );
   });
 
