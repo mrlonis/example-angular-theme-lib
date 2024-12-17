@@ -1,6 +1,8 @@
 import {
+  mockPrefersColorScheme,
   testBackground,
   testMatButtonsBasic,
+  testMatButtonsFlat,
   testMatButtonsRaised,
   testMatButtonsStroked,
   testMatCard,
@@ -17,20 +19,7 @@ describe('example-theme-app: light theme', () => {
   const warnColor = 'rgb(186, 26, 26)';
 
   beforeEach(() => {
-    cy.wrap(
-      Cypress.automation('remote:debugger:protocol', {
-        command: 'Emulation.setEmulatedMedia',
-        params: {
-          media: 'page',
-          features: [
-            {
-              name: 'prefers-color-scheme',
-              value: 'light',
-            },
-          ],
-        },
-      }),
-    );
+    mockPrefersColorScheme('light');
     cy.visit('/');
   });
 
@@ -83,37 +72,19 @@ describe('example-theme-app: light theme', () => {
   });
 
   it('Flat Buttons should have theme colors', () => {
-    cy.get('.example-label').eq(3).should('have.css', 'color', 'rgb(0, 0, 0)').should('contain.text', 'Flat');
-    cy.get('.example-button-row > button')
-      .eq(15)
-      .should('have.css', 'background-color', basicColor)
-      .should('have.css', 'color', 'rgb(255, 255, 255)')
-      .should('contain.text', 'Basic');
-    cy.get('.example-button-row > button')
-      .eq(16)
-      .should('have.css', 'background-color', primaryColor)
-      .should('have.css', 'color', 'rgb(255, 255, 255)')
-      .should('contain.text', 'Primary');
-    cy.get('.example-button-row > button')
-      .eq(17)
-      .should('have.css', 'background-color', accentColor)
-      .should('have.css', 'color', 'rgb(255, 255, 255)')
-      .should('contain.text', 'Accent');
-    cy.get('.example-button-row > button')
-      .eq(18)
-      .should('have.css', 'background-color', warnColor)
-      .should('have.css', 'color', 'rgb(255, 255, 255)')
-      .should('contain.text', 'Warn');
-    cy.get('.example-button-row > button')
-      .eq(19)
-      .should('have.css', 'background-color', 'color(srgb 0.0941176 0.109804 0.12549 / 0.12)')
-      .should('have.css', 'color', 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)')
-      .should('contain.text', 'Disabled');
-    cy.get('.example-button-row > a')
-      .eq(3)
-      .should('have.css', 'background-color', basicColor)
-      .should('have.css', 'color', 'rgb(255, 255, 255)')
-      .should('contain.text', 'Link');
+    testMatButtonsFlat(
+      'rgb(0, 0, 0)',
+      'rgb(255, 255, 255)',
+      primaryColor,
+      'rgb(255, 255, 255)',
+      accentColor,
+      'rgb(255, 255, 255)',
+      warnColor,
+      'rgb(255, 255, 255)',
+      basicColor,
+      'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
+      'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+    );
   });
 
   it('Extended FAB Buttons should have theme colors', () => {

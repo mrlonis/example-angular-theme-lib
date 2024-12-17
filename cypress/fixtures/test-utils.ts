@@ -1,3 +1,20 @@
+export function mockPrefersColorScheme(prefersColorScheme: 'dark' | 'light') {
+  cy.wrap(
+    Cypress.automation('remote:debugger:protocol', {
+      command: 'Emulation.setEmulatedMedia',
+      params: {
+        media: 'page',
+        features: [
+          {
+            name: 'prefers-color-scheme',
+            value: prefersColorScheme,
+          },
+        ],
+      },
+    }),
+  );
+}
+
 export function testBackground(backgroundColor: string, color: string) {
   cy.get('body').should('have.css', 'background-color', backgroundColor);
   cy.get('body').should('have.css', 'color', color);
@@ -135,6 +152,52 @@ export function testMatButtonsStroked(
     .should('contain.text', 'Disabled');
   cy.get('.example-button-row > a')
     .eq(2)
+    .should('have.css', 'background-color', backgroundColor)
+    .should('have.css', 'color', basicColor)
+    .should('contain.text', 'Link');
+}
+
+export function testMatButtonsFlat(
+  labelColor: string,
+  basicColor: string,
+  primaryBackgroundColor: string,
+  primaryColor: string,
+  accentBackgroundColor: string,
+  accentColor: string,
+  warnBackgroundColor: string,
+  warnColor: string,
+  backgroundColor: string,
+  disabledBackgroundColor: string,
+  disabledColor: string,
+) {
+  cy.get('.example-label').eq(3).should('have.css', 'color', labelColor).should('contain.text', 'Flat');
+  cy.get('.example-button-row > button')
+    .eq(15)
+    .should('have.css', 'background-color', backgroundColor)
+    .should('have.css', 'color', basicColor)
+    .should('contain.text', 'Basic');
+  cy.get('.example-button-row > button')
+    .eq(16)
+    .should('have.css', 'background-color', primaryBackgroundColor)
+    .should('have.css', 'color', primaryColor)
+    .should('contain.text', 'Primary');
+  cy.get('.example-button-row > button')
+    .eq(17)
+    .should('have.css', 'background-color', accentBackgroundColor)
+    .should('have.css', 'color', accentColor)
+    .should('contain.text', 'Accent');
+  cy.get('.example-button-row > button')
+    .eq(18)
+    .should('have.css', 'background-color', warnBackgroundColor)
+    .should('have.css', 'color', warnColor)
+    .should('contain.text', 'Warn');
+  cy.get('.example-button-row > button')
+    .eq(19)
+    .should('have.css', 'background-color', disabledBackgroundColor)
+    .should('have.css', 'color', disabledColor)
+    .should('contain.text', 'Disabled');
+  cy.get('.example-button-row > a')
+    .eq(3)
     .should('have.css', 'background-color', backgroundColor)
     .should('have.css', 'color', basicColor)
     .should('contain.text', 'Link');
