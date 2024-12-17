@@ -1,11 +1,3 @@
 @use 'version';
 
 @include version.determine-theme-version();
-
-html {
-  color: rgb(255, 255, 255);
-
-  @media (prefers-color-scheme: light) {
-    color: rgb(0, 0, 0);
-  }
-}
