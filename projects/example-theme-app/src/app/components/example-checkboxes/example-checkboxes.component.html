@@ -1,5 +1,5 @@
 <section class="example-section">
-  <mat-checkbox class="example-margin" id="checkbox1">Check me!</mat-checkbox>
+  <mat-checkbox class="example-margin" id="check-me-checkbox">Check me!</mat-checkbox>
   <mat-checkbox class="example-margin" [disabled]="true" id="disabledCheckbox">Disabled</mat-checkbox>
 </section>
 
@@ -11,7 +11,7 @@
       [color]="task.color"
       [indeterminate]="someComplete()"
       (change)="setAll($event.checked)"
-      id="checkbox2"
+      id="indeterminate-checkbox"
     >
       {{ task.name }}
     </mat-checkbox>
