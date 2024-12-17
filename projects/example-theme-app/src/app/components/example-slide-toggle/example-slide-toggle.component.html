@@ -6,9 +6,11 @@
       <!-- eslint-disable-next-line @angular-eslint/template/label-has-associated-control -->
       <label class="example-margin">Color:</label>
       <mat-radio-group [(ngModel)]="color">
-        <mat-radio-button class="example-margin" value="primary"> Primary </mat-radio-button>
-        <mat-radio-button class="example-margin" value="accent"> Accent </mat-radio-button>
-        <mat-radio-button class="example-margin" value="warn"> Warn </mat-radio-button>
+        <mat-radio-button class="example-margin" value="primary" id="slide-toggle-primary-radio"
+          >Primary</mat-radio-button
+        >
+        <mat-radio-button class="example-margin" value="accent" id="slide-toggle-accent-radio">Accent</mat-radio-button>
+        <mat-radio-button class="example-margin" value="warn" id="slide-toggle-warn-radio">Warn</mat-radio-button>
       </mat-radio-group>
     </section>
 
@@ -27,9 +29,9 @@
     <h2 class="example-h2">Result</h2>
 
     <section class="example-section">
-      <mat-slide-toggle class="example-margin" [color]="color" [checked]="checked" [disabled]="disabled">
-        Slide me!
-      </mat-slide-toggle>
+      <mat-slide-toggle class="example-margin" [color]="color" [checked]="checked" [disabled]="disabled"
+        >Slide me!</mat-slide-toggle
+      >
     </section>
   </mat-card-content>
 </mat-card>
