@@ -1,0 +1,14 @@
+﻿---
+exclude_paths:
+  - '.github/**'
+  - '.husky/**'
+  - '.vscode/**'
+  - 'docs/**'
+  - '.codacy.yml'
+  - '.editorconfig'
+  - '.gitignore'
+  - '.nvmrc'
+  - '.prettierrc'
+  - 'angular.json'
+  - '**/eslint.config.js'
+  - '**/karma.conf.js'
