@@ -2,6 +2,7 @@ import {
   mockPrefersColorScheme,
   testBackground,
   testMatButtonsBasic,
+  testMatButtonsExtendedFab,
   testMatButtonsFlat,
   testMatButtonsRaised,
   testMatButtonsStroked,
@@ -88,36 +89,19 @@ describe('example-theme-app: light theme', () => {
   });
 
   it('Extended FAB Buttons should have theme colors', () => {
-    cy.get('.example-label').eq(7).should('have.css', 'color', 'rgb(0, 0, 0)').should('contain.text', 'Extended Fab');
-    cy.get('.example-button-container > button')
-      .eq(8)
-      .should('have.css', 'background-color', 'rgb(204, 229, 255)')
-      .should('have.css', 'color', 'rgb(0, 30, 49)')
-      .should('contain.text', 'Basic');
-    cy.get('.example-button-container > button')
-      .eq(9)
-      .should('have.css', 'background-color', 'rgb(255, 221, 186)')
-      .should('have.css', 'color', 'rgb(43, 23, 0)')
-      .should('contain.text', 'Primary');
-    cy.get('.example-button-container > button')
-      .eq(10)
-      .should('have.css', 'background-color', 'rgb(204, 229, 255)')
-      .should('have.css', 'color', 'rgb(0, 30, 49)')
-      .should('contain.text', 'Accent');
-    cy.get('.example-button-container > button')
-      .eq(11)
-      .should('have.css', 'background-color', 'rgb(255, 221, 186)')
-      .should('have.css', 'color', 'rgb(43, 23, 0)')
-      .should('contain.text', 'Warn');
-    cy.get('.example-button-container > button')
-      .eq(12)
-      .should('have.css', 'background-color', 'color(srgb 0.0941176 0.109804 0.12549 / 0.12)')
-      .should('have.css', 'color', 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)')
-      .should('contain.text', 'Disabled');
-    cy.get('.example-button-container > a')
-      .should('have.css', 'background-color', 'rgb(204, 229, 255)')
-      .should('have.css', 'color', 'rgb(0, 30, 49)')
-      .should('contain.text', 'Link');
+    testMatButtonsExtendedFab(
+      'rgb(0, 0, 0)',
+      'rgb(204, 229, 255)',
+      'rgb(0, 30, 49)',
+      'rgb(255, 221, 186)',
+      'rgb(43, 23, 0)',
+      'rgb(204, 229, 255)',
+      'rgb(0, 30, 49)',
+      'rgb(255, 221, 186)',
+      'rgb(43, 23, 0)',
+      'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
+      'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+    );
   });
 
   it('Inputs should have theme colors', () => {

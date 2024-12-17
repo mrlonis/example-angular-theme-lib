@@ -203,6 +203,51 @@ export function testMatButtonsFlat(
     .should('contain.text', 'Link');
 }
 
+export function testMatButtonsExtendedFab(
+  labelColor: string,
+  basicBackgroundColor: string,
+  basicColor: string,
+  primaryBackgroundColor: string,
+  primaryColor: string,
+  accentBackgroundColor: string,
+  accentColor: string,
+  warnBackgroundColor: string,
+  warnColor: string,
+  disabledBackgroundColor: string,
+  disabledColor: string,
+) {
+  cy.get('.example-label').eq(7).should('have.css', 'color', labelColor).should('contain.text', 'Extended Fab');
+  cy.get('.example-button-container > button')
+    .eq(8)
+    .should('have.css', 'background-color', basicBackgroundColor)
+    .should('have.css', 'color', basicColor)
+    .should('contain.text', 'Basic');
+  cy.get('.example-button-container > button')
+    .eq(9)
+    .should('have.css', 'background-color', primaryBackgroundColor)
+    .should('have.css', 'color', primaryColor)
+    .should('contain.text', 'Primary');
+  cy.get('.example-button-container > button')
+    .eq(10)
+    .should('have.css', 'background-color', accentBackgroundColor)
+    .should('have.css', 'color', accentColor)
+    .should('contain.text', 'Accent');
+  cy.get('.example-button-container > button')
+    .eq(11)
+    .should('have.css', 'background-color', warnBackgroundColor)
+    .should('have.css', 'color', warnColor)
+    .should('contain.text', 'Warn');
+  cy.get('.example-button-container > button')
+    .eq(12)
+    .should('have.css', 'background-color', disabledBackgroundColor)
+    .should('have.css', 'color', disabledColor)
+    .should('contain.text', 'Disabled');
+  cy.get('.example-button-container > a')
+    .should('have.css', 'background-color', basicBackgroundColor)
+    .should('have.css', 'color', basicColor)
+    .should('contain.text', 'Link');
+}
+
 export function testMatInput(color: string, primaryColor: string) {
   cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', color);
   cy.get('input').eq(0).click();
