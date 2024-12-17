@@ -55,8 +55,11 @@ export function testMatButtonsBasic(
 export function testMatButtonsRaised(
   labelColor: string,
   basicColor: string,
+  primaryBackgroundColor: string,
   primaryColor: string,
+  accentBackgroundColor: string,
   accentColor: string,
+  warnBackgroundColor: string,
   warnColor: string,
   backgroundColor: string,
   disabledBackgroundColor: string,
@@ -70,17 +73,17 @@ export function testMatButtonsRaised(
     .should('contain.text', 'Basic');
   cy.get('.example-button-row > button')
     .eq(6)
-    .should('have.css', 'background-color', backgroundColor)
+    .should('have.css', 'background-color', primaryBackgroundColor)
     .should('have.css', 'color', primaryColor)
     .should('contain.text', 'Primary');
   cy.get('.example-button-row > button')
     .eq(7)
-    .should('have.css', 'background-color', backgroundColor)
+    .should('have.css', 'background-color', accentBackgroundColor)
     .should('have.css', 'color', accentColor)
     .should('contain.text', 'Accent');
   cy.get('.example-button-row > button')
     .eq(8)
-    .should('have.css', 'background-color', backgroundColor)
+    .should('have.css', 'background-color', warnBackgroundColor)
     .should('have.css', 'color', warnColor)
     .should('contain.text', 'Warn');
   cy.get('.example-button-row > button')
