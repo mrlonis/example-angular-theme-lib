@@ -18,7 +18,6 @@ describe('example-theme-app: dark theme', () => {
   const primaryColor = 'rgb(145, 205, 255)';
   const accentColor = 'rgb(249, 187, 115)';
   const warnColor = 'rgb(255, 180, 171)';
-  const formFieldPrimaryColor = 'rgba(145, 205, 255, 0.87)';
 
   beforeEach(() => {
     mockPrefersColorScheme('dark');
@@ -26,104 +25,114 @@ describe('example-theme-app: dark theme', () => {
   });
 
   it('Background should have theme colors', () => {
-    testBackground('rgba(0, 0, 0, 0)', 'rgb(255, 255, 255)');
+    testBackground({ backgroundColor: 'rgba(0, 0, 0, 0)', color: 'rgb(255, 255, 255)' });
   });
 
   it('Mat Card should have theme colors', () => {
-    testMatCard('rgb(66, 66, 66)', 'rgba(0, 0, 0, 0)');
+    testMatCard({ marCardBackgroundColor: 'rgb(66, 66, 66)', matCardContentBackgroundColor: 'rgba(0, 0, 0, 0)' });
   });
 
   it('Basic Buttons should have theme colors', () => {
-    testMatButtonsBasic(
-      'rgb(255, 255, 255)',
-      basicColor,
-      primaryColor,
-      accentColor,
-      warnColor,
-      'rgba(0, 0, 0, 0)',
-      'rgba(255, 255, 255, 0.5)',
-    );
+    testMatButtonsBasic({
+      labelColor: 'rgb(255, 255, 255)',
+      basicColor: basicColor,
+      primaryColor: primaryColor,
+      accentColor: accentColor,
+      warnColor: warnColor,
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      disabledColor: 'rgba(255, 255, 255, 0.5)',
+    });
   });
 
   it('Raised Buttons should have theme colors', () => {
-    testMatButtonsRaised(
-      'rgb(255, 255, 255)',
-      basicColor,
-      primaryColor,
-      'rgb(0, 0, 0)',
-      accentColor,
-      'rgb(0, 0, 0)',
-      warnColor,
-      'rgb(0, 0, 0)',
-      'rgb(66, 66, 66)',
-      'rgba(255, 255, 255, 0.12)',
-      'rgba(255, 255, 255, 0.5)',
-    );
+    testMatButtonsRaised({
+      labelColor: 'rgb(255, 255, 255)',
+      basicColor: basicColor,
+      primaryBackgroundColor: primaryColor,
+      primaryColor: 'rgb(0, 0, 0)',
+      accentBackgroundColor: accentColor,
+      accentColor: 'rgb(0, 0, 0)',
+      warnBackgroundColor: warnColor,
+      warnColor: 'rgb(0, 0, 0)',
+      backgroundColor: 'rgb(66, 66, 66)',
+      disabledBackgroundColor: 'rgba(255, 255, 255, 0.12)',
+      disabledColor: 'rgba(255, 255, 255, 0.5)',
+    });
   });
 
   it('Stroked Buttons should have theme colors', () => {
-    testMatButtonsStroked(
-      'rgb(255, 255, 255)',
-      basicColor,
-      primaryColor,
-      accentColor,
-      warnColor,
-      'rgba(0, 0, 0, 0)',
-      'rgba(255, 255, 255, 0.5)',
-    );
+    testMatButtonsStroked({
+      labelColor: 'rgb(255, 255, 255)',
+      basicColor: basicColor,
+      primaryColor: primaryColor,
+      accentColor: accentColor,
+      warnColor: warnColor,
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      disabledColor: 'rgba(255, 255, 255, 0.5)',
+    });
   });
 
   it('Flat Buttons should have theme colors', () => {
-    testMatButtonsFlat(
-      'rgb(255, 255, 255)',
-      basicColor,
-      primaryColor,
-      'rgb(0, 0, 0)',
-      accentColor,
-      'rgb(0, 0, 0)',
-      warnColor,
-      'rgb(0, 0, 0)',
-      'rgb(66, 66, 66)',
-      'rgba(255, 255, 255, 0.12)',
-      'rgba(255, 255, 255, 0.5)',
-    );
+    testMatButtonsFlat({
+      labelColor: 'rgb(255, 255, 255)',
+      basicColor: basicColor,
+      primaryBackgroundColor: primaryColor,
+      primaryColor: 'rgb(0, 0, 0)',
+      accentBackgroundColor: accentColor,
+      accentColor: 'rgb(0, 0, 0)',
+      warnBackgroundColor: warnColor,
+      warnColor: 'rgb(0, 0, 0)',
+      backgroundColor: 'rgb(66, 66, 66)',
+      disabledBackgroundColor: 'rgba(255, 255, 255, 0.12)',
+      disabledColor: 'rgba(255, 255, 255, 0.5)',
+    });
   });
 
   it('Extended FAB Buttons should have theme colors', () => {
-    testMatButtonsExtendedFab(
-      'rgb(255, 255, 255)',
-      accentColor,
-      'rgb(0, 0, 0)',
-      primaryColor,
-      'rgb(0, 0, 0)',
-      accentColor,
-      'rgb(0, 0, 0)',
-      warnColor,
-      'rgb(0, 0, 0)',
-      'rgba(255, 255, 255, 0.12)',
-      'rgba(255, 255, 255, 0.5)',
-    );
+    testMatButtonsExtendedFab({
+      labelColor: 'rgb(255, 255, 255)',
+      basicBackgroundColor: accentColor,
+      basicColor: 'rgb(0, 0, 0)',
+      primaryBackgroundColor: primaryColor
+      primaryColor: 'rgb(0, 0, 0)',
+      accentBackgroundColor: accentColor
+      accentColor: 'rgb(0, 0, 0)',
+      warnBackgroundColor: warnColor
+      warnColor: 'rgb(0, 0, 0)',
+      disabledBackgroundColor: 'rgba(255, 255, 255, 0.12)',
+      disabledColor: 'rgba(255, 255, 255, 0.5)',
+    });
   });
 
   it('Inputs should have theme colors', () => {
-    testMatInput('rgba(255, 255, 255, 0.6)', formFieldPrimaryColor);
+    testMatInput({ initialColor: 'rgba(255, 255, 255, 0.6)', primaryColor: 'rgba(145, 205, 255, 0.87)' });
   });
 
   it('Checkboxes should have theme colors', () => {
-    testMatCheckboxes('rgba(0, 0, 0, 0)', primaryColor, accentColor, warnColor);
+    testMatCheckboxes({
+      uncheckedColor: 'rgba(0, 0, 0, 0)',
+      primaryColor: primaryColor,
+      accentColor: accentColor,
+      warnColor: warnColor,
+    });
   });
 
   it('Radio buttons should have theme colors', () => {
-    testMatRadioButtons(
-      'rgba(0, 0, 0, 0)',
-      'rgb(255, 255, 255)',
-      'rgba(255, 255, 255, 0.54)',
-      accentColor,
-      accentColor,
-    );
+    testMatRadioButtons({
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      uncheckedColor: 'rgb(255, 255, 255)',
+      uncheckedOuterCircleBorderColor: 'rgba(255, 255, 255, 0.54)',
+      uncheckedInnerCircleBorderColor: accentColor,
+      accentColor: accentColor,
+    });
   });
 
   it('Slide Toggle should have theme colors', () => {
-    testMatSlideToggle('rgb(97, 97, 97)', 'rgb(0, 100, 150)', 'rgb(131, 84, 22)', 'rgb(186, 26, 26)');
+    testMatSlideToggle({
+      backgroundColor: 'rgb(97, 97, 97)',
+      primaryColor: 'rgb(0, 100, 150)',
+      accentColor: 'rgb(131, 84, 22)',
+      warnColor: 'rgb(186, 26, 26)',
+    });
   });
 });
