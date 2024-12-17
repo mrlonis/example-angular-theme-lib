@@ -110,10 +110,12 @@
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/example-theme-app/tsconfig.spec.json",
+            "karmaConfig": "projects/example-theme-app/karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": ["projects/example-theme-app/src/favicon.ico", "projects/example-theme-app/src/assets"],
             "styles": ["projects/ngx-example-theme/assets/theme.scss", "projects/example-theme-app/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "codeCoverage": true
           }
         },
         "lint": {
