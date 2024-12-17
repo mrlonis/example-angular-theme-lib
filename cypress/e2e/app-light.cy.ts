@@ -25,11 +25,17 @@ describe('example-theme-app: light theme', () => {
   });
 
   it('Background should have theme colors', () => {
-    testBackground({ backgroundColor: 'rgba(0, 0, 0, 0)', color: 'rgb(0, 0, 0)' });
+    testBackground({
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      color: 'rgb(0, 0, 0)',
+    });
   });
 
   it('Mat Card should have theme colors', () => {
-    testMatCard({ marCardBackgroundColor: 'rgb(255, 255, 255)', matCardContentBackgroundColor: 'rgba(0, 0, 0, 0)' });
+    testMatCard({
+      marCardBackgroundColor: 'rgb(255, 255, 255)',
+      matCardContentBackgroundColor: 'rgba(0, 0, 0, 0)',
+    });
   });
 
   it('Basic Buttons should have theme colors', () => {
@@ -54,7 +60,7 @@ describe('example-theme-app: light theme', () => {
       accentColor: 'rgb(255, 255, 255)',
       warnBackgroundColor: warnColor,
       warnColor: 'rgb(255, 255, 255)',
-      backgroundColor: 'rgb(255, 255, 255)',
+      basicBackgroundColor: 'rgb(255, 255, 255)',
       disabledBackgroundColor: 'rgba(0, 0, 0, 0.12)',
       disabledColor: 'rgba(0, 0, 0, 0.38)',
     });
@@ -82,7 +88,7 @@ describe('example-theme-app: light theme', () => {
       accentColor: 'rgb(255, 255, 255)',
       warnBackgroundColor: warnColor,
       warnColor: 'rgb(255, 255, 255)',
-      backgroundColor: 'rgb(255, 255, 255)',
+      basicBackgroundColor: 'rgb(255, 255, 255)',
       disabledBackgroundColor: 'rgba(0, 0, 0, 0.12)',
       disabledColor: 'rgba(0, 0, 0, 0.38)',
     });
@@ -105,7 +111,10 @@ describe('example-theme-app: light theme', () => {
   });
 
   it('Inputs should have theme colors', () => {
-    testMatInput({ initialColor: 'rgba(0, 0, 0, 0.6)', primaryColor: 'rgba(131, 84, 22, 0.87)' });
+    testMatInput({
+      unfocusedColor: 'rgba(0, 0, 0, 0.6)',
+      focusedColor: 'rgba(131, 84, 22, 0.87)',
+    });
   });
 
   it('Checkboxes should have theme colors', () => {
@@ -120,16 +129,16 @@ describe('example-theme-app: light theme', () => {
   it('Radio buttons should have theme colors', () => {
     testMatRadioButtons({
       backgroundColor: 'rgba(0, 0, 0, 0)',
-      uncheckedColor: 'rgba(0, 0, 0, 0.87)',
+      color: 'rgba(0, 0, 0, 0.87)',
       uncheckedOuterCircleBorderColor: 'rgba(0, 0, 0, 0.54)',
       uncheckedInnerCircleBorderColor: 'rgb(0, 100, 150)',
-      accentColor: accentColor,
+      colorWhenSelected: accentColor,
     });
   });
 
   it('Slide Toggle should have theme colors', () => {
     testMatSlideToggle({
-      backgroundColor: 'rgb(224, 224, 224)',
+      uncheckedColor: 'rgb(224, 224, 224)',
       primaryColor: 'rgb(218, 160, 91)',
       accentColor: 'rgb(101, 178, 237)',
       warnColor: 'rgb(255, 137, 125)',
