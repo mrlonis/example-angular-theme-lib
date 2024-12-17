@@ -18,7 +18,6 @@ describe('example-theme-app: light theme', () => {
   const primaryColor = 'rgb(131, 84, 22)';
   const accentColor = 'rgb(0, 100, 150)';
   const warnColor = 'rgb(186, 26, 26)';
-  const formFieldPrimaryColor = 'rgba(131, 84, 22, 0.87)';
 
   beforeEach(() => {
     mockPrefersColorScheme('light');
