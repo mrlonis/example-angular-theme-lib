@@ -20,20 +20,6 @@ export interface TestMatButtonsBasicArgs {
 
 export interface TestMatButtonsRaisedArgs {
   labelColor: string;
-  basicColor: string;
-  primaryBackgroundColor: string;
-  primaryColor: string;
-  accentBackgroundColor: string;
-  accentColor: string;
-  warnBackgroundColor: string;
-  warnColor: string;
-  backgroundColor: string;
-  disabledBackgroundColor: string;
-  disabledColor: string;
-}
-
-export interface TestMatButtonsExtendedFabArgs {
-  labelColor: string;
   basicBackgroundColor: string;
   basicColor: string;
   primaryBackgroundColor: string;
@@ -47,8 +33,8 @@ export interface TestMatButtonsExtendedFabArgs {
 }
 
 export interface TestMatInputArgs {
-  initialColor: string;
-  primaryColor: string;
+  unfocusedColor: string;
+  focusedColor: string;
 }
 
 export interface TestMatCheckboxesArgs {
@@ -60,14 +46,14 @@ export interface TestMatCheckboxesArgs {
 
 export interface TestMatRadioButtonsArgs {
   backgroundColor: string;
-  uncheckedColor: string;
+  color: string;
   uncheckedOuterCircleBorderColor: string;
   uncheckedInnerCircleBorderColor: string;
-  accentColor: string;
+  colorWhenSelected: string;
 }
 
 export interface TestMatSlideToggleArgs {
-  backgroundColor: string;
+  uncheckedColor: string;
   primaryColor: string;
   accentColor: string;
   warnColor: string;
