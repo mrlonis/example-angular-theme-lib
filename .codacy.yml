@@ -1,0 +1,18 @@
+﻿---
+exclude_paths:
+  - '.github/**'
+  - '.husky/**'
+  - '.vscode/**'
+  - 'docs/**'
+  - 'cypress/downloads/**'
+  - 'cypress/screenshots/**'
+  - 'cypress/support/**'
+  - 'cypress/cypress.config.ts'
+  - '.codacy.yml'
+  - '.editorconfig'
+  - '.gitignore'
+  - '.nvmrc'
+  - '.prettierrc'
+  - 'angular.json'
+  - '**/eslint.config.js'
+  - '**/karma.conf.js'

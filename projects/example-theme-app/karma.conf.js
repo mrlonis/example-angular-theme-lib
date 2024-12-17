@@ -27,12 +27,12 @@ module.exports = function (config) {
       suppressAll: true, // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, '../../test-reports/ngx-example-theme/coverage'),
+      dir: require('path').join(__dirname, '../../test-reports/example-theme-app/coverage'),
       subdir: '.',
       reporters: [{ type: 'html' }, { type: 'text-summary' }, { type: 'lcovonly' }, { type: 'cobertura' }],
     },
     junitReporter: {
-      outputDir: '../../test-reports/ngx-example-theme',
+      outputDir: '../../test-reports/example-theme-app',
     },
     reporters: ['progress', 'kjhtml', 'junit', 'coverage'],
     browsers: ['Chrome', 'Firefox', 'Edge'],
