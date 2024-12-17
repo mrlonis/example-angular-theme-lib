@@ -93,11 +93,11 @@ describe('example-theme-app: dark theme', () => {
       labelColor: 'rgb(255, 255, 255)',
       basicBackgroundColor: accentColor,
       basicColor: 'rgb(0, 0, 0)',
-      primaryBackgroundColor: primaryColor
+      primaryBackgroundColor: primaryColor,
       primaryColor: 'rgb(0, 0, 0)',
-      accentBackgroundColor: accentColor
+      accentBackgroundColor: accentColor,
       accentColor: 'rgb(0, 0, 0)',
-      warnBackgroundColor: warnColor
+      warnBackgroundColor: warnColor,
       warnColor: 'rgb(0, 0, 0)',
       disabledBackgroundColor: 'rgba(255, 255, 255, 0.12)',
       disabledColor: 'rgba(255, 255, 255, 0.5)',
