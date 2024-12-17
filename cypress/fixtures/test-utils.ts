@@ -34,148 +34,67 @@ export function testBackground(args: TestBackgroundArgs) {
 }
 
 export function testMatCard(args: TestMatCardArgs) {
-  cy.get('mat-card').should('have.css', 'background-color', args.marCardBackgroundColor);
-  cy.get('mat-card-content').should('have.css', 'background-color', args.matCardContentBackgroundColor);
+  cy.get('mat-card')
+    .should('have.css', 'background-color', args.marCardBackgroundColor)
+    .find('mat-card-content')
+    .should('have.css', 'background-color', args.matCardContentBackgroundColor);
+}
+
+function buttonAssertions(id: string, backgroundColor: string, color: string, text: string) {
+  cy.get(id)
+    .should('have.css', 'background-color', backgroundColor)
+    .should('have.css', 'color', color)
+    .should('contain.text', text);
 }
 
 export function testMatButtonsBasic(args: TestMatButtonsBasicArgs) {
   cy.get('#basic-label').should('have.css', 'color', args.labelColor).should('contain.text', 'Basic');
-  cy.get('#basic-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.basicColor)
-    .should('contain.text', 'Basic');
-  cy.get('#basic-primary-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.primaryColor)
-    .should('contain.text', 'Primary');
-  cy.get('#basic-accent-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.accentColor)
-    .should('contain.text', 'Accent');
-  cy.get('#basic-warn-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.warnColor)
-    .should('contain.text', 'Warn');
-  cy.get('#basic-disabled-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.disabledColor)
-    .should('contain.text', 'Disabled');
-  cy.get('#basic-link-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.basicColor)
-    .should('contain.text', 'Link');
+  buttonAssertions('#basic-button', args.backgroundColor, args.basicColor, 'Basic');
+  buttonAssertions('#basic-primary-button', args.backgroundColor, args.primaryColor, 'Primary');
+  buttonAssertions('#basic-accent-button', args.backgroundColor, args.accentColor, 'Accent');
+  buttonAssertions('#basic-warn-button', args.backgroundColor, args.warnColor, 'Warn');
+  buttonAssertions('#basic-disabled-button', args.backgroundColor, args.disabledColor, 'Disabled');
+  buttonAssertions('#basic-link-button', args.backgroundColor, args.basicColor, 'Link');
 }
 
 export function testMatButtonsRaised(args: TestMatButtonsRaisedArgs) {
   cy.get('#raised-label').should('have.css', 'color', args.labelColor).should('contain.text', 'Raised');
-  cy.get('#raised-button')
-    .should('have.css', 'background-color', args.basicBackgroundColor)
-    .should('have.css', 'color', args.basicColor)
-    .should('contain.text', 'Basic');
-  cy.get('#raised-primary-button')
-    .should('have.css', 'background-color', args.primaryBackgroundColor)
-    .should('have.css', 'color', args.primaryColor)
-    .should('contain.text', 'Primary');
-  cy.get('#raised-accent-button')
-    .should('have.css', 'background-color', args.accentBackgroundColor)
-    .should('have.css', 'color', args.accentColor)
-    .should('contain.text', 'Accent');
-  cy.get('#raised-warn-button')
-    .should('have.css', 'background-color', args.warnBackgroundColor)
-    .should('have.css', 'color', args.warnColor)
-    .should('contain.text', 'Warn');
-  cy.get('#raised-disabled-button')
-    .should('have.css', 'background-color', args.disabledBackgroundColor)
-    .should('have.css', 'color', args.disabledColor)
-    .should('contain.text', 'Disabled');
-  cy.get('#raised-link-button')
-    .should('have.css', 'background-color', args.basicBackgroundColor)
-    .should('have.css', 'color', args.basicColor)
-    .should('contain.text', 'Link');
+  buttonAssertions('#raised-button', args.basicBackgroundColor, args.basicColor, 'Basic');
+  buttonAssertions('#raised-primary-button', args.primaryBackgroundColor, args.primaryColor, 'Primary');
+  buttonAssertions('#raised-accent-button', args.accentBackgroundColor, args.accentColor, 'Accent');
+  buttonAssertions('#raised-warn-button', args.warnBackgroundColor, args.warnColor, 'Warn');
+  buttonAssertions('#raised-disabled-button', args.disabledBackgroundColor, args.disabledColor, 'Disabled');
+  buttonAssertions('#raised-link-button', args.basicBackgroundColor, args.basicColor, 'Link');
 }
 
 export function testMatButtonsStroked(args: TestMatButtonsBasicArgs) {
   cy.get('#stroked-label').should('have.css', 'color', args.labelColor).should('contain.text', 'Stroked');
-  cy.get('#stroked-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.basicColor)
-    .should('contain.text', 'Basic');
-  cy.get('#stroked-primary-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.primaryColor)
-    .should('contain.text', 'Primary');
-  cy.get('#stroked-accent-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.accentColor)
-    .should('contain.text', 'Accent');
-  cy.get('#stroked-warn-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.warnColor)
-    .should('contain.text', 'Warn');
-  cy.get('#stroked-disabled-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.disabledColor)
-    .should('contain.text', 'Disabled');
-  cy.get('#stroked-link-button')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.basicColor)
-    .should('contain.text', 'Link');
+  buttonAssertions('#stroked-button', args.backgroundColor, args.basicColor, 'Basic');
+  buttonAssertions('#stroked-primary-button', args.backgroundColor, args.primaryColor, 'Primary');
+  buttonAssertions('#stroked-accent-button', args.backgroundColor, args.accentColor, 'Accent');
+  buttonAssertions('#stroked-warn-button', args.backgroundColor, args.warnColor, 'Warn');
+  buttonAssertions('#stroked-disabled-button', args.backgroundColor, args.disabledColor, 'Disabled');
+  buttonAssertions('#stroked-link-button', args.backgroundColor, args.basicColor, 'Link');
 }
 
 export function testMatButtonsFlat(args: TestMatButtonsRaisedArgs) {
   cy.get('#flat-label').should('have.css', 'color', args.labelColor).should('contain.text', 'Flat');
-  cy.get('#flat-button')
-    .should('have.css', 'background-color', args.basicBackgroundColor)
-    .should('have.css', 'color', args.basicColor)
-    .should('contain.text', 'Basic');
-  cy.get('#flat-primary-button')
-    .should('have.css', 'background-color', args.primaryBackgroundColor)
-    .should('have.css', 'color', args.primaryColor)
-    .should('contain.text', 'Primary');
-  cy.get('#flat-accent-button')
-    .should('have.css', 'background-color', args.accentBackgroundColor)
-    .should('have.css', 'color', args.accentColor)
-    .should('contain.text', 'Accent');
-  cy.get('#flat-warn-button')
-    .should('have.css', 'background-color', args.warnBackgroundColor)
-    .should('have.css', 'color', args.warnColor)
-    .should('contain.text', 'Warn');
-  cy.get('#flat-disabled-button')
-    .should('have.css', 'background-color', args.disabledBackgroundColor)
-    .should('have.css', 'color', args.disabledColor)
-    .should('contain.text', 'Disabled');
-  cy.get('#flat-link-button')
-    .should('have.css', 'background-color', args.basicBackgroundColor)
-    .should('have.css', 'color', args.basicColor)
-    .should('contain.text', 'Link');
+  buttonAssertions('#flat-button', args.basicBackgroundColor, args.basicColor, 'Basic');
+  buttonAssertions('#flat-primary-button', args.primaryBackgroundColor, args.primaryColor, 'Primary');
+  buttonAssertions('#flat-accent-button', args.accentBackgroundColor, args.accentColor, 'Accent');
+  buttonAssertions('#flat-warn-button', args.warnBackgroundColor, args.warnColor, 'Warn');
+  buttonAssertions('#flat-disabled-button', args.disabledBackgroundColor, args.disabledColor, 'Disabled');
+  buttonAssertions('#flat-link-button', args.basicBackgroundColor, args.basicColor, 'Link');
 }
 
 export function testMatButtonsExtendedFab(args: TestMatButtonsRaisedArgs) {
   cy.get('#extended-fab-label').should('have.css', 'color', args.labelColor).should('contain.text', 'Extended Fab');
-  cy.get('#extendedFabButton')
-    .should('have.css', 'background-color', args.basicBackgroundColor)
-    .should('have.css', 'color', args.basicColor)
-    .should('contain.text', 'Basic');
-  cy.get('#extended-fab-primary-button')
-    .should('have.css', 'background-color', args.primaryBackgroundColor)
-    .should('have.css', 'color', args.primaryColor)
-    .should('contain.text', 'Primary');
-  cy.get('#extended-fab-accent-button')
-    .should('have.css', 'background-color', args.accentBackgroundColor)
-    .should('have.css', 'color', args.accentColor)
-    .should('contain.text', 'Accent');
-  cy.get('#extended-fab-warn-button')
-    .should('have.css', 'background-color', args.warnBackgroundColor)
-    .should('have.css', 'color', args.warnColor)
-    .should('contain.text', 'Warn');
-  cy.get('#extended-fab-disabled-button')
-    .should('have.css', 'background-color', args.disabledBackgroundColor)
-    .should('have.css', 'color', args.disabledColor)
-    .should('contain.text', 'Disabled');
-  cy.get('#extended-fab-link-button')
-    .should('have.css', 'background-color', args.basicBackgroundColor)
-    .should('have.css', 'color', args.basicColor)
-    .should('contain.text', 'Link');
+  buttonAssertions('#extendedFabButton', args.basicBackgroundColor, args.basicColor, 'Basic');
+  buttonAssertions('#extended-fab-primary-button', args.primaryBackgroundColor, args.primaryColor, 'Primary');
+  buttonAssertions('#extended-fab-accent-button', args.accentBackgroundColor, args.accentColor, 'Accent');
+  buttonAssertions('#extended-fab-warn-button', args.warnBackgroundColor, args.warnColor, 'Warn');
+  buttonAssertions('#extended-fab-disabled-button', args.disabledBackgroundColor, args.disabledColor, 'Disabled');
+  buttonAssertions('#extended-fab-link-button', args.basicBackgroundColor, args.basicColor, 'Link');
 }
 
 export function testMatInput(args: TestMatInputArgs) {
@@ -185,143 +104,92 @@ export function testMatInput(args: TestMatInputArgs) {
 }
 
 export function testMatCheckboxes(args: TestMatCheckboxesArgs) {
-  cy.get('#check-me-checkbox')
-    .find('.mdc-checkbox__background')
-    .should('have.css', 'background-color', args.uncheckedColor);
+  function checkboxAssertions(id: string, backgroundColor: string) {
+    cy.get(id).find('.mdc-checkbox__background').should('have.css', 'background-color', backgroundColor);
+  }
+
+  checkboxAssertions('#check-me-checkbox', args.uncheckedColor);
   cy.get('#check-me-checkbox').click();
-  cy.get('#check-me-checkbox')
-    .find('.mdc-checkbox__background')
-    .should('have.css', 'background-color', args.accentColor);
+  checkboxAssertions('#check-me-checkbox', args.accentColor);
 
   cy.get('#disabled-checkbox').find('input').should('be.disabled');
 
   cy.get('#indeterminate-checkbox').click();
-  cy.get('#primary-checkbox')
-    .find('.mdc-checkbox__background')
-    .should('have.css', 'background-color', args.primaryColor);
-  cy.get('#accent-checkbox').find('.mdc-checkbox__background').should('have.css', 'background-color', args.accentColor);
-  cy.get('#warn-checkbox').find('.mdc-checkbox__background').should('have.css', 'background-color', args.warnColor);
+  checkboxAssertions('#primary-checkbox', args.primaryColor);
+  checkboxAssertions('#accent-checkbox', args.accentColor);
+  checkboxAssertions('#warn-checkbox', args.warnColor);
 }
 
 export function testMatRadioButtons(args: TestMatRadioButtonsArgs) {
-  cy.get('#option-1-radio')
-    .find('.mdc-radio__background')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.color);
-  cy.get('#option-1-radio')
-    .find('.mdc-radio__background')
-    .find('.mdc-radio__outer-circle')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.color)
-    .should('have.css', 'border-bottom-color', args.uncheckedOuterCircleBorderColor)
-    .should('have.css', 'border-left-color', args.uncheckedOuterCircleBorderColor)
-    .should('have.css', 'border-right-color', args.uncheckedOuterCircleBorderColor)
-    .should('have.css', 'border-top-color', args.uncheckedOuterCircleBorderColor);
-  cy.get('#option-1-radio')
-    .find('.mdc-radio__background')
-    .find('.mdc-radio__inner-circle')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.color)
-    .should('have.css', 'border-bottom-color', args.uncheckedInnerCircleBorderColor)
-    .should('have.css', 'border-left-color', args.uncheckedInnerCircleBorderColor)
-    .should('have.css', 'border-right-color', args.uncheckedInnerCircleBorderColor)
-    .should('have.css', 'border-top-color', args.uncheckedInnerCircleBorderColor);
+  function radioAssertions(
+    backgroundColor: string,
+    color: string,
+    uncheckedOuterCircleBorderColor: string,
+    uncheckedInnerCircleBorderColor: string,
+  ) {
+    cy.get('#option-1-radio')
+      .find('.mdc-radio__background')
+      .should('have.css', 'background-color', backgroundColor)
+      .should('have.css', 'color', color);
+    cy.get('#option-1-radio')
+      .find('.mdc-radio__outer-circle')
+      .should('have.css', 'background-color', backgroundColor)
+      .should('have.css', 'color', color)
+      .should('have.css', 'border-bottom-color', uncheckedOuterCircleBorderColor)
+      .should('have.css', 'border-left-color', uncheckedOuterCircleBorderColor)
+      .should('have.css', 'border-right-color', uncheckedOuterCircleBorderColor)
+      .should('have.css', 'border-top-color', uncheckedOuterCircleBorderColor);
+    cy.get('#option-1-radio')
+      .find('.mdc-radio__inner-circle')
+      .should('have.css', 'background-color', backgroundColor)
+      .should('have.css', 'color', color)
+      .should('have.css', 'border-bottom-color', uncheckedInnerCircleBorderColor)
+      .should('have.css', 'border-left-color', uncheckedInnerCircleBorderColor)
+      .should('have.css', 'border-right-color', uncheckedInnerCircleBorderColor)
+      .should('have.css', 'border-top-color', uncheckedInnerCircleBorderColor);
+  }
 
+  radioAssertions(
+    args.backgroundColor,
+    args.color,
+    args.uncheckedOuterCircleBorderColor,
+    args.uncheckedInnerCircleBorderColor,
+  );
   cy.get('#option-1-radio').click();
-
-  cy.get('#option-1-radio')
-    .find('.mdc-radio__background')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.color);
-  cy.get('#option-1-radio')
-    .find('.mdc-radio__background')
-    .find('.mdc-radio__outer-circle')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.color)
-    .should('have.css', 'border-bottom-color', args.colorWhenSelected)
-    .should('have.css', 'border-left-color', args.colorWhenSelected)
-    .should('have.css', 'border-right-color', args.colorWhenSelected)
-    .should('have.css', 'border-top-color', args.colorWhenSelected);
-  cy.get('#option-1-radio')
-    .find('.mdc-radio__background')
-    .find('.mdc-radio__inner-circle')
-    .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.color)
-    .should('have.css', 'border-bottom-color', args.colorWhenSelected)
-    .should('have.css', 'border-left-color', args.colorWhenSelected)
-    .should('have.css', 'border-right-color', args.colorWhenSelected)
-    .should('have.css', 'border-top-color', args.colorWhenSelected);
+  radioAssertions(args.backgroundColor, args.color, args.colorWhenSelected, args.colorWhenSelected);
 }
 
 export function testMatSlideToggle(args: TestMatSlideToggleArgs) {
-  // Accent color is the default
-  cy.get('mat-slide-toggle')
-    .find('.mdc-switch__track')
-    .then(($els) => {
-      // get Window reference from element
-      const win = $els[0].ownerDocument.defaultView;
-      // use getComputedStyle to read the pseudo selector
-      const before = win?.getComputedStyle($els[0], 'before');
-      let contentValue = before?.getPropertyValue('background-color');
-      expect(contentValue).to.eq(args.uncheckedColor);
+  function pseudoCssAssertions($els: JQuery<HTMLElement>, uncheckedColor: string, checkedColor: string) {
+    // get Window reference from element
+    const win = $els[0].ownerDocument.defaultView;
+    // use getComputedStyle to read the pseudo selector
+    const before = win?.getComputedStyle($els[0], 'before');
+    let contentValue = before?.getPropertyValue('background-color');
+    expect(contentValue).to.eq(uncheckedColor);
 
-      // use getComputedStyle to read the pseudo selector
-      const after = win?.getComputedStyle($els[0], 'after');
-      contentValue = after?.getPropertyValue('background-color');
-      expect(contentValue).to.eq(args.accentColor);
-    });
+    // use getComputedStyle to read the pseudo selector
+    const after = win?.getComputedStyle($els[0], 'after');
+    contentValue = after?.getPropertyValue('background-color');
+    expect(contentValue).to.eq(checkedColor);
+  }
 
-  // Primary
+  function slideToggleAssertions(uncheckedColor: string, checkedColor: string) {
+    cy.get('mat-slide-toggle')
+      .find('.mdc-switch__track')
+      .then(($els) => {
+        pseudoCssAssertions($els, uncheckedColor, checkedColor);
+      });
+  }
+
+  slideToggleAssertions(args.uncheckedColor, args.accentColor);
+
   cy.get('#slide-toggle-primary-radio').click();
-  cy.get('mat-slide-toggle')
-    .find('.mdc-switch__track')
-    .then(($els) => {
-      // get Window reference from element
-      const win = $els[0].ownerDocument.defaultView;
-      // use getComputedStyle to read the pseudo selector
-      const before = win?.getComputedStyle($els[0], 'before');
-      let contentValue = before?.getPropertyValue('background-color');
-      expect(contentValue).to.eq(args.uncheckedColor);
+  slideToggleAssertions(args.uncheckedColor, args.primaryColor);
 
-      // use getComputedStyle to read the pseudo selector
-      const after = win?.getComputedStyle($els[0], 'after');
-      contentValue = after?.getPropertyValue('background-color');
-      expect(contentValue).to.eq(args.primaryColor);
-    });
-
-  // Warn
   cy.get('#slide-toggle-warn-radio').click();
-  cy.get('mat-slide-toggle')
-    .find('.mdc-switch__track')
-    .then(($els) => {
-      // get Window reference from element
-      const win = $els[0].ownerDocument.defaultView;
-      // use getComputedStyle to read the pseudo selector
-      const before = win?.getComputedStyle($els[0], 'before');
-      let contentValue = before?.getPropertyValue('background-color');
-      expect(contentValue).to.eq(args.uncheckedColor);
+  slideToggleAssertions(args.uncheckedColor, args.warnColor);
 
-      // use getComputedStyle to read the pseudo selector
-      const after = win?.getComputedStyle($els[0], 'after');
-      contentValue = after?.getPropertyValue('background-color');
-      expect(contentValue).to.eq(args.warnColor);
-    });
-
-  // Accent
   cy.get('#slide-toggle-accent-radio').click();
-  cy.get('mat-slide-toggle')
-    .find('.mdc-switch__track')
-    .then(($els) => {
-      // get Window reference from element
-      const win = $els[0].ownerDocument.defaultView;
-      // use getComputedStyle to read the pseudo selector
-      const before = win?.getComputedStyle($els[0], 'before');
-      let contentValue = before?.getPropertyValue('background-color');
-      expect(contentValue).to.eq(args.uncheckedColor);
-
-      // use getComputedStyle to read the pseudo selector
-      const after = win?.getComputedStyle($els[0], 'after');
-      contentValue = after?.getPropertyValue('background-color');
-      expect(contentValue).to.eq(args.accentColor);
-    });
+  slideToggleAssertions(args.uncheckedColor, args.accentColor);
 }
