@@ -59,6 +59,7 @@ describe('example-theme-app: dark theme', () => {
     testMatButtonsRaised(
       'rgb(255, 255, 255)',
       basicColor,
+      'rgb(16, 20, 23)',
       primaryColor,
       'rgb(0, 0, 0)',
       accentColor,
