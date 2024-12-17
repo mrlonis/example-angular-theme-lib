@@ -193,7 +193,7 @@ export function testMatCheckboxes(args: TestMatCheckboxesArgs) {
     .find('.mdc-checkbox__background')
     .should('have.css', 'background-color', args.accentColor);
 
-  cy.get('#disabledCheckbox').find('input').should('be.disabled');
+  cy.get('#disabled-checkbox').find('input').should('be.disabled');
 
   cy.get('#indeterminate-checkbox').click();
   cy.get('#primaryCheckbox')
