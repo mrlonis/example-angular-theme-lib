@@ -1,7 +1,6 @@
 import {
   TestBackgroundArgs,
   TestMatButtonsBasicArgs,
-  TestMatButtonsExtendedFabArgs,
   TestMatButtonsRaisedArgs,
   TestMatCardArgs,
   TestMatCheckboxesArgs,
@@ -77,7 +76,7 @@ export function testMatButtonsRaised(args: TestMatButtonsRaisedArgs) {
   cy.get('.example-label').eq(1).should('have.css', 'color', args.labelColor).should('contain.text', 'Raised');
   cy.get('.example-button-row > button')
     .eq(5)
-    .should('have.css', 'background-color', args.backgroundColor)
+    .should('have.css', 'background-color', args.basicBackgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Basic');
   cy.get('.example-button-row > button')
@@ -102,7 +101,7 @@ export function testMatButtonsRaised(args: TestMatButtonsRaisedArgs) {
     .should('contain.text', 'Disabled');
   cy.get('.example-button-row > a')
     .eq(1)
-    .should('have.css', 'background-color', args.backgroundColor)
+    .should('have.css', 'background-color', args.basicBackgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Link');
 }
@@ -145,7 +144,7 @@ export function testMatButtonsFlat(args: TestMatButtonsRaisedArgs) {
   cy.get('.example-label').eq(3).should('have.css', 'color', args.labelColor).should('contain.text', 'Flat');
   cy.get('.example-button-row > button')
     .eq(15)
-    .should('have.css', 'background-color', args.backgroundColor)
+    .should('have.css', 'background-color', args.basicBackgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Basic');
   cy.get('.example-button-row > button')
@@ -170,12 +169,12 @@ export function testMatButtonsFlat(args: TestMatButtonsRaisedArgs) {
     .should('contain.text', 'Disabled');
   cy.get('.example-button-row > a')
     .eq(3)
-    .should('have.css', 'background-color', args.backgroundColor)
+    .should('have.css', 'background-color', args.basicBackgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Link');
 }
 
-export function testMatButtonsExtendedFab(args: TestMatButtonsExtendedFabArgs) {
+export function testMatButtonsExtendedFab(args: TestMatButtonsRaisedArgs) {
   cy.get('.example-label').eq(7).should('have.css', 'color', args.labelColor).should('contain.text', 'Extended Fab');
   cy.get('.example-button-container > button')
     .eq(8)
@@ -209,9 +208,9 @@ export function testMatButtonsExtendedFab(args: TestMatButtonsExtendedFabArgs) {
 }
 
 export function testMatInput(args: TestMatInputArgs) {
-  cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', args.initialColor);
+  cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', args.unfocusedColor);
   cy.get('input').eq(0).click();
-  cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', args.primaryColor);
+  cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', args.focusedColor);
 }
 
 export function testMatCheckboxes(args: TestMatCheckboxesArgs) {
@@ -231,12 +230,12 @@ export function testMatRadioButtons(args: TestMatRadioButtonsArgs) {
   cy.get('.mdc-radio__background')
     .eq(0)
     .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.uncheckedColor);
+    .should('have.css', 'color', args.color);
   cy.get('.mdc-radio__background')
     .eq(0)
     .find('.mdc-radio__outer-circle')
     .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.uncheckedColor)
+    .should('have.css', 'color', args.color)
     .should('have.css', 'border-bottom-color', args.uncheckedOuterCircleBorderColor)
     .should('have.css', 'border-left-color', args.uncheckedOuterCircleBorderColor)
     .should('have.css', 'border-right-color', args.uncheckedOuterCircleBorderColor)
@@ -245,7 +244,7 @@ export function testMatRadioButtons(args: TestMatRadioButtonsArgs) {
     .eq(0)
     .find('.mdc-radio__inner-circle')
     .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.uncheckedColor)
+    .should('have.css', 'color', args.color)
     .should('have.css', 'border-bottom-color', args.uncheckedInnerCircleBorderColor)
     .should('have.css', 'border-left-color', args.uncheckedInnerCircleBorderColor)
     .should('have.css', 'border-right-color', args.uncheckedInnerCircleBorderColor)
@@ -256,25 +255,25 @@ export function testMatRadioButtons(args: TestMatRadioButtonsArgs) {
   cy.get('.mdc-radio__background')
     .eq(0)
     .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.uncheckedColor);
+    .should('have.css', 'color', args.color);
   cy.get('.mdc-radio__background')
     .eq(0)
     .find('.mdc-radio__outer-circle')
     .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.uncheckedColor)
-    .should('have.css', 'border-bottom-color', args.accentColor)
-    .should('have.css', 'border-left-color', args.accentColor)
-    .should('have.css', 'border-right-color', args.accentColor)
-    .should('have.css', 'border-top-color', args.accentColor);
+    .should('have.css', 'color', args.color)
+    .should('have.css', 'border-bottom-color', args.colorWhenSelected)
+    .should('have.css', 'border-left-color', args.colorWhenSelected)
+    .should('have.css', 'border-right-color', args.colorWhenSelected)
+    .should('have.css', 'border-top-color', args.colorWhenSelected);
   cy.get('.mdc-radio__background')
     .eq(0)
     .find('.mdc-radio__inner-circle')
     .should('have.css', 'background-color', args.backgroundColor)
-    .should('have.css', 'color', args.uncheckedColor)
-    .should('have.css', 'border-bottom-color', args.accentColor)
-    .should('have.css', 'border-left-color', args.accentColor)
-    .should('have.css', 'border-right-color', args.accentColor)
-    .should('have.css', 'border-top-color', args.accentColor);
+    .should('have.css', 'color', args.color)
+    .should('have.css', 'border-bottom-color', args.colorWhenSelected)
+    .should('have.css', 'border-left-color', args.colorWhenSelected)
+    .should('have.css', 'border-right-color', args.colorWhenSelected)
+    .should('have.css', 'border-top-color', args.colorWhenSelected);
 }
 
 export function testMatSlideToggle(args: TestMatSlideToggleArgs) {
@@ -287,7 +286,7 @@ export function testMatSlideToggle(args: TestMatSlideToggleArgs) {
       // use getComputedStyle to read the pseudo selector
       const before = win?.getComputedStyle($els[0], 'before');
       let contentValue = before?.getPropertyValue('background-color');
-      expect(contentValue).to.eq(args.backgroundColor);
+      expect(contentValue).to.eq(args.uncheckedColor);
 
       // use getComputedStyle to read the pseudo selector
       const after = win?.getComputedStyle($els[0], 'after');
@@ -305,7 +304,7 @@ export function testMatSlideToggle(args: TestMatSlideToggleArgs) {
       // use getComputedStyle to read the pseudo selector
       const before = win?.getComputedStyle($els[0], 'before');
       let contentValue = before?.getPropertyValue('background-color');
-      expect(contentValue).to.eq(args.backgroundColor);
+      expect(contentValue).to.eq(args.uncheckedColor);
 
       // use getComputedStyle to read the pseudo selector
       const after = win?.getComputedStyle($els[0], 'after');
@@ -323,7 +322,7 @@ export function testMatSlideToggle(args: TestMatSlideToggleArgs) {
       // use getComputedStyle to read the pseudo selector
       const before = win?.getComputedStyle($els[0], 'before');
       let contentValue = before?.getPropertyValue('background-color');
-      expect(contentValue).to.eq(args.backgroundColor);
+      expect(contentValue).to.eq(args.uncheckedColor);
 
       // use getComputedStyle to read the pseudo selector
       const after = win?.getComputedStyle($els[0], 'after');
