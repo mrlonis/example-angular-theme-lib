@@ -196,11 +196,11 @@ export function testMatCheckboxes(args: TestMatCheckboxesArgs) {
   cy.get('#disabled-checkbox').find('input').should('be.disabled');
 
   cy.get('#indeterminate-checkbox').click();
-  cy.get('#primaryCheckbox')
+  cy.get('#primary-checkbox')
     .find('.mdc-checkbox__background')
     .should('have.css', 'background-color', args.primaryColor);
-  cy.get('#accentCheckbox').find('.mdc-checkbox__background').should('have.css', 'background-color', args.accentColor);
-  cy.get('#warnCheckbox').find('.mdc-checkbox__background').should('have.css', 'background-color', args.warnColor);
+  cy.get('#accent-checkbox').find('.mdc-checkbox__background').should('have.css', 'background-color', args.accentColor);
+  cy.get('#warn-checkbox').find('.mdc-checkbox__background').should('have.css', 'background-color', args.warnColor);
 }
 
 export function testMatRadioButtons(args: TestMatRadioButtonsArgs) {

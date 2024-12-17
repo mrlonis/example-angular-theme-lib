@@ -24,7 +24,7 @@
             [(ngModel)]="subtask.completed"
             [color]="subtask.color"
             (ngModelChange)="updateAllComplete()"
-            [id]="subtask.color + 'Checkbox'"
+            [id]="subtask.color + '-checkbox'"
           >
             {{ subtask.name }}
           </mat-checkbox>
