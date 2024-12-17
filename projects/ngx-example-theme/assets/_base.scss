@@ -134,11 +134,18 @@
   @include mat.slide-toggle-color($alt-theme);
 }
 
-@mixin set-mat-component-themes($dark-theme, $light-theme) {
+@mixin set-mat-component-themes($dark-theme, $light-theme, $m2-backwards-compatibility-dark-theme-font-color: false) {
   // Apply the dark theme by default
   @include set-all-component-themes($dark-theme, $dark-theme);
   @include set-all-system-level-mixins($dark-theme);
   @include set-backwards-compatibility-mixins($dark-theme);
+  @if $m2-backwards-compatibility-dark-theme-font-color {
+    @media (prefers-color-scheme: dark) {
+      html {
+        color: white;
+      }
+    }
+  }
 
   @media (prefers-color-scheme: light) {
     // Use the `-color` mixins to only apply color styles without reapplying the same typography and density styles.

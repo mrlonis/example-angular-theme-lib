@@ -128,7 +128,7 @@ $error-palette: (
   $dark-theme: mat.define-dark-theme(get-legacy-dark-theme-config());
   $light-theme: mat.define-light-theme(get-legacy-light-theme-config());
 
-  @include base.set-mat-component-themes($dark-theme, $light-theme);
+  @include base.set-mat-component-themes($dark-theme, $light-theme, true);
 }
 
 @mixin define-m2-theme() {
@@ -136,5 +136,5 @@ $error-palette: (
   $dark-theme: mat.m2-define-dark-theme(get-legacy-dark-theme-config());
   $light-theme: mat.m2-define-light-theme(get-legacy-light-theme-config());
 
-  @include base.set-mat-component-themes($dark-theme, $light-theme);
+  @include base.set-mat-component-themes($dark-theme, $light-theme, true);
 }
