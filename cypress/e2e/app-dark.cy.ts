@@ -60,10 +60,13 @@ describe('example-theme-app: dark theme', () => {
       'rgb(255, 255, 255)',
       basicColor,
       primaryColor,
+      'rgb(0, 0, 0)',
       accentColor,
+      'rgb(0, 0, 0)',
       warnColor,
+      'rgb(0, 0, 0)',
       'rgb(66, 66, 66)',
-      'rgba(224, 226, 231, 0.12)',
+      'rgba(255, 255, 255, 0.12)',
       'rgba(255, 255, 255, 0.5)',
     );
   });
