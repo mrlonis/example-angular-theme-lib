@@ -8,6 +8,6 @@ import { MatInputModule } from '@angular/material/input';
   selector: 'app-example-inputs',
   imports: [FormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './example-inputs.component.html',
-  styleUrl: './example-inputs.component.scss',
+  styleUrls: ['./example-inputs.component.scss'],
 })
 export class ExampleInputsComponent {}

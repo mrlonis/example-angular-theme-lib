@@ -18,18 +18,16 @@
   </span>
   <span class="example-list-section">
     <ul>
-      @for (subtask of task.subtasks; track $index) {
-        <li>
-          <mat-checkbox
-            [(ngModel)]="subtask.completed"
-            [color]="subtask.color"
-            (ngModelChange)="updateAllComplete()"
-            [id]="subtask.color + '-checkbox'"
-          >
-            {{ subtask.name }}
-          </mat-checkbox>
-        </li>
-      }
+      <li *ngFor="let subtask of task.subtasks">
+        <mat-checkbox
+          [(ngModel)]="subtask.completed"
+          [color]="subtask.color"
+          (ngModelChange)="updateAllComplete()"
+          [id]="subtask.color + '-checkbox'"
+        >
+          {{ subtask.name }}
+        </mat-checkbox>
+      </li>
     </ul>
   </span>
 </section>

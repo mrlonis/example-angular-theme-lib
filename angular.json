@@ -37,7 +37,7 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": ["projects/ngx-example-theme/**/*.ts", "projects/ngx-example-theme/**/*.html"],
-            "eslintConfig": "projects/ngx-example-theme/eslint.config.js"
+            "eslintConfig": "projects/ngx-example-theme/.eslintrc.json"
           }
         }
       }
@@ -62,12 +62,7 @@
             "polyfills": ["zone.js"],
             "tsConfig": "projects/example-theme-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/example-theme-app/public"
-              }
-            ],
+            "assets": ["projects/example-theme-app/src/favicon.ico", "projects/example-theme-app/src/assets"],
             "styles": ["projects/ngx-example-theme/assets/theme.scss", "projects/example-theme-app/src/styles.scss"],
             "scripts": []
           },
@@ -99,10 +94,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "example-theme-app:build:production"
+              "browserTarget": "example-theme-app:build:production"
             },
             "development": {
-              "buildTarget": "example-theme-app:build:development"
+              "browserTarget": "example-theme-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -117,12 +112,7 @@
             "tsConfig": "projects/example-theme-app/tsconfig.spec.json",
             "karmaConfig": "projects/example-theme-app/karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/example-theme-app/public"
-              }
-            ],
+            "assets": ["projects/example-theme-app/src/favicon.ico", "projects/example-theme-app/src/assets"],
             "styles": ["projects/ngx-example-theme/assets/theme.scss", "projects/example-theme-app/src/styles.scss"],
             "scripts": [],
             "codeCoverage": true
@@ -132,7 +122,7 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": ["projects/example-theme-app/**/*.ts", "projects/example-theme-app/**/*.html"],
-            "eslintConfig": "projects/example-theme-app/eslint.config.js"
+            "eslintConfig": "projects/example-theme-app/.eslintrc.json"
           }
         }
       }
