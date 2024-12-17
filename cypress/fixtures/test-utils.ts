@@ -39,200 +39,173 @@ export function testMatCard(args: TestMatCardArgs) {
 }
 
 export function testMatButtonsBasic(args: TestMatButtonsBasicArgs) {
-  cy.get('.example-label').eq(0).should('have.css', 'color', args.labelColor).should('contain.text', 'Basic');
-  cy.get('.example-button-row > button')
-    .eq(0)
+  cy.get('#basicLabel').should('have.css', 'color', args.labelColor).should('contain.text', 'Basic');
+  cy.get('#basicButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Basic');
-  cy.get('.example-button-row > button')
-    .eq(1)
+  cy.get('#basicPrimaryButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.primaryColor)
     .should('contain.text', 'Primary');
-  cy.get('.example-button-row > button')
-    .eq(2)
+  cy.get('#basicAccentButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.accentColor)
     .should('contain.text', 'Accent');
-  cy.get('.example-button-row > button')
-    .eq(3)
+  cy.get('#basicWarnButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.warnColor)
     .should('contain.text', 'Warn');
-  cy.get('.example-button-row > button')
-    .eq(4)
+  cy.get('#basicDisabledButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.disabledColor)
     .should('contain.text', 'Disabled');
-  cy.get('.example-button-row > a')
-    .eq(0)
+  cy.get('#basicLinkButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Link');
 }
 
 export function testMatButtonsRaised(args: TestMatButtonsRaisedArgs) {
-  cy.get('.example-label').eq(1).should('have.css', 'color', args.labelColor).should('contain.text', 'Raised');
-  cy.get('.example-button-row > button')
-    .eq(5)
+  cy.get('#raisedLabel').should('have.css', 'color', args.labelColor).should('contain.text', 'Raised');
+  cy.get('#raisedButton')
     .should('have.css', 'background-color', args.basicBackgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Basic');
-  cy.get('.example-button-row > button')
-    .eq(6)
+  cy.get('#raisedPrimaryButton')
     .should('have.css', 'background-color', args.primaryBackgroundColor)
     .should('have.css', 'color', args.primaryColor)
     .should('contain.text', 'Primary');
-  cy.get('.example-button-row > button')
-    .eq(7)
+  cy.get('#raisedAccentButton')
     .should('have.css', 'background-color', args.accentBackgroundColor)
     .should('have.css', 'color', args.accentColor)
     .should('contain.text', 'Accent');
-  cy.get('.example-button-row > button')
-    .eq(8)
+  cy.get('#raisedWarnButton')
     .should('have.css', 'background-color', args.warnBackgroundColor)
     .should('have.css', 'color', args.warnColor)
     .should('contain.text', 'Warn');
-  cy.get('.example-button-row > button')
-    .eq(9)
+  cy.get('#raisedDisabledButton')
     .should('have.css', 'background-color', args.disabledBackgroundColor)
     .should('have.css', 'color', args.disabledColor)
     .should('contain.text', 'Disabled');
-  cy.get('.example-button-row > a')
-    .eq(1)
+  cy.get('#raisedLinkButton')
     .should('have.css', 'background-color', args.basicBackgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Link');
 }
 
 export function testMatButtonsStroked(args: TestMatButtonsBasicArgs) {
-  cy.get('.example-label').eq(2).should('have.css', 'color', args.labelColor).should('contain.text', 'Stroked');
-  cy.get('.example-button-row > button')
-    .eq(10)
+  cy.get('#strokedLabel').should('have.css', 'color', args.labelColor).should('contain.text', 'Stroked');
+  cy.get('#strokedButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Basic');
-  cy.get('.example-button-row > button')
-    .eq(11)
+  cy.get('#strokedPrimaryButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.primaryColor)
     .should('contain.text', 'Primary');
-  cy.get('.example-button-row > button')
-    .eq(12)
+  cy.get('#strokedAccentButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.accentColor)
     .should('contain.text', 'Accent');
-  cy.get('.example-button-row > button')
-    .eq(13)
+  cy.get('#strokedWarnButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.warnColor)
     .should('contain.text', 'Warn');
-  cy.get('.example-button-row > button')
-    .eq(14)
+  cy.get('#strokedDisabledButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.disabledColor)
     .should('contain.text', 'Disabled');
-  cy.get('.example-button-row > a')
-    .eq(2)
+  cy.get('#strokedLinkButton')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Link');
 }
 
 export function testMatButtonsFlat(args: TestMatButtonsRaisedArgs) {
-  cy.get('.example-label').eq(3).should('have.css', 'color', args.labelColor).should('contain.text', 'Flat');
-  cy.get('.example-button-row > button')
-    .eq(15)
+  cy.get('#flatLabel').should('have.css', 'color', args.labelColor).should('contain.text', 'Flat');
+  cy.get('#flatButton')
     .should('have.css', 'background-color', args.basicBackgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Basic');
-  cy.get('.example-button-row > button')
-    .eq(16)
+  cy.get('#flatPrimaryButton')
     .should('have.css', 'background-color', args.primaryBackgroundColor)
     .should('have.css', 'color', args.primaryColor)
     .should('contain.text', 'Primary');
-  cy.get('.example-button-row > button')
-    .eq(17)
+  cy.get('#flatAccentButton')
     .should('have.css', 'background-color', args.accentBackgroundColor)
     .should('have.css', 'color', args.accentColor)
     .should('contain.text', 'Accent');
-  cy.get('.example-button-row > button')
-    .eq(18)
+  cy.get('#flatWarnButton')
     .should('have.css', 'background-color', args.warnBackgroundColor)
     .should('have.css', 'color', args.warnColor)
     .should('contain.text', 'Warn');
-  cy.get('.example-button-row > button')
-    .eq(19)
+  cy.get('#flatDisabledButton')
     .should('have.css', 'background-color', args.disabledBackgroundColor)
     .should('have.css', 'color', args.disabledColor)
     .should('contain.text', 'Disabled');
-  cy.get('.example-button-row > a')
-    .eq(3)
+  cy.get('#flatLinkButton')
     .should('have.css', 'background-color', args.basicBackgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Link');
 }
 
 export function testMatButtonsExtendedFab(args: TestMatButtonsRaisedArgs) {
-  cy.get('.example-label').eq(7).should('have.css', 'color', args.labelColor).should('contain.text', 'Extended Fab');
-  cy.get('.example-button-container > button')
-    .eq(8)
+  cy.get('#extendedFabLabel').should('have.css', 'color', args.labelColor).should('contain.text', 'Extended Fab');
+  cy.get('#extendedFabButton')
     .should('have.css', 'background-color', args.basicBackgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Basic');
-  cy.get('.example-button-container > button')
-    .eq(9)
+  cy.get('#extendedFabPrimaryButton')
     .should('have.css', 'background-color', args.primaryBackgroundColor)
     .should('have.css', 'color', args.primaryColor)
     .should('contain.text', 'Primary');
-  cy.get('.example-button-container > button')
-    .eq(10)
+  cy.get('#extendedFabAccentButton')
     .should('have.css', 'background-color', args.accentBackgroundColor)
     .should('have.css', 'color', args.accentColor)
     .should('contain.text', 'Accent');
-  cy.get('.example-button-container > button')
-    .eq(11)
+  cy.get('#extendedFabWarnButton')
     .should('have.css', 'background-color', args.warnBackgroundColor)
     .should('have.css', 'color', args.warnColor)
     .should('contain.text', 'Warn');
-  cy.get('.example-button-container > button')
-    .eq(12)
+  cy.get('#extendedFabDisabledButton')
     .should('have.css', 'background-color', args.disabledBackgroundColor)
     .should('have.css', 'color', args.disabledColor)
     .should('contain.text', 'Disabled');
-  cy.get('.example-button-container > a')
+  cy.get('#extendedFabLinkButton')
     .should('have.css', 'background-color', args.basicBackgroundColor)
     .should('have.css', 'color', args.basicColor)
     .should('contain.text', 'Link');
 }
 
 export function testMatInput(args: TestMatInputArgs) {
-  cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', args.unfocusedColor);
-  cy.get('input').eq(0).click();
-  cy.get('.mat-mdc-form-field-infix > label').eq(0).should('have.css', 'color', args.focusedColor);
+  cy.get('#favoriteFoodLabel').should('have.css', 'color', args.unfocusedColor);
+  cy.get('#favoriteFoodInput').click();
+  cy.get('#favoriteFoodLabel').should('have.css', 'color', args.focusedColor);
 }
 
 export function testMatCheckboxes(args: TestMatCheckboxesArgs) {
-  cy.get('.mdc-checkbox__background').eq(0).should('have.css', 'background-color', args.uncheckedColor);
-  cy.get('.example-margin').eq(0).click();
-  cy.get('.mdc-checkbox__background').eq(0).should('have.css', 'background-color', args.accentColor);
+  cy.get('#checkbox1').find('.mdc-checkbox__background').should('have.css', 'background-color', args.uncheckedColor);
+  cy.get('#checkbox1').click();
+  cy.get('#checkbox1').find('.mdc-checkbox__background').should('have.css', 'background-color', args.accentColor);
 
-  cy.get('.example-margin').eq(1).find('input').should('be.disabled');
+  cy.get('#disabledCheckbox').find('input').should('be.disabled');
 
-  cy.get('.example-margin').eq(2).click();
-  cy.get('.mdc-checkbox__background').eq(3).should('have.css', 'background-color', args.primaryColor);
-  cy.get('.mdc-checkbox__background').eq(4).should('have.css', 'background-color', args.accentColor);
-  cy.get('.mdc-checkbox__background').eq(5).should('have.css', 'background-color', args.warnColor);
+  cy.get('#checkbox2').click();
+  cy.get('#primaryCheckbox')
+    .find('.mdc-checkbox__background')
+    .should('have.css', 'background-color', args.primaryColor);
+  cy.get('#accentCheckbox').find('.mdc-checkbox__background').should('have.css', 'background-color', args.accentColor);
+  cy.get('#warnCheckbox').find('.mdc-checkbox__background').should('have.css', 'background-color', args.warnColor);
 }
 
 export function testMatRadioButtons(args: TestMatRadioButtonsArgs) {
-  cy.get('.mdc-radio__background')
-    .eq(0)
+  cy.get('#option1Radio')
+    .find('.mdc-radio__background')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.color);
-  cy.get('.mdc-radio__background')
-    .eq(0)
+  cy.get('#option1Radio')
+    .find('.mdc-radio__background')
     .find('.mdc-radio__outer-circle')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.color)
@@ -240,8 +213,8 @@ export function testMatRadioButtons(args: TestMatRadioButtonsArgs) {
     .should('have.css', 'border-left-color', args.uncheckedOuterCircleBorderColor)
     .should('have.css', 'border-right-color', args.uncheckedOuterCircleBorderColor)
     .should('have.css', 'border-top-color', args.uncheckedOuterCircleBorderColor);
-  cy.get('.mdc-radio__background')
-    .eq(0)
+  cy.get('#option1Radio')
+    .find('.mdc-radio__background')
     .find('.mdc-radio__inner-circle')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.color)
@@ -250,14 +223,14 @@ export function testMatRadioButtons(args: TestMatRadioButtonsArgs) {
     .should('have.css', 'border-right-color', args.uncheckedInnerCircleBorderColor)
     .should('have.css', 'border-top-color', args.uncheckedInnerCircleBorderColor);
 
-  cy.get('mat-radio-button').eq(0).click();
+  cy.get('#option1Radio').click();
 
-  cy.get('.mdc-radio__background')
-    .eq(0)
+  cy.get('#option1Radio')
+    .find('.mdc-radio__background')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.color);
-  cy.get('.mdc-radio__background')
-    .eq(0)
+  cy.get('#option1Radio')
+    .find('.mdc-radio__background')
     .find('.mdc-radio__outer-circle')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.color)
@@ -265,8 +238,8 @@ export function testMatRadioButtons(args: TestMatRadioButtonsArgs) {
     .should('have.css', 'border-left-color', args.colorWhenSelected)
     .should('have.css', 'border-right-color', args.colorWhenSelected)
     .should('have.css', 'border-top-color', args.colorWhenSelected);
-  cy.get('.mdc-radio__background')
-    .eq(0)
+  cy.get('#option1Radio')
+    .find('.mdc-radio__background')
     .find('.mdc-radio__inner-circle')
     .should('have.css', 'background-color', args.backgroundColor)
     .should('have.css', 'color', args.color)
@@ -295,7 +268,7 @@ export function testMatSlideToggle(args: TestMatSlideToggleArgs) {
     });
 
   // Primary
-  cy.get('mat-radio-button').eq(2).click();
+  cy.get('#slideTogglePrimaryRadio').click();
   cy.get('mat-slide-toggle')
     .find('.mdc-switch__track')
     .then(($els) => {
@@ -313,7 +286,7 @@ export function testMatSlideToggle(args: TestMatSlideToggleArgs) {
     });
 
   // Warn
-  cy.get('mat-radio-button').eq(4).click();
+  cy.get('#slideToggleWarnRadio').click();
   cy.get('mat-slide-toggle')
     .find('.mdc-switch__track')
     .then(($els) => {
