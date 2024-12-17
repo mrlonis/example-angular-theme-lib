@@ -26,8 +26,8 @@ describe('example-theme-app: light theme', () => {
 
   it('Background should have theme colors', () => {
     testBackground({
-      backgroundColor: 'rgba(0, 0, 0, 0)',
-      color: 'rgb(0, 0, 0)',
+      backgroundColor: 'rgb(250, 250, 250)',
+      color: 'rgba(0, 0, 0, 0.87)',
     });
   });
 
@@ -40,7 +40,7 @@ describe('example-theme-app: light theme', () => {
 
   it('Basic Buttons should have theme colors', () => {
     testMatButtonsBasic({
-      labelColor: 'rgb(0, 0, 0)',
+      labelColor: 'rgba(0, 0, 0, 0.87)',
       basicColor: basicColor,
       primaryColor: primaryColor,
       accentColor: accentColor,
@@ -52,14 +52,14 @@ describe('example-theme-app: light theme', () => {
 
   it('Raised Buttons should have theme colors', () => {
     testMatButtonsRaised({
-      labelColor: 'rgb(0, 0, 0)',
+      labelColor: 'rgba(0, 0, 0, 0.87)',
       basicColor: basicColor,
       primaryBackgroundColor: primaryColor,
-      primaryColor: 'rgb(255, 255, 234)',
+      primaryColor: 'rgb(255, 255, 255)',
       accentBackgroundColor: accentColor,
-      accentColor: 'rgb(255, 255, 251)',
+      accentColor: 'rgb(255, 255, 255)',
       warnBackgroundColor: warnColor,
-      warnColor: 'rgb(255, 255, 211)',
+      warnColor: 'rgb(255, 255, 255)',
       basicBackgroundColor: 'rgb(255, 255, 255)',
       disabledBackgroundColor: 'rgba(0, 0, 0, 0.12)',
       disabledColor: 'rgba(0, 0, 0, 0.38)',
@@ -68,7 +68,7 @@ describe('example-theme-app: light theme', () => {
 
   it('Stroked Buttons should have theme colors', () => {
     testMatButtonsStroked({
-      labelColor: 'rgb(0, 0, 0)',
+      labelColor: 'rgba(0, 0, 0, 0.87)',
       basicColor: basicColor,
       primaryColor: primaryColor,
       accentColor: accentColor,
@@ -80,14 +80,14 @@ describe('example-theme-app: light theme', () => {
 
   it('Flat Buttons should have theme colors', () => {
     testMatButtonsFlat({
-      labelColor: 'rgb(0, 0, 0)',
+      labelColor: 'rgba(0, 0, 0, 0.87)',
       basicColor: basicColor,
       primaryBackgroundColor: primaryColor,
-      primaryColor: 'rgb(255, 255, 234)',
+      primaryColor: 'rgb(255, 255, 255)',
       accentBackgroundColor: accentColor,
-      accentColor: 'rgb(255, 255, 251)',
+      accentColor: 'rgb(255, 255, 255)',
       warnBackgroundColor: warnColor,
-      warnColor: 'rgb(255, 255, 211)',
+      warnColor: 'rgb(255, 255, 255)',
       basicBackgroundColor: 'rgb(255, 255, 255)',
       disabledBackgroundColor: 'rgba(0, 0, 0, 0.12)',
       disabledColor: 'rgba(0, 0, 0, 0.38)',
@@ -96,15 +96,15 @@ describe('example-theme-app: light theme', () => {
 
   it('Extended FAB Buttons should have theme colors', () => {
     testMatButtonsExtendedFab({
-      labelColor: 'rgb(0, 0, 0)',
+      labelColor: 'rgba(0, 0, 0, 0.87)',
       basicBackgroundColor: accentColor,
-      basicColor: 'rgb(255, 255, 251)',
+      basicColor: 'rgb(255, 255, 255)',
       primaryBackgroundColor: primaryColor,
-      primaryColor: 'rgb(255, 255, 234)',
+      primaryColor: 'rgb(255, 255, 255)',
       accentBackgroundColor: accentColor,
-      accentColor: 'rgb(255, 255, 251)',
+      accentColor: 'rgb(255, 255, 255)',
       warnBackgroundColor: warnColor,
-      warnColor: 'rgb(255, 255, 211)',
+      warnColor: 'rgb(255, 255, 255)',
       disabledBackgroundColor: 'rgba(0, 0, 0, 0.12)',
       disabledColor: 'rgba(0, 0, 0, 0.38)',
     });

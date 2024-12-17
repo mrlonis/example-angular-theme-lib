@@ -6,6 +6,6 @@ import { MatRadioModule } from '@angular/material/radio';
   selector: 'app-example-radio-buttons',
   imports: [MatRadioModule],
   templateUrl: './example-radio-buttons.component.html',
-  styleUrl: './example-radio-buttons.component.scss',
+  styleUrls: ['./example-radio-buttons.component.scss'],
 })
 export class ExampleRadioButtonsComponent {}

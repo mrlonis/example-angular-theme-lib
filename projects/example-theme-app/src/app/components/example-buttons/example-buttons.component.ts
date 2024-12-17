@@ -8,6 +8,6 @@ import { MatIconModule } from '@angular/material/icon';
   selector: 'app-example-buttons',
   imports: [MatButtonModule, MatDividerModule, MatIconModule],
   templateUrl: './example-buttons.component.html',
-  styleUrl: './example-buttons.component.scss',
+  styleUrls: ['./example-buttons.component.scss'],
 })
 export class ExampleButtonsComponent {}

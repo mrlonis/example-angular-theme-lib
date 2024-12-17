@@ -11,7 +11,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
   selector: 'app-example-slide-toggle',
   imports: [MatCardModule, MatRadioModule, FormsModule, MatCheckboxModule, MatSlideToggleModule],
   templateUrl: './example-slide-toggle.component.html',
-  styleUrl: './example-slide-toggle.component.scss',
+  styleUrls: ['./example-slide-toggle.component.scss'],
 })
 export class ExampleSlideToggleComponent {
   color: ThemePalette = 'accent';

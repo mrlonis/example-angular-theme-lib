@@ -26,7 +26,7 @@ describe('example-theme-app: dark theme', () => {
 
   it('Background should have theme colors', () => {
     testBackground({
-      backgroundColor: 'rgba(0, 0, 0, 0)',
+      backgroundColor: 'rgb(48, 48, 48)',
       color: 'rgb(255, 255, 255)',
     });
   });
@@ -55,11 +55,11 @@ describe('example-theme-app: dark theme', () => {
       labelColor: 'rgb(255, 255, 255)',
       basicColor: basicColor,
       primaryBackgroundColor: primaryColor,
-      primaryColor: 'rgb(0, 51, 80)',
+      primaryColor: 'rgb(0, 0, 0)',
       accentBackgroundColor: accentColor,
-      accentColor: 'rgb(72, 42, 0)',
+      accentColor: 'rgb(0, 0, 0)',
       warnBackgroundColor: warnColor,
-      warnColor: 'rgb(105, 0, 5)',
+      warnColor: 'rgb(0, 0, 0)',
       basicBackgroundColor: 'rgb(66, 66, 66)',
       disabledBackgroundColor: 'rgba(255, 255, 255, 0.12)',
       disabledColor: 'rgba(255, 255, 255, 0.5)',
@@ -83,11 +83,11 @@ describe('example-theme-app: dark theme', () => {
       labelColor: 'rgb(255, 255, 255)',
       basicColor: basicColor,
       primaryBackgroundColor: primaryColor,
-      primaryColor: 'rgb(0, 51, 80)',
+      primaryColor: 'rgb(0, 0, 0)',
       accentBackgroundColor: accentColor,
-      accentColor: 'rgb(72, 42, 0)',
+      accentColor: 'rgb(0, 0, 0)',
       warnBackgroundColor: warnColor,
-      warnColor: 'rgb(105, 0, 5)',
+      warnColor: 'rgb(0, 0, 0)',
       basicBackgroundColor: 'rgb(66, 66, 66)',
       disabledBackgroundColor: 'rgba(255, 255, 255, 0.12)',
       disabledColor: 'rgba(255, 255, 255, 0.5)',
@@ -98,13 +98,13 @@ describe('example-theme-app: dark theme', () => {
     testMatButtonsExtendedFab({
       labelColor: 'rgb(255, 255, 255)',
       basicBackgroundColor: accentColor,
-      basicColor: 'rgb(72, 42, 0)',
+      basicColor: 'rgb(0, 0, 0)',
       primaryBackgroundColor: primaryColor,
-      primaryColor: 'rgb(0, 51, 80)',
+      primaryColor: 'rgb(0, 0, 0)',
       accentBackgroundColor: accentColor,
-      accentColor: 'rgb(72, 42, 0)',
+      accentColor: 'rgb(0, 0, 0)',
       warnBackgroundColor: warnColor,
-      warnColor: 'rgb(105, 0, 5)',
+      warnColor: 'rgb(0, 0, 0)',
       disabledBackgroundColor: 'rgba(255, 255, 255, 0.12)',
       disabledColor: 'rgba(255, 255, 255, 0.5)',
     });

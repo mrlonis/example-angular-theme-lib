@@ -20,6 +20,6 @@ import { ExampleSlideToggleComponent } from '../example-slide-toggle';
     ExampleSlideToggleComponent,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss',
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {}
