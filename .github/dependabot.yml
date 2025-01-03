@@ -7,16 +7,18 @@ version: 2
 updates:
   - package-ecosystem: 'github-actions'
     directory: '/'
+    target-branch: 'main'
     schedule:
       interval: 'weekly'
   - package-ecosystem: 'npm'
     directory: '/'
+    target-branch: 'main'
     schedule:
       interval: 'weekly'
     allow:
       - dependency-type: 'all'
     open-pull-requests-limit: 99
-    groups:
+    groups: &groups
       angular-version-updates:
         applies-to: version-updates
         patterns:
@@ -61,7 +63,7 @@ updates:
         update-types:
           - 'patch'
           - 'minor'
-    ignore:
+    ignore: &ignore
       - dependency-name: '@angular*'
         update-types: ['version-update:semver-major']
       - dependency-name: '@types/iframe-resizer'
@@ -82,3 +84,63 @@ updates:
         update-types: ['version-update:semver-major', 'version-update:semver-minor']
       - dependency-name: 'zone.js'
         update-types: ['version-update:semver-major', 'version-update:semver-minor']
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    target-branch: 'angular-19'
+    schedule:
+      interval: 'weekly'
+  - package-ecosystem: 'npm'
+    directory: '/'
+    target-branch: 'angular-19'
+    schedule:
+      interval: 'weekly'
+    allow:
+      - dependency-type: 'all'
+    open-pull-requests-limit: 99
+    groups: *groups
+    ignore: *ignore
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    target-branch: 'angular-18'
+    schedule:
+      interval: 'weekly'
+  - package-ecosystem: 'npm'
+    directory: '/'
+    target-branch: 'angular-18'
+    schedule:
+      interval: 'weekly'
+    allow:
+      - dependency-type: 'all'
+    open-pull-requests-limit: 99
+    groups: *groups
+    ignore: *ignore
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    target-branch: 'angular-17'
+    schedule:
+      interval: 'weekly'
+  - package-ecosystem: 'npm'
+    directory: '/'
+    target-branch: 'angular-17'
+    schedule:
+      interval: 'weekly'
+    allow:
+      - dependency-type: 'all'
+    open-pull-requests-limit: 99
+    groups: *groups
+    ignore: *ignore
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    target-branch: 'angular-16'
+    schedule:
+      interval: 'weekly'
+  - package-ecosystem: 'npm'
+    directory: '/'
+    target-branch: 'angular-16'
+    schedule:
+      interval: 'weekly'
+    allow:
+      - dependency-type: 'all'
+    open-pull-requests-limit: 99
+    groups: *groups
+    ignore: *ignore
