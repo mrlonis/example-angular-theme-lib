@@ -6,7 +6,7 @@
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
-  "eslint.useFlatConfig": true,
+  "eslint.useFlatConfig": false,
   "eslint.options": {
     "cache": false,
     "fix": true
