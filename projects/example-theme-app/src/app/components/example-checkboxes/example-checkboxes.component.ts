@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -12,9 +13,9 @@ export interface Task {
 @Component({
   standalone: true,
   selector: 'app-example-checkboxes',
-  imports: [FormsModule, MatCheckboxModule],
+  imports: [CommonModule, FormsModule, MatCheckboxModule],
   templateUrl: './example-checkboxes.component.html',
-  styleUrl: './example-checkboxes.component.scss',
+  styleUrls: ['./example-checkboxes.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleCheckboxesComponent {

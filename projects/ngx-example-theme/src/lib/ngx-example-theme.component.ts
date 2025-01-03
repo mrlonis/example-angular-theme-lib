@@ -5,6 +5,6 @@ import { Component } from '@angular/core';
   selector: 'lib-ngx-example-theme',
   imports: [],
   template: ` <p>ngx-example-theme works!</p> `,
-  styles: ``,
+  styles: [],
 })
 export class NgxExampleThemeComponent {}
