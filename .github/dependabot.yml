@@ -18,7 +18,7 @@ updates:
     allow:
       - dependency-type: 'all'
     open-pull-requests-limit: 99
-    groups: &groups
+    groups:
       angular-version-updates:
         applies-to: version-updates
         patterns:
@@ -63,7 +63,7 @@ updates:
         update-types:
           - 'patch'
           - 'minor'
-    ignore: &ignore
+    ignore:
       - dependency-name: '@angular*'
         update-types: ['version-update:semver-major']
       - dependency-name: '@types/iframe-resizer'
@@ -97,8 +97,72 @@ updates:
     allow:
       - dependency-type: 'all'
     open-pull-requests-limit: 99
-    groups: *groups
-    ignore: *ignore
+    groups:
+      angular-version-updates:
+        applies-to: version-updates
+        patterns:
+          - '@angular*'
+          - 'angular-eslint'
+          - 'ng-packagr'
+          - 'ngx*'
+        update-types:
+          - 'patch'
+          - 'minor'
+      angular-security-updates:
+        applies-to: security-updates
+        patterns:
+          - '@angular*'
+          - 'angular-eslint'
+          - 'ng-packagr'
+          - 'ngx*'
+        update-types:
+          - 'patch'
+          - 'minor'
+      production-version-updates:
+        applies-to: version-updates
+        dependency-type: production
+        update-types:
+          - 'patch'
+          - 'minor'
+      production-security-updates:
+        applies-to: security-updates
+        dependency-type: production
+        update-types:
+          - 'patch'
+          - 'minor'
+      development-version-updates:
+        applies-to: version-updates
+        dependency-type: development
+        update-types:
+          - 'patch'
+          - 'minor'
+      development-security-updates:
+        applies-to: security-updates
+        dependency-type: development
+        update-types:
+          - 'patch'
+          - 'minor'
+    ignore:
+      - dependency-name: '@angular*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/iframe-resizer'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'cypress'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '*eslint*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'iframe-resizer'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'ng-packagr'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'ngx*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
+      - dependency-name: 'zone.js'
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
   - package-ecosystem: 'github-actions'
     directory: '/'
     target-branch: 'angular-18'
@@ -112,8 +176,72 @@ updates:
     allow:
       - dependency-type: 'all'
     open-pull-requests-limit: 99
-    groups: *groups
-    ignore: *ignore
+    groups:
+      angular-version-updates:
+        applies-to: version-updates
+        patterns:
+          - '@angular*'
+          - 'angular-eslint'
+          - 'ng-packagr'
+          - 'ngx*'
+        update-types:
+          - 'patch'
+          - 'minor'
+      angular-security-updates:
+        applies-to: security-updates
+        patterns:
+          - '@angular*'
+          - 'angular-eslint'
+          - 'ng-packagr'
+          - 'ngx*'
+        update-types:
+          - 'patch'
+          - 'minor'
+      production-version-updates:
+        applies-to: version-updates
+        dependency-type: production
+        update-types:
+          - 'patch'
+          - 'minor'
+      production-security-updates:
+        applies-to: security-updates
+        dependency-type: production
+        update-types:
+          - 'patch'
+          - 'minor'
+      development-version-updates:
+        applies-to: version-updates
+        dependency-type: development
+        update-types:
+          - 'patch'
+          - 'minor'
+      development-security-updates:
+        applies-to: security-updates
+        dependency-type: development
+        update-types:
+          - 'patch'
+          - 'minor'
+    ignore:
+      - dependency-name: '@angular*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/iframe-resizer'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'cypress'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '*eslint*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'iframe-resizer'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'ng-packagr'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'ngx*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
+      - dependency-name: 'zone.js'
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
   - package-ecosystem: 'github-actions'
     directory: '/'
     target-branch: 'angular-17'
@@ -127,8 +255,72 @@ updates:
     allow:
       - dependency-type: 'all'
     open-pull-requests-limit: 99
-    groups: *groups
-    ignore: *ignore
+    groups:
+      angular-version-updates:
+        applies-to: version-updates
+        patterns:
+          - '@angular*'
+          - 'angular-eslint'
+          - 'ng-packagr'
+          - 'ngx*'
+        update-types:
+          - 'patch'
+          - 'minor'
+      angular-security-updates:
+        applies-to: security-updates
+        patterns:
+          - '@angular*'
+          - 'angular-eslint'
+          - 'ng-packagr'
+          - 'ngx*'
+        update-types:
+          - 'patch'
+          - 'minor'
+      production-version-updates:
+        applies-to: version-updates
+        dependency-type: production
+        update-types:
+          - 'patch'
+          - 'minor'
+      production-security-updates:
+        applies-to: security-updates
+        dependency-type: production
+        update-types:
+          - 'patch'
+          - 'minor'
+      development-version-updates:
+        applies-to: version-updates
+        dependency-type: development
+        update-types:
+          - 'patch'
+          - 'minor'
+      development-security-updates:
+        applies-to: security-updates
+        dependency-type: development
+        update-types:
+          - 'patch'
+          - 'minor'
+    ignore:
+      - dependency-name: '@angular*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/iframe-resizer'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'cypress'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '*eslint*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'iframe-resizer'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'ng-packagr'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'ngx*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
+      - dependency-name: 'zone.js'
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
   - package-ecosystem: 'github-actions'
     directory: '/'
     target-branch: 'angular-16'
@@ -142,5 +334,69 @@ updates:
     allow:
       - dependency-type: 'all'
     open-pull-requests-limit: 99
-    groups: *groups
-    ignore: *ignore
+    groups:
+      angular-version-updates:
+        applies-to: version-updates
+        patterns:
+          - '@angular*'
+          - 'angular-eslint'
+          - 'ng-packagr'
+          - 'ngx*'
+        update-types:
+          - 'patch'
+          - 'minor'
+      angular-security-updates:
+        applies-to: security-updates
+        patterns:
+          - '@angular*'
+          - 'angular-eslint'
+          - 'ng-packagr'
+          - 'ngx*'
+        update-types:
+          - 'patch'
+          - 'minor'
+      production-version-updates:
+        applies-to: version-updates
+        dependency-type: production
+        update-types:
+          - 'patch'
+          - 'minor'
+      production-security-updates:
+        applies-to: security-updates
+        dependency-type: production
+        update-types:
+          - 'patch'
+          - 'minor'
+      development-version-updates:
+        applies-to: version-updates
+        dependency-type: development
+        update-types:
+          - 'patch'
+          - 'minor'
+      development-security-updates:
+        applies-to: security-updates
+        dependency-type: development
+        update-types:
+          - 'patch'
+          - 'minor'
+    ignore:
+      - dependency-name: '@angular*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/iframe-resizer'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'cypress'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '*eslint*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'iframe-resizer'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'ng-packagr'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'ngx*'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
+      - dependency-name: 'zone.js'
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
