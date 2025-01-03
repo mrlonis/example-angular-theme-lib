@@ -1,9 +1,9 @@
 name: CI
 on:
   push:
-    branches: ['angular-17']
+    branches: ['main', 'angular-19', 'angular-18', 'angular-17', 'angular-16']
   pull_request:
-    branches: ['angular-17']
+    branches: ['main', 'angular-19', 'angular-18', 'angular-17', 'angular-16']
   workflow_dispatch:
 jobs:
   build:
@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
       - run: npm ci
       - run: npm run test
