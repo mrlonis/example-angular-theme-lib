@@ -1,9 +1,9 @@
 name: CI
 on:
   push:
-    branches: ['angular-18']
+    branches: ['main', 'angular-19', 'angular-18', 'angular-17', 'angular-16']
   pull_request:
-    branches: ['angular-18']
+    branches: ['main', 'angular-19', 'angular-18', 'angular-17', 'angular-16']
   workflow_dispatch:
 jobs:
   build:
