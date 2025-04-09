@@ -98,13 +98,13 @@ describe('example-theme-app: light theme', () => {
     testMatButtonsExtendedFab({
       labelColor: 'rgb(0, 0, 0)',
       basicBackgroundColor: 'rgb(204, 229, 255)',
-      basicColor: 'rgb(0, 30, 49)',
+      basicColor: 'rgb(0, 75, 114)',
       primaryBackgroundColor: 'rgb(255, 221, 186)',
-      primaryColor: 'rgb(43, 23, 0)',
+      primaryColor: 'rgb(102, 61, 0)',
       accentBackgroundColor: 'rgb(204, 229, 255)',
-      accentColor: 'rgb(0, 30, 49)',
+      accentColor: 'rgb(0, 75, 114)',
       warnBackgroundColor: 'rgb(255, 221, 186)',
-      warnColor: 'rgb(43, 23, 0)',
+      warnColor: 'rgb(102, 61, 0)',
       disabledBackgroundColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
       disabledColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
     });
