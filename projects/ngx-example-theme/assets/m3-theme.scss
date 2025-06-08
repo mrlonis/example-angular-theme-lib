@@ -144,6 +144,7 @@ $dark-theme-config: (
   ),
   typography: (
     use-system-variables: true,
+    system-variables-prefix: sys,
   ),
 );
 
@@ -153,9 +154,11 @@ $light-theme-config: (
     primary: $tertiary,
     tertiary: $primary,
     use-system-variables: true,
+    system-variables-prefix: sys,
   ),
   typography: (
     use-system-variables: true,
+    system-variables-prefix: sys,
   ),
 );
 

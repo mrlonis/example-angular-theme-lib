@@ -5,7 +5,8 @@
   // Manually call each component theme mixin to avoid duplicating theme styles
   // We apply an alternative theme to select components, so if we were to use
   // the mat.all-component-themes mixin, we would get duplicate styles and a warning during app compilation
-  @include mat.core-theme($theme);
+  @include mat.elevation-classes();
+  @include mat.app-background();
   @include mat.card-theme($theme);
   @include mat.progress-bar-theme($theme);
   @include mat.tooltip-theme($theme);
@@ -88,7 +89,8 @@
   // the mat.all-component-colors mixin, we would get duplicate styles and a warning during app compilation
 
   // Use the `-color` mixins to only apply color styles without reapplying the same typography and density styles.
-  @include mat.core-color($theme);
+  @include mat.elevation-classes();
+  @include mat.app-background();
   @include mat.card-color($theme);
   @include mat.progress-bar-color($theme);
   @include mat.tooltip-color($theme);
