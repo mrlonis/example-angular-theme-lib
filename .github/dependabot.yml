@@ -9,22 +9,21 @@ updates:
     directory: '/'
     target-branch: 'main'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
+    open-pull-requests-limit: 5
   - package-ecosystem: 'npm'
     directory: '/'
     target-branch: 'main'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     allow:
       - dependency-type: 'all'
-    open-pull-requests-limit: 99
+    open-pull-requests-limit: 5
     groups:
       angular-version-updates:
         applies-to: version-updates
         patterns:
-          - '@angular*'
-          - '@angular-devkit/build-angular'
-          - 'angular-eslint'
+          - '*angular*'
           - 'ng-packagr'
           - 'ngx*'
         update-types:
@@ -33,9 +32,7 @@ updates:
       angular-security-updates:
         applies-to: security-updates
         patterns:
-          - '@angular*'
-          - '@angular-devkit/build-angular'
-          - 'angular-eslint'
+          - '*angular*'
           - 'ng-packagr'
           - 'ngx*'
         update-types:
@@ -66,13 +63,11 @@ updates:
           - 'patch'
           - 'minor'
     ignore:
-      - dependency-name: '@angular*'
-        update-types: ['version-update:semver-major']
-      - dependency-name: '@angular-devkit/build-angular'
-        update-types: ['version-update:semver-major']
       - dependency-name: '@types/iframe-resizer'
         update-types: ['version-update:semver-major']
       - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '*angular*'
         update-types: ['version-update:semver-major']
       - dependency-name: 'cypress'
         update-types: ['version-update:semver-major']
@@ -92,22 +87,21 @@ updates:
     directory: '/'
     target-branch: 'angular-19'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
+    open-pull-requests-limit: 5
   - package-ecosystem: 'npm'
     directory: '/'
     target-branch: 'angular-19'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     allow:
       - dependency-type: 'all'
-    open-pull-requests-limit: 99
+    open-pull-requests-limit: 5
     groups:
       angular-version-updates:
         applies-to: version-updates
         patterns:
-          - '@angular*'
-          - '@angular-devkit/build-angular'
-          - 'angular-eslint'
+          - '*angular*'
           - 'ng-packagr'
           - 'ngx*'
         update-types:
@@ -116,9 +110,7 @@ updates:
       angular-security-updates:
         applies-to: security-updates
         patterns:
-          - '@angular*'
-          - '@angular-devkit/build-angular'
-          - 'angular-eslint'
+          - '*angular*'
           - 'ng-packagr'
           - 'ngx*'
         update-types:
@@ -149,13 +141,11 @@ updates:
           - 'patch'
           - 'minor'
     ignore:
-      - dependency-name: '@angular*'
-        update-types: ['version-update:semver-major']
-      - dependency-name: '@angular-devkit/build-angular'
-        update-types: ['version-update:semver-major']
       - dependency-name: '@types/iframe-resizer'
         update-types: ['version-update:semver-major']
       - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '*angular*'
         update-types: ['version-update:semver-major']
       - dependency-name: 'cypress'
         update-types: ['version-update:semver-major']
@@ -175,22 +165,21 @@ updates:
     directory: '/'
     target-branch: 'angular-18'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
+    open-pull-requests-limit: 5
   - package-ecosystem: 'npm'
     directory: '/'
     target-branch: 'angular-18'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     allow:
       - dependency-type: 'all'
-    open-pull-requests-limit: 99
+    open-pull-requests-limit: 5
     groups:
       angular-version-updates:
         applies-to: version-updates
         patterns:
-          - '@angular*'
-          - '@angular-devkit/build-angular'
-          - 'angular-eslint'
+          - '*angular*'
           - 'ng-packagr'
           - 'ngx*'
         update-types:
@@ -199,9 +188,7 @@ updates:
       angular-security-updates:
         applies-to: security-updates
         patterns:
-          - '@angular*'
-          - '@angular-devkit/build-angular'
-          - 'angular-eslint'
+          - '*angular*'
           - 'ng-packagr'
           - 'ngx*'
         update-types:
@@ -232,13 +219,11 @@ updates:
           - 'patch'
           - 'minor'
     ignore:
-      - dependency-name: '@angular*'
-        update-types: ['version-update:semver-major']
-      - dependency-name: '@angular-devkit/build-angular'
-        update-types: ['version-update:semver-major']
       - dependency-name: '@types/iframe-resizer'
         update-types: ['version-update:semver-major']
       - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '*angular*'
         update-types: ['version-update:semver-major']
       - dependency-name: 'cypress'
         update-types: ['version-update:semver-major']
@@ -258,22 +243,21 @@ updates:
     directory: '/'
     target-branch: 'angular-17'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
+    open-pull-requests-limit: 5
   - package-ecosystem: 'npm'
     directory: '/'
     target-branch: 'angular-17'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     allow:
       - dependency-type: 'all'
-    open-pull-requests-limit: 99
+    open-pull-requests-limit: 5
     groups:
       angular-version-updates:
         applies-to: version-updates
         patterns:
-          - '@angular*'
-          - '@angular-devkit/build-angular'
-          - 'angular-eslint'
+          - '*angular*'
           - 'ng-packagr'
           - 'ngx*'
         update-types:
@@ -282,9 +266,7 @@ updates:
       angular-security-updates:
         applies-to: security-updates
         patterns:
-          - '@angular*'
-          - '@angular-devkit/build-angular'
-          - 'angular-eslint'
+          - '*angular*'
           - 'ng-packagr'
           - 'ngx*'
         update-types:
@@ -315,13 +297,11 @@ updates:
           - 'patch'
           - 'minor'
     ignore:
-      - dependency-name: '@angular*'
-        update-types: ['version-update:semver-major']
-      - dependency-name: '@angular-devkit/build-angular'
-        update-types: ['version-update:semver-major']
       - dependency-name: '@types/iframe-resizer'
         update-types: ['version-update:semver-major']
       - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '*angular*'
         update-types: ['version-update:semver-major']
       - dependency-name: 'cypress'
         update-types: ['version-update:semver-major']
@@ -341,22 +321,21 @@ updates:
     directory: '/'
     target-branch: 'angular-16'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
+    open-pull-requests-limit: 5
   - package-ecosystem: 'npm'
     directory: '/'
     target-branch: 'angular-16'
     schedule:
-      interval: 'weekly'
+      interval: 'monthly'
     allow:
       - dependency-type: 'all'
-    open-pull-requests-limit: 99
+    open-pull-requests-limit: 5
     groups:
       angular-version-updates:
         applies-to: version-updates
         patterns:
-          - '@angular*'
-          - '@angular-devkit/build-angular'
-          - 'angular-eslint'
+          - '*angular*'
           - 'ng-packagr'
           - 'ngx*'
         update-types:
@@ -365,9 +344,7 @@ updates:
       angular-security-updates:
         applies-to: security-updates
         patterns:
-          - '@angular*'
-          - '@angular-devkit/build-angular'
-          - 'angular-eslint'
+          - '*angular*'
           - 'ng-packagr'
           - 'ngx*'
         update-types:
@@ -398,13 +375,11 @@ updates:
           - 'patch'
           - 'minor'
     ignore:
-      - dependency-name: '@angular*'
-        update-types: ['version-update:semver-major']
-      - dependency-name: '@angular-devkit/build-angular'
-        update-types: ['version-update:semver-major']
       - dependency-name: '@types/iframe-resizer'
         update-types: ['version-update:semver-major']
       - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
+      - dependency-name: '*angular*'
         update-types: ['version-update:semver-major']
       - dependency-name: 'cypress'
         update-types: ['version-update:semver-major']
