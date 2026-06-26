@@ -27,7 +27,7 @@ export class ExampleCheckboxesComponent {
       { name: 'Accent', completed: false, color: 'accent' } as Task,
       { name: 'Warn', completed: false, color: 'warn' } as Task,
     ] as Task[],
-  } as Task;
+  };
 
   allComplete = false;
 
