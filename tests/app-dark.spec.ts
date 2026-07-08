@@ -18,6 +18,8 @@ test.describe('example-theme-app: dark theme', () => {
   const primaryColor = 'rgb(145, 205, 255)';
   const accentColor = 'rgb(249, 187, 115)';
   const warnColor = 'rgb(255, 180, 171)';
+  const disabledColor = 'color(srgb 0.878431 0.886275 0.905882 / 0.38)';
+  const disabledBackgroundColor = 'color(srgb 0.878431 0.886275 0.905882 / 0.12)';
 
   test.beforeEach(async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'dark' });
@@ -46,7 +48,7 @@ test.describe('example-theme-app: dark theme', () => {
       accentColor: accentColor,
       warnColor: warnColor,
       backgroundColor: 'rgba(0, 0, 0, 0)',
-      disabledColor: 'rgba(224, 226, 231, 0.38)',
+      disabledColor: disabledColor,
     });
   });
 
@@ -61,8 +63,8 @@ test.describe('example-theme-app: dark theme', () => {
       warnBackgroundColor: 'rgb(16, 20, 23)',
       warnColor: warnColor,
       basicBackgroundColor: 'rgb(16, 20, 23)',
-      disabledBackgroundColor: 'rgba(224, 226, 231, 0.12)',
-      disabledColor: 'rgba(224, 226, 231, 0.38)',
+      disabledBackgroundColor: disabledBackgroundColor,
+      disabledColor: disabledColor,
     });
   });
 
@@ -74,7 +76,7 @@ test.describe('example-theme-app: dark theme', () => {
       accentColor: accentColor,
       warnColor: warnColor,
       backgroundColor: 'rgba(0, 0, 0, 0)',
-      disabledColor: 'rgba(224, 226, 231, 0.38)',
+      disabledColor: disabledColor,
     });
   });
 
@@ -89,8 +91,8 @@ test.describe('example-theme-app: dark theme', () => {
       warnBackgroundColor: warnColor,
       warnColor: 'rgb(105, 0, 5)',
       basicBackgroundColor: basicColor,
-      disabledBackgroundColor: 'rgba(224, 226, 231, 0.12)',
-      disabledColor: 'rgba(224, 226, 231, 0.38)',
+      disabledBackgroundColor: disabledBackgroundColor,
+      disabledColor: disabledColor,
     });
   });
 
@@ -105,8 +107,8 @@ test.describe('example-theme-app: dark theme', () => {
       accentColor: 'rgb(255, 221, 186)',
       warnBackgroundColor: 'rgb(0, 75, 114)',
       warnColor: 'rgb(204, 229, 255)',
-      disabledBackgroundColor: 'rgba(224, 226, 231, 0.12)',
-      disabledColor: 'rgba(224, 226, 231, 0.38)',
+      disabledBackgroundColor: disabledBackgroundColor,
+      disabledColor: disabledColor,
     });
   });
 

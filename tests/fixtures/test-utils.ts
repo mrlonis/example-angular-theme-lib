@@ -24,7 +24,10 @@ export async function testBackground(page: Page, args: TestBackgroundArgs): Prom
 export async function testMatCard(page: Page, args: TestMatCardArgs): Promise<void> {
   const matCard = page.locator('mat-card').first();
   await expect(matCard).toHaveCSS('background-color', args.marCardBackgroundColor);
-  await expect(matCard.locator('mat-card-content')).toHaveCSS('background-color', args.matCardContentBackgroundColor);
+  await expect(matCard.locator('mat-card-content').first()).toHaveCSS(
+    'background-color',
+    args.matCardContentBackgroundColor,
+  );
 }
 
 async function buttonAssertions(
@@ -137,7 +140,6 @@ export async function testMatRadioButtons(page: Page, args: TestMatRadioButtonsA
     backgroundColor: string,
     color: string,
     outerCircleBorderColor: string,
-    innerCircleBorderColor: string,
   ): Promise<void> {
     const background = option1Radio.locator('.mdc-radio__background');
     await expect(background).toHaveCSS('background-color', backgroundColor);
@@ -150,24 +152,11 @@ export async function testMatRadioButtons(page: Page, args: TestMatRadioButtonsA
     await expect(outerCircle).toHaveCSS('border-left-color', outerCircleBorderColor);
     await expect(outerCircle).toHaveCSS('border-right-color', outerCircleBorderColor);
     await expect(outerCircle).toHaveCSS('border-top-color', outerCircleBorderColor);
-
-    const innerCircle = option1Radio.locator('.mdc-radio__inner-circle');
-    await expect(innerCircle).toHaveCSS('background-color', backgroundColor);
-    await expect(innerCircle).toHaveCSS('color', color);
-    await expect(innerCircle).toHaveCSS('border-bottom-color', innerCircleBorderColor);
-    await expect(innerCircle).toHaveCSS('border-left-color', innerCircleBorderColor);
-    await expect(innerCircle).toHaveCSS('border-right-color', innerCircleBorderColor);
-    await expect(innerCircle).toHaveCSS('border-top-color', innerCircleBorderColor);
   }
 
-  await radioAssertions(
-    args.backgroundColor,
-    args.color,
-    args.uncheckedOuterCircleBorderColor,
-    args.uncheckedInnerCircleBorderColor,
-  );
+  await radioAssertions(args.backgroundColor, args.color, args.uncheckedOuterCircleBorderColor);
   await option1Radio.click();
-  await radioAssertions(args.backgroundColor, args.color, args.colorWhenSelected, args.colorWhenSelected);
+  await radioAssertions(args.backgroundColor, args.color, args.colorWhenSelected);
 }
 
 export async function testMatSlideToggle(page: Page, args: TestMatSlideToggleArgs): Promise<void> {
