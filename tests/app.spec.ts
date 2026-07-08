@@ -1,9 +1,11 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('App', () => {
-  test('shows the application title in the document title', async ({ page }) => {
-    await page.goto('');
+test.describe('example-theme-app', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+  });
 
+  test('should load', async ({ page }) => {
     await expect(page).toHaveTitle(/ExampleThemeApp/);
   });
 });
