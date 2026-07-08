@@ -1,0 +1,173 @@
+You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
+
+## Tooling Versions
+
+Use these versions as compatibility targets when generating code, tests, and commands for this repository.
+
+- TypeScript: v6.0 (configured as `~6.0`)
+- Angular: v22 (configured as `^22`)
+- Node.js: v24.17.0
+- npm: v11.13.0
+- RxJS: v7 (configured as `^7`)
+- Vitest: v4 (configured as `^4`)
+- ESLint: v9 (configured as `^9`)
+
+## Workflow Command Decision Tree
+
+- If only one spec file changed, run a single-spec test command with `--include`.
+- If one project changed, run scoped lint/test commands for that project.
+- If shared configs, path mappings, or library dependencies changed, run `npm run build:all` first, then run lint/tests.
+- Before finalizing work, run CI parity commands in the same order used by the GitHub workflow.
+
+## Project Map and Scoped Commands
+
+- Projects in this workspace: `app` (application), `lib` (library), `table` (library).
+- Lint only `app`:
+  - `npm run lint -- app`
+- Lint only `lib`:
+  - `npm run lint -- lib`
+- Lint only `table`:
+  - `npm run lint -- table`
+- Test only `app`:
+  - `npm run test -- app --no-watch --coverage --coverage-reporters text`
+- Test only `lib`:
+  - `npm run test -- lib --no-watch --coverage --coverage-reporters text`
+- Test only `table`:
+  - `npm run test -- table --no-watch --coverage --coverage-reporters text`
+
+## AI Instruction Source of Truth
+
+- Do not manually edit generated AI instruction files such as `AGENTS.md`, `.claude/CLAUDE.md`, `.gemini/GEMINI.md`, `.github/copilot-instructions.md`, `.junie/guidelines.md`, `.windsurf/rules/guidelines.md`, or `.cursor/rules/cursor.mdc`.
+- Edit only `agent-instructions/source.md`.
+- After editing, run:
+  - `npm run sync:agent-instructions`
+  - `npm run sync:agent-instructions:check`
+
+## TypeScript Best Practices
+
+- Use strict type checking
+- Prefer type inference when the type is obvious
+- Avoid the `any` type; use `unknown` when type is uncertain
+
+## Angular Best Practices
+
+- Always use standalone components over NgModules
+- Must NOT set `standalone: true` inside Angular decorators. It's the default in Angular v20+.
+- Do NOT set `changeDetection: ChangeDetectionStrategy.OnPush` explicitly. `OnPush` is the default in Angular v22+.
+- Use signals for state management
+- Implement lazy loading for feature routes
+- Do NOT use the `@HostBinding` and `@HostListener` decorators. Put host bindings inside the `host` object of the `@Component` or `@Directive` decorator instead
+- Use `NgOptimizedImage` for all static images.
+  - `NgOptimizedImage` does not work for inline base64 images.
+
+### Selector Prefix Rules
+
+- In the `app` project, use `app` selector prefixes.
+- In library projects (`lib`, `table`), use `lib` selector prefixes.
+
+## Accessibility Requirements
+
+- It MUST pass all AXE checks.
+- It MUST follow all WCAG AA minimums, including focus management, color contrast, and ARIA attributes.
+
+### Components
+
+- Keep components small and focused on a single responsibility
+- Use `input()` and `output()` functions instead of decorators
+- Use `computed()` for derived state
+- Prefer inline templates for small components
+- Prefer Signal Forms (`@angular/forms/signals`) for new forms. They are stable in Angular v22+ and provide signal-based state, type-safe field access, and schema-based validation
+- When not using Signal Forms, prefer Reactive forms instead of Template-driven ones
+- Do NOT use `ngClass`, use `class` bindings instead
+- Do NOT use `ngStyle`, use `style` bindings instead
+- When using external templates/styles, use paths relative to the component TS file.
+
+## State Management
+
+- Use signals for local component state
+- Use `computed()` for derived state
+- Keep state transformations pure and predictable
+- Do NOT use `mutate` on signals, use `update` or `set` instead
+
+## Templates
+
+- Keep templates simple and avoid complex logic
+- Use native control flow (`@if`, `@for`, `@switch`) instead of `*ngIf`, `*ngFor`, `*ngSwitch`
+- Use the async pipe to handle observables
+- Do not assume globals like (`new Date()`) are available.
+
+## Services
+
+- Design services around a single responsibility
+- Use the `providedIn: 'root'` option for singleton services
+- Prefer the `@Service` decorator over `@Injectable({providedIn: 'root'})` for new singleton services (Angular v22+)
+- Use the `inject()` function instead of constructor injection
+
+## Building Guidelines
+
+- Use the repository build script before linting/testing when project dependencies may have changed.
+- Preferred command for this repo:
+  - `npm run build:all`
+- This repository uses TypeScript path mappings in the root `tsconfig.json` that point Angular library imports to built outputs in `dist`. If libraries are not built, linting can fail with import/path resolution errors.
+- When creating new Angular libraries or applications, update the `build:all` script in `package.json` so the new project is included in the standard build workflow.
+
+## New Project Checklist
+
+- If you add a new Angular application or library, update `build:all` in `package.json` to include it.
+- Confirm the root `tsconfig.json` references/paths are correct for the new project.
+- Update `lint-staged` patterns in `package.json` if needed so staged-file linting/formatting still applies.
+- Add or update scoped lint/test command examples in this file for the new project.
+
+## Linting Guidelines
+
+- This project uses `eslint` (v9) for linting.
+- Prefer scoped lint commands that target only the changed project when possible.
+- Example: lint only the `table` project:
+  - `npm run lint -- table`
+- If linting fails with unresolved imports or path issues, run `npm run build:all` first, then rerun the lint command.
+- Keep imports ordered/alphabetized and grouped as required by lint rules.
+- Use Angular template control flow syntax (`@if`, `@for`, `@switch`) in templates.
+- Do not use non-null assertions (`!`) unless absolutely necessary.
+- Fix root-cause issues rather than suppressing rules unless there is a documented, justified exception.
+
+## CI Parity Commands
+
+- Before finalizing changes, run the same sequence used in CI:
+  - `npm run sync:agent-instructions:check`
+  - `npm run build:all`
+  - `npm run lint`
+  - `npm run test:ci`
+
+## Testing Guidelines
+
+- This project uses `vitest` (v4) for unit testing. Write and update unit tests using Vitest APIs and patterns.
+- When running tests, prefer scoped commands that target only the changed project or spec file.
+- Example: run tests for the full `table` project:
+  - `npm run test -- table --no-watch --coverage --coverage-reporters text`
+- Example: run tests for only `projects/table/src/lib/table.spec.ts`:
+  - `npm run test -- table --no-watch --coverage --coverage-reporters text --include='projects/table/src/lib/table.spec.ts'`
+- For `--include`, always use workspace-relative paths (no leading slash), for example `projects/table/src/lib/table.spec.ts`.
+- Place tests close to the code they verify, and keep test setup focused on behavior rather than implementation details.
+- Prefer clear Arrange-Act-Assert structure with descriptive test names that document expected behavior.
+- Cover happy paths, edge cases, and error handling for components, services, and utility functions.
+- Keep tests deterministic: avoid time, network, and global state coupling unless explicitly mocked.
+- Mock only what is necessary, and prefer lightweight fakes/stubs over deep or brittle mocks.
+- Ensure tests are fast and isolated so they can run reliably in CI.
+
+## Playwright Guidelines
+
+- This project uses Playwright for e2e tests in `tests/`.
+- Always run Playwright with the repository config file:
+  - `--config=tests/playwright.config.ts`
+- Run a single e2e spec locally with a single browser when possible:
+  - `npx playwright test tests/app.spec.ts --config=tests/playwright.config.ts --project=chromium --reporter=line`
+- In CI, use a non-interactive reporter (`line` or `dot`) to avoid hanging/interactive HTML report behavior.
+- Prefer deterministic assertions and stable locators (`getByLabel`, `getByRole`, or stable selectors) over brittle text-only or timing-dependent selectors.
+- Avoid assumptions about default table row counts unless page size is asserted in the same test.
+
+## Coverage Notes (Angular + v8)
+
+- Angular template/query compilation can introduce generated helper functions that appear in coverage reports.
+- Token-based queries (for example, `contentChild(SomeType)` or `viewChild(SomeType)`) can show uncovered anonymous functions even when behavior is tested.
+- Prioritize behavior coverage and user-visible outcomes over forcing synthetic coverage for generated internals.
+- If needed, prefer template-reference-based queries for more stable, measurable coverage paths.

@@ -20,6 +20,8 @@
     "prettier": "prettier --write . --ignore-unknown",
     "prettier:test": "prettier --check . --ignore-unknown",
     "start": "ng serve example-theme-app",
+    "sync:agent-instructions": "node scripts/sync-agent-instructions.mjs",
+    "sync:agent-instructions:check": "node scripts/sync-agent-instructions.mjs --check",
     "test": "npm run test:unit && npm run test:e2e",
     "test:e2e": "npm run playwright:install && playwright test --config=./tests/playwright.config.ts",
     "test:unit": "npm run test:unit:ngx-example-theme && npm run test:unit:example-theme-app",
