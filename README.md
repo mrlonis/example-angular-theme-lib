@@ -20,7 +20,7 @@ npm run ng -- update @angular/core@VERSION @angular/cli@VERSION @angular/materia
 ### Example
 
 ```shell
-npm run ng -- update @angular/core@19 @angular/cli@19 @angular/material@19 angular-eslint@19
+npm run ng -- update @angular/core@20 @angular/cli@20 @angular/material@20 angular-eslint@20
 ```
 
 ## Generating Material 3 Theme
