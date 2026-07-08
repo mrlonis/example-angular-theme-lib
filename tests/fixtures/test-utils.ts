@@ -33,8 +33,8 @@ export async function testMatCard(page: Page, args: TestMatCardArgs): Promise<vo
 async function buttonAssertions(
   page: Page,
   id: string,
-  backgroundColor: string,
-  color: string,
+  backgroundColor: string | RegExp,
+  color: string | RegExp,
   text: string,
 ): Promise<void> {
   const button = page.locator(id);
@@ -137,9 +137,9 @@ export async function testMatRadioButtons(page: Page, args: TestMatRadioButtonsA
   const option1Radio = page.locator('#option-1-radio');
 
   async function radioAssertions(
-    backgroundColor: string,
-    color: string,
-    outerCircleBorderColor: string,
+    backgroundColor: string | RegExp,
+    color: string | RegExp,
+    outerCircleBorderColor: string | RegExp,
   ): Promise<void> {
     const background = option1Radio.locator('.mdc-radio__background');
     await expect(background).toHaveCSS('background-color', backgroundColor);

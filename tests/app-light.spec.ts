@@ -18,6 +18,9 @@ test.describe('example-theme-app: light theme', () => {
   const primaryColor = 'rgb(131, 84, 22)';
   const accentColor = 'rgb(0, 100, 150)';
   const warnColor = 'rgb(186, 26, 26)';
+  // Disabled colors use color(srgb ...) format; last decimal digit varies by browser engine
+  const disabledColor = /color\(srgb 0\.09411\d* 0\.109804 0\.12549 \/ 0\.38\)/;
+  const disabledBackgroundColor = /color\(srgb 0\.09411\d* 0\.109804 0\.12549 \/ 0\.12\)/;
 
   test.beforeEach(async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'light' });
@@ -46,7 +49,7 @@ test.describe('example-theme-app: light theme', () => {
       accentColor: accentColor,
       warnColor: warnColor,
       backgroundColor: 'rgba(0, 0, 0, 0)',
-      disabledColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+      disabledColor: disabledColor,
     });
   });
 
@@ -61,8 +64,8 @@ test.describe('example-theme-app: light theme', () => {
       warnBackgroundColor: 'rgb(247, 249, 254)',
       warnColor: warnColor,
       basicBackgroundColor: 'rgb(247, 249, 254)',
-      disabledBackgroundColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
-      disabledColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+      disabledBackgroundColor: disabledBackgroundColor,
+      disabledColor: disabledColor,
     });
   });
 
@@ -74,7 +77,7 @@ test.describe('example-theme-app: light theme', () => {
       accentColor: accentColor,
       warnColor: warnColor,
       backgroundColor: 'rgba(0, 0, 0, 0)',
-      disabledColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+      disabledColor: disabledColor,
     });
   });
 
@@ -89,8 +92,8 @@ test.describe('example-theme-app: light theme', () => {
       warnBackgroundColor: warnColor,
       warnColor: 'rgb(255, 255, 255)',
       basicBackgroundColor: basicColor,
-      disabledBackgroundColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
-      disabledColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+      disabledBackgroundColor: disabledBackgroundColor,
+      disabledColor: disabledColor,
     });
   });
 
@@ -105,8 +108,8 @@ test.describe('example-theme-app: light theme', () => {
       accentColor: 'rgb(0, 75, 114)',
       warnBackgroundColor: 'rgb(255, 221, 186)',
       warnColor: 'rgb(102, 61, 0)',
-      disabledBackgroundColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
-      disabledColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+      disabledBackgroundColor: disabledBackgroundColor,
+      disabledColor: disabledColor,
     });
   });
 

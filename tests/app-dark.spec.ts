@@ -20,6 +20,8 @@ test.describe('example-theme-app: dark theme', () => {
   const warnColor = 'rgb(255, 180, 171)';
   const disabledColor = 'color(srgb 0.878431 0.886275 0.905882 / 0.38)';
   const disabledBackgroundColor = 'color(srgb 0.878431 0.886275 0.905882 / 0.12)';
+  // Firefox resolves dark theme text as rgb(251,251,254) rather than pure white; both are correct
+  const nearWhite = /rgb\(25[0-5], 25[0-5], 25[0-5]\)/;
 
   test.beforeEach(async ({ page }) => {
     await page.emulateMedia({ colorScheme: 'dark' });
@@ -29,7 +31,7 @@ test.describe('example-theme-app: dark theme', () => {
   test('Background should have theme colors', async ({ page }) => {
     await testBackground(page, {
       backgroundColor: 'rgba(0, 0, 0, 0)',
-      color: 'rgb(255, 255, 255)',
+      color: nearWhite,
     });
   });
 
@@ -42,7 +44,7 @@ test.describe('example-theme-app: dark theme', () => {
 
   test('Basic Buttons should have theme colors', async ({ page }) => {
     await testMatButtonsBasic(page, {
-      labelColor: 'rgb(255, 255, 255)',
+      labelColor: nearWhite,
       basicColor: basicColor,
       primaryColor: primaryColor,
       accentColor: accentColor,
@@ -54,7 +56,7 @@ test.describe('example-theme-app: dark theme', () => {
 
   test('Raised Buttons should have theme colors', async ({ page }) => {
     await testMatButtonsRaised(page, {
-      labelColor: 'rgb(255, 255, 255)',
+      labelColor: nearWhite,
       basicColor: basicColor,
       primaryBackgroundColor: 'rgb(16, 20, 23)',
       primaryColor: primaryColor,
@@ -70,7 +72,7 @@ test.describe('example-theme-app: dark theme', () => {
 
   test('Stroked Buttons should have theme colors', async ({ page }) => {
     await testMatButtonsStroked(page, {
-      labelColor: 'rgb(255, 255, 255)',
+      labelColor: nearWhite,
       basicColor: basicColor,
       primaryColor: primaryColor,
       accentColor: accentColor,
@@ -82,7 +84,7 @@ test.describe('example-theme-app: dark theme', () => {
 
   test('Flat Buttons should have theme colors', async ({ page }) => {
     await testMatButtonsFlat(page, {
-      labelColor: 'rgb(255, 255, 255)',
+      labelColor: nearWhite,
       basicColor: 'rgb(0, 51, 80)',
       primaryBackgroundColor: primaryColor,
       primaryColor: 'rgb(0, 51, 80)',
@@ -98,7 +100,7 @@ test.describe('example-theme-app: dark theme', () => {
 
   test('Extended FAB Buttons should have theme colors', async ({ page }) => {
     await testMatButtonsExtendedFab(page, {
-      labelColor: 'rgb(255, 255, 255)',
+      labelColor: nearWhite,
       basicBackgroundColor: 'rgb(102, 61, 0)',
       basicColor: 'rgb(255, 221, 186)',
       primaryBackgroundColor: 'rgb(0, 75, 114)',
