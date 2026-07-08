@@ -1,5 +1,5 @@
+import { test } from '@playwright/test';
 import {
-  mockPrefersColorScheme,
   testBackground,
   testMatButtonsBasic,
   testMatButtonsExtendedFab,
@@ -11,47 +11,50 @@ import {
   testMatInput,
   testMatRadioButtons,
   testMatSlideToggle,
-} from '../fixtures';
+} from './fixtures';
 
-describe('example-theme-app: light theme', () => {
+test.describe('example-theme-app: light theme', () => {
   const basicColor = 'rgb(131, 84, 22)';
   const primaryColor = 'rgb(131, 84, 22)';
   const accentColor = 'rgb(0, 100, 150)';
   const warnColor = 'rgb(186, 26, 26)';
+  // Disabled colors use color(srgb ...) format; last decimal digit varies by browser engine
+  const disabledColor = /color\(srgb 0\.09411\d* 0\.109804 0\.12549 \/ 0\.38\)/;
+  const disabledBackgroundColor = /color\(srgb 0\.09411\d* 0\.109804 0\.12549 \/ 0\.12\)/;
 
-  beforeEach(() => {
-    mockPrefersColorScheme('light');
-    cy.visit('/');
+  test.beforeEach(async ({ page }) => {
+    await page.emulateMedia({ colorScheme: 'light' });
+    await page.goto('/');
   });
 
-  it('Background should have theme colors', () => {
-    testBackground({
+  test('Background should have theme colors', async ({ page }) => {
+    await testBackground(page, {
       backgroundColor: 'rgba(0, 0, 0, 0)',
       color: 'rgb(0, 0, 0)',
     });
   });
 
-  it('Mat Card should have theme colors', () => {
-    testMatCard({
+  test('Mat Card should have theme colors', async ({ page }) => {
+    await testMatCard(page, {
       marCardBackgroundColor: 'rgb(247, 249, 254)',
       matCardContentBackgroundColor: 'rgba(0, 0, 0, 0)',
     });
   });
 
-  it('Basic Buttons should have theme colors', () => {
-    testMatButtonsBasic({
+  test('Basic Buttons should have theme colors', async ({ page }) => {
+    await testMatButtonsBasic(page, {
       labelColor: 'rgb(0, 0, 0)',
       basicColor: basicColor,
       primaryColor: primaryColor,
       accentColor: accentColor,
       warnColor: warnColor,
       backgroundColor: 'rgba(0, 0, 0, 0)',
-      disabledColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+      disabledColor: disabledColor,
     });
   });
 
-  it('Raised Buttons should have theme colors', () => {
-    testMatButtonsRaised({
+  test('Raised Buttons should have theme colors', async ({ page }) => {
+    await testMatButtonsRaised(page, {
       labelColor: 'rgb(0, 0, 0)',
       basicColor: basicColor,
       primaryBackgroundColor: 'rgb(247, 249, 254)',
@@ -61,25 +64,25 @@ describe('example-theme-app: light theme', () => {
       warnBackgroundColor: 'rgb(247, 249, 254)',
       warnColor: warnColor,
       basicBackgroundColor: 'rgb(247, 249, 254)',
-      disabledBackgroundColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
-      disabledColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+      disabledBackgroundColor: disabledBackgroundColor,
+      disabledColor: disabledColor,
     });
   });
 
-  it('Stroked Buttons should have theme colors', () => {
-    testMatButtonsStroked({
+  test('Stroked Buttons should have theme colors', async ({ page }) => {
+    await testMatButtonsStroked(page, {
       labelColor: 'rgb(0, 0, 0)',
       basicColor: basicColor,
       primaryColor: primaryColor,
       accentColor: accentColor,
       warnColor: warnColor,
       backgroundColor: 'rgba(0, 0, 0, 0)',
-      disabledColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+      disabledColor: disabledColor,
     });
   });
 
-  it('Flat Buttons should have theme colors', () => {
-    testMatButtonsFlat({
+  test('Flat Buttons should have theme colors', async ({ page }) => {
+    await testMatButtonsFlat(page, {
       labelColor: 'rgb(0, 0, 0)',
       basicColor: 'rgb(255, 255, 255)',
       primaryBackgroundColor: primaryColor,
@@ -89,13 +92,13 @@ describe('example-theme-app: light theme', () => {
       warnBackgroundColor: warnColor,
       warnColor: 'rgb(255, 255, 255)',
       basicBackgroundColor: basicColor,
-      disabledBackgroundColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
-      disabledColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+      disabledBackgroundColor: disabledBackgroundColor,
+      disabledColor: disabledColor,
     });
   });
 
-  it('Extended FAB Buttons should have theme colors', () => {
-    testMatButtonsExtendedFab({
+  test('Extended FAB Buttons should have theme colors', async ({ page }) => {
+    await testMatButtonsExtendedFab(page, {
       labelColor: 'rgb(0, 0, 0)',
       basicBackgroundColor: 'rgb(204, 229, 255)',
       basicColor: 'rgb(0, 75, 114)',
@@ -105,20 +108,20 @@ describe('example-theme-app: light theme', () => {
       accentColor: 'rgb(0, 75, 114)',
       warnBackgroundColor: 'rgb(255, 221, 186)',
       warnColor: 'rgb(102, 61, 0)',
-      disabledBackgroundColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.12)',
-      disabledColor: 'color(srgb 0.0941176 0.109804 0.12549 / 0.38)',
+      disabledBackgroundColor: disabledBackgroundColor,
+      disabledColor: disabledColor,
     });
   });
 
-  it('Inputs should have theme colors', () => {
-    testMatInput({
+  test('Inputs should have theme colors', async ({ page }) => {
+    await testMatInput(page, {
       unfocusedColor: 'rgb(64, 72, 79)',
       focusedColor: primaryColor,
     });
   });
 
-  it('Checkboxes should have theme colors', () => {
-    testMatCheckboxes({
+  test('Checkboxes should have theme colors', async ({ page }) => {
+    await testMatCheckboxes(page, {
       uncheckedColor: 'rgba(0, 0, 0, 0)',
       primaryColor: primaryColor,
       accentColor: accentColor,
@@ -126,8 +129,8 @@ describe('example-theme-app: light theme', () => {
     });
   });
 
-  it('Radio buttons should have theme colors', () => {
-    testMatRadioButtons({
+  test('Radio buttons should have theme colors', async ({ page }) => {
+    await testMatRadioButtons(page, {
       backgroundColor: 'rgba(0, 0, 0, 0)',
       color: 'rgb(24, 28, 32)',
       uncheckedOuterCircleBorderColor: 'rgb(64, 72, 79)',
@@ -136,8 +139,8 @@ describe('example-theme-app: light theme', () => {
     });
   });
 
-  it('Slide Toggle should have theme colors', () => {
-    testMatSlideToggle({
+  test('Slide Toggle should have theme colors', async ({ page }) => {
+    await testMatSlideToggle(page, {
       uncheckedColor: 'rgb(220, 227, 237)',
       primaryColor: primaryColor,
       accentColor: accentColor,

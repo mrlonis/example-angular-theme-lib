@@ -9,90 +9,91 @@
     "build:example-theme-app:dev": "npm run build:example-theme-app -- --configuration=development",
     "build:ngx-example-theme": "ng build ngx-example-theme",
     "build:ngx-example-theme:dev": "npm run build:ngx-example-theme -- --configuration development",
-    "cypress:headless": "cypress run --config-file cypress/cypress.config.ts --headless -b chrome",
-    "cypress:open": "cypress open --config-file cypress/cypress.config.ts",
-    "lint": "npm run lint:ngx-example-theme && npm run lint:example-theme-app && npm run lint:cypress",
-    "lint:cypress": "eslint cypress -c .js,.ts --config cypress/eslint.config.js",
+    "lint": "npm run lint:ngx-example-theme && npm run lint:example-theme-app && npm run lint:playwright",
     "lint:example-theme-app": "ng lint example-theme-app",
-    "lint:fix": "npm run lint:ngx-example-theme -- --fix && npm run lint:example-theme-app -- --fix && npm run lint:cypress -- --fix",
+    "lint:fix": "npm run lint:ngx-example-theme -- --fix && npm run lint:example-theme-app -- --fix && npm run lint:playwright -- --fix",
     "lint:ngx-example-theme": "ng lint ngx-example-theme",
+    "lint:playwright": "eslint -c ./tests/eslint.config.js ./tests",
     "ng": "ng",
+    "playwright:install": "playwright install --with-deps",
     "prepare": "husky",
-    "prettier": "prettier --config .prettierrc --write \"**/*.{css,html,js,jsx,json,md,scss,ts,tsx,yaml,yml}\"",
-    "prettier:test": "prettier --config .prettierrc --list-different \"**/*.{css,html,js,jsx,json,md,scss,ts,tsx,yaml,yml}\"",
+    "prettier": "prettier --write . --ignore-unknown",
+    "prettier:test": "prettier --check . --ignore-unknown",
     "start": "ng serve example-theme-app",
-    "test": "npm run lint && npm run test:ci && npm run test:cypress",
-    "test:ci": "npm run test:ci:ngx-example-theme && npm run test:ci:example-theme-app",
-    "test:ci:example-theme-app": "ng test example-theme-app --no-watch --no-progress --browsers=ChromeHeadless",
-    "test:ci:ngx-example-theme": "ng test ngx-example-theme --no-watch --no-progress --browsers=ChromeHeadless",
-    "test:cypress": "start-server-and-test start http://localhost:4200 cypress:headless",
-    "test:cypress:open": "start-server-and-test start http://localhost:4200 cypress:open",
+    "sync:agent-instructions": "node scripts/sync-agent-instructions.mjs",
+    "sync:agent-instructions:check": "node scripts/sync-agent-instructions.mjs --check",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:e2e": "npm run playwright:install && playwright test --config=./tests/playwright.config.ts",
+    "test:unit": "npm run test:unit:ngx-example-theme && npm run test:unit:example-theme-app",
+    "test:unit:example-theme-app": "ng test example-theme-app --no-watch",
+    "test:unit:ngx-example-theme": "ng test ngx-example-theme --no-watch",
     "watch:example-theme-app": "npm run build:example-theme-app:dev -- --watch",
     "watch:ngx-example-theme": "npm run build:ngx-example-theme:dev -- --watch"
   },
   "lint-staged": {
-    "*.{css,html,js,jsx,json,md,scss,ts,tsx,yaml,yml}": [
+    "{package.json,projects/**/package.json}": [
+      "sort-package-json",
       "prettier --write"
     ],
-    "projects/example-theme-app/**/*.{html,js,jsx,ts,tsx}": [
+    "projects/example-theme-app/**/*.{html,ts}": [
       "ng-lint-staged lint:example-theme-app --fix --"
     ],
-    "projects/ngx-example-theme/**/*.{html,js,jsx,ts,tsx}": [
+    "projects/ngx-example-theme/**/*.{html,ts}": [
       "ng-lint-staged lint:ngx-example-theme --fix --"
+    ],
+    "tests/**/*.ts": [
+      "eslint -c ./tests/eslint.config.js --fix"
+    ],
+    "!({package.json,projects/**/package.json,projects/example-theme-app/**/*.{html,ts},projects/ngx-example-theme/**/*.{html,ts},tests/**/*.ts})": [
+      "prettier --write --ignore-unknown"
     ]
   },
   "dependencies": {
-    "@angular/animations": "^19",
-    "@angular/cdk": "^19",
-    "@angular/common": "^19",
-    "@angular/compiler": "^19",
-    "@angular/core": "^19",
-    "@angular/forms": "^19",
-    "@angular/material": "^19",
-    "@angular/platform-browser": "^19",
-    "@angular/platform-browser-dynamic": "^19",
-    "@angular/router": "^19",
+    "@angular/cdk": "^22",
+    "@angular/common": "^22",
+    "@angular/compiler": "^22",
+    "@angular/core": "^22",
+    "@angular/forms": "^22",
+    "@angular/material": "^22",
+    "@angular/platform-browser": "^22",
+    "@angular/router": "^22",
     "rxjs": "^7",
-    "tslib": "^2",
-    "zone.js": "~0.15"
+    "tslib": "^2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19",
-    "@angular/cli": "^19",
-    "@angular/compiler-cli": "^19",
-    "@angular/language-service": "^19",
-    "@types/jasmine": "^5",
-    "@types/node": "^22",
-    "angular-eslint": "^19",
-    "cypress": "^14",
+    "@angular/build": "^22",
+    "@angular/cli": "^22",
+    "@angular/compiler-cli": "^22",
+    "@eslint/js": "^9",
+    "@playwright/test": "^1",
+    "@types/node": "^26",
+    "@vitest/coverage-v8": "^4",
+    "angular-eslint": "^22",
     "eslint": "^9",
     "eslint-config-prettier": "^10",
     "eslint-import-resolver-typescript": "^4",
-    "eslint-plugin-cypress": "^4",
-    "eslint-plugin-depend": "^1",
     "eslint-plugin-import": "^2",
-    "eslint-plugin-jasmine": "^4",
     "eslint-plugin-prettier": "^5",
     "husky": "^9",
-    "jasmine-core": "^5",
-    "karma": "^6",
-    "karma-chrome-launcher": "^3",
-    "karma-coverage": "^2",
-    "karma-edge-launcher": "~0.4",
-    "karma-firefox-launcher": "^2",
-    "karma-jasmine": "^5",
-    "karma-jasmine-html-reporter": "^2",
-    "karma-junit-reporter": "^2",
-    "lint-staged": "^16",
+    "jsdom": "^29",
+    "lint-staged": "^17",
     "ng-lint-staged": "^12",
-    "ng-packagr": "^19",
+    "ng-packagr": "^22",
     "prettier": "^3",
-    "start-server-and-test": "^2",
-    "typescript": "~5.8",
-    "typescript-eslint": "^8"
+    "sort-package-json": "^4",
+    "start-server-and-test": "^3",
+    "typescript": "~6.0",
+    "typescript-eslint": "^8",
+    "vitest": "^4"
   },
-  "engines": {
-    "node": "^22",
-    "npm": "^10"
+  "allowScripts": {
+    "@parcel/watcher@2.5.6": true,
+    "esbuild@0.28.1": true,
+    "esbuild@0.27.7": true,
+    "fsevents@2.3.3": true,
+    "fsevents@2.3.2": true,
+    "lmdb@3.5.4": true,
+    "msgpackr-extract@3.0.4": true,
+    "unrs-resolver@1.12.2": true
   }
 }

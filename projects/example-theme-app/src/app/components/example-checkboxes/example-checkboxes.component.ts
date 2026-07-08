@@ -10,9 +10,9 @@ export interface Task {
 }
 
 @Component({
-  standalone: true,
   selector: 'app-example-checkboxes',
   imports: [FormsModule, MatCheckboxModule],
+  standalone: true,
   templateUrl: './example-checkboxes.component.html',
   styleUrl: './example-checkboxes.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,7 +31,7 @@ export class ExampleCheckboxesComponent {
 
   allComplete = false;
 
-  updateAllComplete() {
+  updateAllComplete(): void {
     this.allComplete = this.task.subtasks.every((t) => t.completed);
   }
 
@@ -39,7 +39,7 @@ export class ExampleCheckboxesComponent {
     return this.task.subtasks.filter((t) => t.completed).length > 0 && !this.allComplete;
   }
 
-  setAll(completed: boolean) {
+  setAll(completed: boolean): void {
     this.allComplete = completed;
     this.task.subtasks.forEach((t) => (t.completed = completed));
   }

@@ -10,7 +10,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "builder": "@angular/build:ng-packagr",
           "options": {
             "project": "projects/ngx-example-theme/ng-package.json"
           },
@@ -25,12 +25,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/ngx-example-theme/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"],
-            "karmaConfig": "projects/ngx-example-theme/karma.conf.js",
-            "codeCoverage": true
+            "coverage": true,
+            "coverageReporters": ["html", "lcov", "text", "text-summary"]
           }
         },
         "lint": {
@@ -54,12 +52,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "options": {
             "outputPath": "dist/example-theme-app",
             "index": "projects/example-theme-app/src/index.html",
             "browser": "projects/example-theme-app/src/main.ts",
-            "polyfills": ["zone.js"],
             "tsConfig": "projects/example-theme-app/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -96,7 +93,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "example-theme-app:build:production"
@@ -108,24 +105,13 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "@angular/build:extract-i18n"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "polyfills": ["zone.js", "zone.js/testing"],
-            "tsConfig": "projects/example-theme-app/tsconfig.spec.json",
-            "karmaConfig": "projects/example-theme-app/karma.conf.js",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/example-theme-app/public"
-              }
-            ],
-            "styles": ["projects/ngx-example-theme/assets/theme.scss", "projects/example-theme-app/src/styles.scss"],
-            "scripts": [],
-            "codeCoverage": true
+            "coverage": true,
+            "coverageReporters": ["html", "lcov", "text", "text-summary"]
           }
         },
         "lint": {
@@ -141,5 +127,31 @@
   "cli": {
     "analytics": "588f7357-5a01-46fc-acaf-0753ba571012",
     "schematicCollections": ["@angular-eslint/schematics"]
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "type": "component"
+    },
+    "@schematics/angular:directive": {
+      "type": "directive"
+    },
+    "@schematics/angular:service": {
+      "type": "service"
+    },
+    "@schematics/angular:guard": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:interceptor": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:module": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:pipe": {
+      "typeSeparator": "."
+    },
+    "@schematics/angular:resolver": {
+      "typeSeparator": "."
+    }
   }
 }
