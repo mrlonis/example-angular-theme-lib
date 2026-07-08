@@ -205,11 +205,11 @@ Browsers report the same CSS color value in different formats or with minor floa
 
 - **Floating-point precision** — Chromium, Firefox, and WebKit can differ in the last digit of `color(srgb ...)` channel values. Example: `0.0941176` (Chromium), `0.0941177` (Firefox), `0.094118` (WebKit). Use a regex that truncates at the stable prefix:
   ```ts
-  /color\(srgb 0\.09411\d* 0\.109804 0\.12549 \/ 0\.38\)/
+  /color\(srgb 0\.09411\d* 0\.109804 0\.12549 \/ 0\.38\)/;
   ```
 - **Near-white resolution** — In dark-mode, Firefox may resolve a white text color as `rgb(251, 251, 254)` while Chromium returns `rgb(255, 255, 255)`. Use a regex that accepts any component in the 250–255 range:
   ```ts
-  /rgb\(25[0-5], 25[0-5], 25[0-5]\)/
+  /rgb\(25[0-5], 25[0-5], 25[0-5]\)/;
   ```
 - **Color function format** — In newer browser/Angular versions, semi-transparent colors previously expressed as `rgba(R, G, B, A)` may now be reported as `color(srgb R G B / A)`. Update expected values to match what `getComputedStyle` actually returns in the target browser.
 
@@ -219,9 +219,7 @@ Browsers report the same CSS color value in different formats or with minor floa
 
 ```ts
 const color = await locator.evaluate((el) =>
-  el.ownerDocument.defaultView
-    ?.getComputedStyle(el, '::before')
-    .getPropertyValue('background-color'),
+  el.ownerDocument.defaultView?.getComputedStyle(el, '::before').getPropertyValue('background-color'),
 );
 expect(color).toBe(expectedColor);
 ```
