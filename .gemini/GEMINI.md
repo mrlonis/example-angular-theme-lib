@@ -11,29 +11,46 @@ Use these versions as compatibility targets when generating code, tests, and com
 - RxJS: v7 (configured as `^7`)
 - Vitest: v4 (configured as `^4`)
 - ESLint: v9 (configured as `^9`)
+- Playwright: v1 (configured as `^1`)
 
 ## Workflow Command Decision Tree
 
 - If only one spec file changed, run a single-spec test command with `--include`.
 - If one project changed, run scoped lint/test commands for that project.
-- If shared configs, path mappings, or library dependencies changed, run `npm run build:all` first, then run lint/tests.
+- If shared configs, path mappings, or library dependencies changed, run `npm run build` first, then run lint/tests.
 - Before finalizing work, run CI parity commands in the same order used by the GitHub workflow.
 
 ## Project Map and Scoped Commands
 
-- Projects in this workspace: `app` (application), `lib` (library), `table` (library).
-- Lint only `app`:
-  - `npm run lint -- app`
-- Lint only `lib`:
-  - `npm run lint -- lib`
-- Lint only `table`:
-  - `npm run lint -- table`
-- Test only `app`:
-  - `npm run test -- app --no-watch --coverage --coverage-reporters text`
-- Test only `lib`:
-  - `npm run test -- lib --no-watch --coverage --coverage-reporters text`
-- Test only `table`:
-  - `npm run test -- table --no-watch --coverage --coverage-reporters text`
+This repository contains two Angular projects:
+
+- `ngx-example-theme` — Angular library (`projects/ngx-example-theme/`)
+- `example-theme-app` — Angular application (`projects/example-theme-app/`)
+
+### Lint commands
+
+- Lint all projects: `npm run lint`
+- Lint only `ngx-example-theme`: `npm run lint:ngx-example-theme`
+- Lint only `example-theme-app`: `npm run lint:example-theme-app`
+- Lint only Playwright tests: `npm run lint:playwright`
+
+### Unit test commands
+
+- Test all projects: `npm run test:unit`
+- Test only `ngx-example-theme`: `npm run test:unit:ngx-example-theme`
+- Test only `example-theme-app`: `npm run test:unit:example-theme-app`
+
+### E2E test commands
+
+- Run all e2e tests (all browsers): `npm run test:e2e`
+- Run e2e with a single browser (faster, for development): `npx playwright test --config=tests/playwright.config.ts --project=chromium --reporter=line`
+- Run a single spec: `npx playwright test tests/app.spec.ts --config=tests/playwright.config.ts --project=chromium --reporter=line`
+
+### Build commands
+
+- Build all projects: `npm run build`
+- Build only `ngx-example-theme`: `npm run build:ngx-example-theme`
+- Build only `example-theme-app`: `npm run build:example-theme-app`
 
 ## AI Instruction Source of Truth
 
@@ -62,8 +79,8 @@ Use these versions as compatibility targets when generating code, tests, and com
 
 ### Selector Prefix Rules
 
-- In the `app` project, use `app` selector prefixes.
-- In library projects (`lib`, `table`), use `lib` selector prefixes.
+- In the `example-theme-app` project, use `app` selector prefixes.
+- In the `ngx-example-theme` library project, use `lib` selector prefixes.
 
 ## Accessibility Requirements
 
@@ -107,24 +124,25 @@ Use these versions as compatibility targets when generating code, tests, and com
 
 - Use the repository build script before linting/testing when project dependencies may have changed.
 - Preferred command for this repo:
-  - `npm run build:all`
+  - `npm run build`
 - This repository uses TypeScript path mappings in the root `tsconfig.json` that point Angular library imports to built outputs in `dist`. If libraries are not built, linting can fail with import/path resolution errors.
-- When creating new Angular libraries or applications, update the `build:all` script in `package.json` so the new project is included in the standard build workflow.
+- When creating new Angular libraries or applications, update the `build` script in `package.json` so the new project is included in the standard build workflow.
 
 ## New Project Checklist
 
-- If you add a new Angular application or library, update `build:all` in `package.json` to include it.
+- If you add a new Angular application or library, update the `build`, `build:dev`, `test:unit`, and `lint` scripts in `package.json` to include it.
 - Confirm the root `tsconfig.json` references/paths are correct for the new project.
 - Update `lint-staged` patterns in `package.json` if needed so staged-file linting/formatting still applies.
+- Add scoped lint and test npm scripts following the existing naming pattern (`lint:<project>`, `test:unit:<project>`).
 - Add or update scoped lint/test command examples in this file for the new project.
 
 ## Linting Guidelines
 
 - This project uses `eslint` (v9) for linting.
 - Prefer scoped lint commands that target only the changed project when possible.
-- Example: lint only the `table` project:
-  - `npm run lint -- table`
-- If linting fails with unresolved imports or path issues, run `npm run build:all` first, then rerun the lint command.
+- Example: lint only the `ngx-example-theme` project:
+  - `npm run lint:ngx-example-theme`
+- If linting fails with unresolved imports or path issues, run `npm run build` first, then rerun the lint command.
 - Keep imports ordered/alphabetized and grouped as required by lint rules.
 - Use Angular template control flow syntax (`@if`, `@for`, `@switch`) in templates.
 - Do not use non-null assertions (`!`) unless absolutely necessary.
@@ -134,19 +152,19 @@ Use these versions as compatibility targets when generating code, tests, and com
 
 - Before finalizing changes, run the same sequence used in CI:
   - `npm run sync:agent-instructions:check`
-  - `npm run build:all`
+  - `npm run build`
   - `npm run lint`
-  - `npm run test:ci`
+  - `npm run test:unit`
+  - `npm run test:e2e`
 
-## Testing Guidelines
+## Unit Testing Guidelines
 
-- This project uses `vitest` (v4) for unit testing. Write and update unit tests using Vitest APIs and patterns.
+- This project uses `vitest` (v4) for unit testing via `ng test`. Write and update unit tests using Vitest APIs and patterns.
 - When running tests, prefer scoped commands that target only the changed project or spec file.
-- Example: run tests for the full `table` project:
-  - `npm run test -- table --no-watch --coverage --coverage-reporters text`
-- Example: run tests for only `projects/table/src/lib/table.spec.ts`:
-  - `npm run test -- table --no-watch --coverage --coverage-reporters text --include='projects/table/src/lib/table.spec.ts'`
-- For `--include`, always use workspace-relative paths (no leading slash), for example `projects/table/src/lib/table.spec.ts`.
+- Example: run tests for the full `ngx-example-theme` project:
+  - `npm run test:unit:ngx-example-theme`
+- Example: run tests for only `example-theme-app`:
+  - `npm run test:unit:example-theme-app`
 - Place tests close to the code they verify, and keep test setup focused on behavior rather than implementation details.
 - Prefer clear Arrange-Act-Assert structure with descriptive test names that document expected behavior.
 - Cover happy paths, edge cases, and error handling for components, services, and utility functions.
@@ -154,16 +172,71 @@ Use these versions as compatibility targets when generating code, tests, and com
 - Mock only what is necessary, and prefer lightweight fakes/stubs over deep or brittle mocks.
 - Ensure tests are fast and isolated so they can run reliably in CI.
 
-## Playwright Guidelines
+## Playwright E2E Guidelines
 
-- This project uses Playwright for e2e tests in `tests/`.
+- This project uses Playwright for e2e tests. All spec files live in `tests/`.
+- Cypress was previously used but has been fully replaced by Playwright. The `cypress/` directory is legacy and should not be added to or run.
 - Always run Playwright with the repository config file:
   - `--config=tests/playwright.config.ts`
 - Run a single e2e spec locally with a single browser when possible:
   - `npx playwright test tests/app.spec.ts --config=tests/playwright.config.ts --project=chromium --reporter=line`
 - In CI, use a non-interactive reporter (`line` or `dot`) to avoid hanging/interactive HTML report behavior.
 - Prefer deterministic assertions and stable locators (`getByLabel`, `getByRole`, or stable selectors) over brittle text-only or timing-dependent selectors.
-- Avoid assumptions about default table row counts unless page size is asserted in the same test.
+
+### Playwright Fixture Structure
+
+Shared helper functions for e2e tests live in `tests/fixtures/`:
+
+- `tests/fixtures/function-input-models.ts` — TypeScript interfaces for test helper arguments. All color fields use `string | RegExp` so tests can handle cross-browser CSS color format differences.
+- `tests/fixtures/test-utils.ts` — Async helper functions (e.g. `testBackground`, `testMatButtonsBasic`, etc.) that receive a `page: Page` argument and the args interface. These wrap `expect(locator).toHaveCSS(...)` assertions.
+- `tests/fixtures/index.ts` — Re-exports both files.
+
+When adding new theme component test helpers, follow this pattern and add them to `tests/fixtures/`.
+
+### Cross-Browser CSS Color Handling
+
+Browsers report the same CSS color value in different formats or with minor floating-point precision differences. Always use `RegExp` instead of an exact string when an expected color value has known cross-browser variance:
+
+- **Floating-point precision** — Chromium, Firefox, and WebKit can differ in the last digit of `color(srgb ...)` channel values. Example: `0.0941176` (Chromium), `0.0941177` (Firefox), `0.094118` (WebKit). Use a regex that truncates at the stable prefix:
+  ```ts
+  /color\(srgb 0\.09411\d* 0\.109804 0\.12549 \/ 0\.38\)/;
+  ```
+- **Near-white resolution** — In dark-mode, Firefox may resolve a white text color as `rgb(251, 251, 254)` while Chromium returns `rgb(255, 255, 255)`. Use a regex that accepts any component in the 250–255 range:
+  ```ts
+  /rgb\(25[0-5], 25[0-5], 25[0-5]\)/;
+  ```
+- **Color function format** — In newer browser/Angular versions, semi-transparent colors previously expressed as `rgba(R, G, B, A)` may now be reported as `color(srgb R G B / A)`. Update expected values to match what `getComputedStyle` actually returns in the target browser.
+
+### Pseudo-Element CSS in Playwright
+
+`toHaveCSS` does not support `::before` / `::after` pseudo-elements. Use `locator.evaluate()` to read them via `getComputedStyle`:
+
+```ts
+const color = await locator.evaluate((el) =>
+  el.ownerDocument.defaultView?.getComputedStyle(el, '::before').getPropertyValue('background-color'),
+);
+expect(color).toBe(expectedColor);
+```
+
+Note: pseudo-element `evaluate` results are plain strings — use `toBe` (exact) or `toMatch` (regex), not `toHaveCSS`.
+
+### Emulating Color Scheme in Playwright
+
+Use `page.emulateMedia({ colorScheme: 'dark' | 'light' })` **before** `page.goto()` to test theme variants. This replaces the Cypress `Cypress.automation('remote:debugger:protocol', ...)` approach.
+
+```ts
+test.beforeEach(async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.goto('/');
+});
+```
+
+### MDC/Angular Material Behavior Notes (v22+)
+
+These MDC component behaviors changed in recent Angular Material versions and should be reflected in tests:
+
+- **Radio buttons** — The `.mdc-radio__inner-circle` element now always carries the theme accent color as `background-color`, even in the unselected state (the circle is hidden via CSS `transform: scale(0)`, not by being transparent). Do not assert its `background-color` or `border-color` in unselected state; instead assert the `.mdc-radio__outer-circle` border color, which does change on selection.
+- **`mat-card-content`** — A single `mat-card` can contain multiple `mat-card-content` elements. Use `.first()` to avoid Playwright strict-mode violations when there is only one card but multiple content blocks.
 
 ## Coverage Notes (Angular + v8)
 
