@@ -1,24 +1,51 @@
-name: CI
+name: Build
 on:
   push:
-    branches: ['main', 'angular-19', 'angular-18', 'angular-17', 'angular-16']
+    branches: ['main']
   pull_request:
-    branches: ['main', 'angular-19', 'angular-18', 'angular-17', 'angular-16']
+    branches: ['main']
   workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v6
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version-file: '.nvmrc'
           cache: 'npm'
-      - run: npm ci
-      - run: npm run test
-      - run: npm run build
-      - name: Codacy Coverage Reporter
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify agent instruction sync
+        run: npm run sync:agent-instructions:check
+
+      - name: Build all projects
+        run: npm run build
+
+      - name: Run lint checks
+        run: npm run lint
+
+      - name: Run test suite
+        run: npm run test
+
+      - name: Upload TypeScript coverage to Codacy
         uses: codacy/codacy-coverage-reporter-action@v1.3.0
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-          coverage-reports: 'test-reports/*/coverage/lcov.info'
+          coverage-reports: coverage/**/lcov.info
+          language: 'TypeScript'
+
+      - name: Upload HTML coverage to Codacy
+        uses: codacy/codacy-coverage-reporter-action@v1.3.0
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+          coverage-reports: coverage/**/lcov.info
+          language: 'HTML'

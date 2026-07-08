@@ -7,9 +7,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
-  standalone: true,
   selector: 'app-example-slide-toggle',
   imports: [MatCardModule, MatRadioModule, FormsModule, MatCheckboxModule, MatSlideToggleModule],
+  standalone: true,
   templateUrl: './example-slide-toggle.component.html',
   styleUrl: './example-slide-toggle.component.scss',
 })
